@@ -2,23 +2,26 @@ project:
   type: website
 
 website:
+  page-navigation: true
   title: "Virtual Store Feasibility Report"
-  navbar:
-    left:
+  sidebar:
+    pinned: true
+    align: center  
+    contents:
       - href: index.qmd
         text: Home
       - href: introduction.qmd
         text: Introduction
-      - text: Technical: Overview, Applications and Ecosystem
-        menu:
+      - section: Technical
+        contents:
           - href: technical-overview.qmd
             text: Technical Overview
           - href: nasa-applications.qmd
             text: NASA Applications
           - href: nasa-ecosystem.qmd
             text: NASA Ecosystem
-      - text: Guidance: Limitations and Governance
-        menu:
+      - section: Guidance
+        contents:
           - href: limitations.qmd
             text: Known Limitations
           - href: governance.qmd
