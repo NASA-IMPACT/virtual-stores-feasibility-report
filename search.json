@@ -164,21 +164,21 @@
     ]
   },
   {
-    "objectID": "index.html#what-are-virtual-stores-and-what-do-they-enable",
-    "href": "index.html#what-are-virtual-stores-and-what-do-they-enable",
+    "objectID": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
+    "href": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
     "title": "Virtual Stores at NASA",
-    "section": "What are virtual stores and what do they enable?",
-    "text": "What are virtual stores and what do they enable?\nCore to virtual store technology is lightweight metadata pointing to data byte ranges in existing files. Virtual store technology enables data users to access subsets of large scientific datasets without downloading, scanning and pre-processing any files.",
+    "section": "Vision: NASA datasets accessible through a single entrypoint",
+    "text": "Vision: NASA datasets accessible through a single entrypoint\nVirtual stores will unify many NASA datasets through the Zarr data model. Long-term, this will enable:\n\nMany NASA datasets will be discoverable and accessible through a single entrypoint per dataset.\nLess pre-processing to be analysis-ready.\nUsers will not have to know about the underlying data format or storage location.\nA common API for reading, writing and analyzing NASA datasets. A common API will make these datasets more accessible and interoperable.",
     "crumbs": [
       "Home"
     ]
   },
   {
-    "objectID": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
-    "href": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
+    "objectID": "index.html#what-are-virtual-stores-and-what-do-they-enable",
+    "href": "index.html#what-are-virtual-stores-and-what-do-they-enable",
     "title": "Virtual Stores at NASA",
-    "section": "Vision: NASA datasets accessible through a single entrypoint",
-    "text": "Vision: NASA datasets accessible through a single entrypoint\nThe long-term vision is that many NASA datasets are discoverable and accessible through a single entrypoint (per dataset). Users will not have to be aware of the underlying data format or storage location.",
+    "section": "What are virtual stores and what do they enable?",
+    "text": "What are virtual stores and what do they enable?\nCore to virtual store technology is lightweight metadata pointing to data byte ranges in existing files. Virtual store technology enables data users to access subsets of large scientific datasets without downloading, scanning and pre-processing any files.",
     "crumbs": [
       "Home"
     ]
