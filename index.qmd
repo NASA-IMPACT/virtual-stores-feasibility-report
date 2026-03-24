@@ -5,13 +5,18 @@ subtitle: "A single entrypoint for all NASA datasets"
 
 ⚠️ UNDER DEVELOPMENT ⚠️
 
+## Vision: NASA datasets accessible through a single entrypoint
+
+Virtual stores will unify many NASA datasets through the Zarr data model. Long-term, this will enable:
+
+* Many NASA datasets will be discoverable and accessible through a single entrypoint per dataset.
+* Less pre-processing to be analysis-ready.
+* Users will not have to know about the underlying data format or storage location.
+* A common API for reading, writing and analyzing NASA datasets. A common API will make these datasets more accessible and interoperable.
+
 ## What are virtual stores and what do they enable?
 
 Core to virtual store technology is lightweight metadata pointing to data byte ranges in existing files. Virtual store technology enables data users to access subsets of large scientific datasets without downloading, scanning and pre-processing any files. 
-
-## Vision: NASA datasets accessible through a single entrypoint
-
-The long-term vision is that many NASA datasets are discoverable and accessible through a single entrypoint (per dataset). Users will not have to be aware of the underlying data format or storage location.
 
 ## Benefits for data users
 
