@@ -32,6 +32,8 @@ website:
         text: Onboarding Guide + Resources
       - href: examples.qmd
         text: Examples
+      - href: contributing.qmd
+        text: Contributing
 
 format:
   html:

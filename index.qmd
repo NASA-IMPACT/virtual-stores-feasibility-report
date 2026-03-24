@@ -1,6 +1,7 @@
 ---
 title: "Virtual Stores at NASA"
 subtitle: "A single entrypoint for all NASA datasets"
+authors: Aimee Barciauskas
 ---
 
 ⚠️ UNDER DEVELOPMENT ⚠️
