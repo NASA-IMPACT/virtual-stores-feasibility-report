@@ -1,5 +1,6 @@
 ---
-title: "Virtual Stores and the NASA Data System"
+title: "Virtual Stores and the NASA Ecosystem"
+subtitle: "How Virtual Stores integrate with the rest of the NASA Data System"
 ---
 
 There are a number of components to consider when envisioning virtual stores and their place in the broad NASA data ecosystem.

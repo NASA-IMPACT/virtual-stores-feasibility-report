@@ -1,5 +1,5 @@
 ---
-title: "Technical Overview"
+title: "Technical Overview of Virtual Stores"
 ---
 
 ## Core concepts

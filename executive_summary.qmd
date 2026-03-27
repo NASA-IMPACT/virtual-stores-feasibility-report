@@ -1,6 +1,5 @@
 ---
-title: "Introduction"
-subtitle: "Executive Summary"
+title: "Executive Summary"
 ---
 
 ## Purpose of this report

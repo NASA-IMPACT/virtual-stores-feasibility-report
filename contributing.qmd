@@ -1,0 +1,39 @@
+---
+title: "Contributing"
+---
+
+We welcome PRs to this repo from anyone. If you open a PR with new or revised content, please add yourself to the authors list in `index.qmd`.
+
+This site uses [Quarto](https://quarto.org/) to generate website pages using markdown and jupyter notebooks.
+
+## Adding pages
+
+To add a new page:
+1. Create new `.qmd` or `.ipynb` file
+2. Add the new page to the `sidebar` section in `_quarto.yml` so it shows up in the sidebar navigation
+
+## Previews
+
+To preview changes, you can run this site locally (see instructions to setup quarto locally below) or use the automated preview generation when opening a PR (see [the PR preview workflow](./.github/workflows/pr-preview.yml)).
+
+## Local Development
+
+### Install Quarto
+
+Install Quarto by downloading the installer for your platform from [quarto.org/docs/get-started](https://quarto.org/docs/get-started/), or via a package manager:
+
+- **macOS (Homebrew):** `brew install --cask quarto`
+- **Linux:** Download the `.deb` or `.rpm` package from the Quarto website
+- **Windows:** Download the `.msi` installer from the Quarto website
+
+Verify the installation with `quarto check`.
+
+### Run quarto commands
+
+To preview the site locally:
+
+```bash
+quarto preview
+```
+
+This runs `quarto preview`, which serves the site and reloads on changes.

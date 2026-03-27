@@ -1,5 +1,5 @@
 ---
-title: "Applications of Virtual Store Technology at NASA"
+title: "Applications of Virtual Stores at NASA"
 ---
 
 ## Mature implementations

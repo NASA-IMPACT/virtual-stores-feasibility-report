@@ -10,16 +10,16 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: introduction.qmd
-        text: Introduction
-      - section: Technical
+      - href: executive_summary.qmd
+        text: Executive Summary
+      - section: Technical Aspects
         contents:
           - href: technical-overview.qmd
-            text: Technical Overview
+            text: Technical Overview of Virtual Stores
           - href: nasa-applications.qmd
-            text: NASA Applications
+            text: Applications of Virtual Stores at NASA
           - href: nasa-ecosystem.qmd
-            text: NASA Ecosystem
+            text: Virtual Stores within the NASA Ecosystem
       - section: Guidance
         contents:
           - href: limitations.qmd
@@ -32,6 +32,8 @@ website:
         text: Onboarding Guide + Resources
       - href: examples.qmd
         text: Examples
+      - href: contributing.qmd
+        text: Contributing
 
 format:
   html:
