@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Technical Overview of Virtual Stores – Virtual Store Feasibility Report</title>
+<title>Contributing – Virtual Store Feasibility Report</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,8 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./nasa-applications.html" rel="next">
-<link href="./executive_summary.html" rel="prev">
+<link href="./examples.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Overview of Virtual Stores</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./contributing.html">Contributing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -132,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./technical-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./technical-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Technical Overview of Virtual Stores</span></a>
   </div>
 </li>
@@ -193,7 +227,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./contributing.html" class="sidebar-item-text sidebar-link">
+  <a href="./contributing.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Contributing</span></a>
   </div>
 </li>
@@ -207,18 +241,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core concepts</a></li>
-  <li><a href="#geozarr-and-multiscales" id="toc-geozarr-and-multiscales" class="nav-link" data-scroll-target="#geozarr-and-multiscales">GeoZarr and multiscales</a></li>
-  <li><a href="#chunk-manifest-protocol" id="toc-chunk-manifest-protocol" class="nav-link" data-scroll-target="#chunk-manifest-protocol">Chunk manifest protocol</a></li>
+  <li><a href="#adding-pages" id="toc-adding-pages" class="nav-link active" data-scroll-target="#adding-pages">Adding pages</a></li>
+  <li><a href="#previews" id="toc-previews" class="nav-link" data-scroll-target="#previews">Previews</a></li>
+  <li><a href="#local-development" id="toc-local-development" class="nav-link" data-scroll-target="#local-development">Local Development</a>
+  <ul class="collapse">
+  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
+  <li><a href="#run-quarto-commands" id="toc-run-quarto-commands" class="nav-link" data-scroll-target="#run-quarto-commands">Run quarto commands</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Overview of Virtual Stores</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Technical Overview of Virtual Stores</h1>
+<h1 class="title">Contributing</h1>
 </div>
 
 
@@ -235,26 +273,36 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="core-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
-<p>[ADD ME: DIAGRAM]</p>
+<p>We welcome PRs to this repo from anyone. If you open a PR with new or revised content, please add yourself to the authors list in <code>index.qmd</code>.</p>
+<p>This site uses <a href="https://quarto.org/">Quarto</a> to generate website pages using markdown and jupyter notebooks.</p>
+<section id="adding-pages" class="level2">
+<h2 class="anchored" data-anchor-id="adding-pages">Adding pages</h2>
+<p>To add a new page: 1. Create new <code>.qmd</code> or <code>.ipynb</code> file 2. Add the new page to the <code>sidebar</code> section in <code>_quarto.yml</code> so it shows up in the sidebar navigation</p>
+</section>
+<section id="previews" class="level2">
+<h2 class="anchored" data-anchor-id="previews">Previews</h2>
+<p>To preview changes, you can run this site locally (see instructions to setup quarto locally below) or use the automated preview generation when opening a PR (see <a href="./.github/workflows/pr-preview.yml">the PR preview workflow</a>).</p>
+</section>
+<section id="local-development" class="level2">
+<h2 class="anchored" data-anchor-id="local-development">Local Development</h2>
+<section id="install-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="install-quarto">Install Quarto</h3>
+<p>Install Quarto by downloading the installer for your platform from <a href="https://quarto.org/docs/get-started/">quarto.org/docs/get-started</a>, or via a package manager:</p>
 <ul>
-<li><strong>Zarr</strong> is a chunked, compressed array storage specification and format. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for structuring virtual stores at NASA.</li>
-<li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.</li>
-<li><strong><a href="https://icechunk.io/">Icechunk</a></strong> is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls <a href="https://icechunk.io/en/stable/virtual/">virtual datasets</a>.</li>
-<li><strong>Kerchunk</strong> is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.</li>
+<li><strong>macOS (Homebrew):</strong> <code>brew install --cask quarto</code></li>
+<li><strong>Linux:</strong> Download the <code>.deb</code> or <code>.rpm</code> package from the Quarto website</li>
+<li><strong>Windows:</strong> Download the <code>.msi</code> installer from the Quarto website</li>
 </ul>
+<p>Verify the installation with <code>quarto check</code>.</p>
 </section>
-<section id="geozarr-and-multiscales" class="level2">
-<h2 class="anchored" data-anchor-id="geozarr-and-multiscales">GeoZarr and multiscales</h2>
-<p><a href="https://geozarr.org/">GeoZarr</a> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.</p>
-<p><strong>Adoption of GeoZarr is recommended</strong> for future virtual store implementations to ensure interoperability and long-term maintainability. Adoption of multiscales should be considered, especially for high resolution data.</p>
-</section>
-<section id="chunk-manifest-protocol" class="level2">
-<h2 class="anchored" data-anchor-id="chunk-manifest-protocol">Chunk manifest protocol</h2>
-<p>[UNDER DEVELOPMENT]</p>
+<section id="run-quarto-commands" class="level3">
+<h3 class="anchored" data-anchor-id="run-quarto-commands">Run quarto commands</h3>
+<p>To preview the site locally:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This runs <code>quarto preview</code>, which serves the site and reloads on changes.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -660,14 +708,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./executive_summary.html" class="pagination-link" aria-label="Executive Summary">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Executive Summary</span>
+      <a href="./examples.html" class="pagination-link" aria-label="Examples">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Examples</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nasa-applications.html" class="pagination-link" aria-label="Applications of Virtual Stores at NASA">
-        <span class="nav-page-text">Applications of Virtual Stores at NASA</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

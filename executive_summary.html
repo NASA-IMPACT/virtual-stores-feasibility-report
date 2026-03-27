@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Technical Overview of Virtual Stores – Virtual Store Feasibility Report</title>
+<title>Executive Summary – Virtual Store Feasibility Report</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -32,8 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./nasa-applications.html" rel="next">
-<link href="./executive_summary.html" rel="prev">
+<link href="./technical-overview.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Overview of Virtual Stores</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./executive_summary.html">Executive Summary</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./executive_summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./executive_summary.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Executive Summary</span></a>
   </div>
 </li>
@@ -132,7 +132,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./technical-overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./technical-overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Technical Overview of Virtual Stores</span></a>
   </div>
 </li>
@@ -207,18 +207,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core concepts</a></li>
-  <li><a href="#geozarr-and-multiscales" id="toc-geozarr-and-multiscales" class="nav-link" data-scroll-target="#geozarr-and-multiscales">GeoZarr and multiscales</a></li>
-  <li><a href="#chunk-manifest-protocol" id="toc-chunk-manifest-protocol" class="nav-link" data-scroll-target="#chunk-manifest-protocol">Chunk manifest protocol</a></li>
+  <li><a href="#purpose-of-this-report" id="toc-purpose-of-this-report" class="nav-link active" data-scroll-target="#purpose-of-this-report">Purpose of this report</a></li>
+  <li><a href="#summary-of-recommendations-and-current-state" id="toc-summary-of-recommendations-and-current-state" class="nav-link" data-scroll-target="#summary-of-recommendations-and-current-state">Summary of recommendations and current state</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Overview of Virtual Stores</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Technical Overview of Virtual Stores</h1>
+<h1 class="title">Executive Summary</h1>
 </div>
 
 
@@ -235,24 +234,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="core-concepts" class="level2">
-<h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
-<p>[ADD ME: DIAGRAM]</p>
-<ul>
-<li><strong>Zarr</strong> is a chunked, compressed array storage specification and format. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for structuring virtual stores at NASA.</li>
-<li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.</li>
-<li><strong><a href="https://icechunk.io/">Icechunk</a></strong> is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls <a href="https://icechunk.io/en/stable/virtual/">virtual datasets</a>.</li>
-<li><strong>Kerchunk</strong> is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.</li>
-</ul>
+<section id="purpose-of-this-report" class="level2">
+<h2 class="anchored" data-anchor-id="purpose-of-this-report">Purpose of this report</h2>
+<p>This report assesses the current state and future direction of virtual store technology for NASA data. It documents mature implementations, developing approaches, known limitations, governance gaps, and recommended next steps.</p>
 </section>
-<section id="geozarr-and-multiscales" class="level2">
-<h2 class="anchored" data-anchor-id="geozarr-and-multiscales">GeoZarr and multiscales</h2>
-<p><a href="https://geozarr.org/">GeoZarr</a> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.</p>
-<p><strong>Adoption of GeoZarr is recommended</strong> for future virtual store implementations to ensure interoperability and long-term maintainability. Adoption of multiscales should be considered, especially for high resolution data.</p>
-</section>
-<section id="chunk-manifest-protocol" class="level2">
-<h2 class="anchored" data-anchor-id="chunk-manifest-protocol">Chunk manifest protocol</h2>
-<p>[UNDER DEVELOPMENT]</p>
+<section id="summary-of-recommendations-and-current-state" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-recommendations-and-current-state">Summary of recommendations and current state</h2>
+<p>Virtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types. Key recommendations include adopting Icechunk, GeoZarr and multiscales standards, engaging with any evolving chunk manifest protocol, planning for EGIS integration, and addressing governance gaps.</p>
+<p>See the <a href="./recommendations.html">Recommendations</a> section for the full summary.</p>
 
 
 </section>
@@ -660,13 +649,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./executive_summary.html" class="pagination-link" aria-label="Executive Summary">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Executive Summary</span>
+      <a href="./index.html" class="pagination-link" aria-label="Home">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Home</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nasa-applications.html" class="pagination-link" aria-label="Applications of Virtual Stores at NASA">
-        <span class="nav-page-text">Applications of Virtual Stores at NASA</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./technical-overview.html" class="pagination-link" aria-label="Technical Overview of Virtual Stores">
+        <span class="nav-page-text">Technical Overview of Virtual Stores</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
