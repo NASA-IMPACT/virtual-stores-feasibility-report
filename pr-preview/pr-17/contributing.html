@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dea667461a5c81afc9ba75ce94cd63f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-be3771519f21acc1c5b6733774c6dcd8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -151,14 +151,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./introduction.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
+  <a href="./executive_summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Executive Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Technical</span></a>
+ <span class="menu-text">Technical Aspects</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -167,19 +167,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./technical-overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Technical Overview</span></a>
+ <span class="menu-text">Technical Overview of Virtual Stores</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nasa-applications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">NASA Applications</span></a>
+ <span class="menu-text">Applications of Virtual Stores at NASA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nasa-ecosystem.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">NASA Ecosystem</span></a>
+ <span class="menu-text">Virtual Stores within the NASA Ecosystem</span></a>
   </div>
 </li>
       </ul>
@@ -243,11 +243,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#adding-pages" id="toc-adding-pages" class="nav-link active" data-scroll-target="#adding-pages">Adding pages</a></li>
   <li><a href="#previews" id="toc-previews" class="nav-link" data-scroll-target="#previews">Previews</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
+  <li><a href="#local-development" id="toc-local-development" class="nav-link" data-scroll-target="#local-development">Local Development</a>
   <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
+  <li><a href="#run-quarto-commands" id="toc-run-quarto-commands" class="nav-link" data-scroll-target="#run-quarto-commands">Run quarto commands</a></li>
   </ul></li>
-  <li><a href="#development" id="toc-development" class="nav-link" data-scroll-target="#development">Development</a></li>
   </ul>
 </nav>
     </div>
@@ -273,23 +273,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Thank you for considering contributing to this guide, which is intended to be a community-developed resource.</p>
 <p>We welcome PRs to this repo from anyone. If you open a PR with new or revised content, please add yourself to the authors list in <code>index.qmd</code>.</p>
-<p>This site uses <a href="#quarto">Quarto</a> to generate website pages using Quarto Markdown</p>
+<p>This site uses <a href="https://quarto.org/">Quarto</a> to generate website pages using markdown and jupyter notebooks.</p>
 <section id="adding-pages" class="level2">
 <h2 class="anchored" data-anchor-id="adding-pages">Adding pages</h2>
-<ul>
-<li>create qmd file</li>
-<li>add to navigation in _quarto.yml</li>
-</ul>
+<p>To add a new page: 1. Create new <code>.qmd</code> or <code>.ipynb</code> file 2. Add the new page to the <code>sidebar</code> section in <code>_quarto.yml</code> so it shows up in the sidebar navigation</p>
 </section>
 <section id="previews" class="level2">
 <h2 class="anchored" data-anchor-id="previews">Previews</h2>
+<p>To preview changes, you can run this site locally (see instructions to setup quarto locally below) or use the automated preview generation when opening a PR (see <a href="./.github/workflows/pr-preview.yml">the PR preview workflow</a>).</p>
 </section>
-<section id="installation" class="level2">
-<h2 class="anchored" data-anchor-id="installation">Installation</h2>
-<section id="quarto" class="level3">
-<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
+<section id="local-development" class="level2">
+<h2 class="anchored" data-anchor-id="local-development">Local Development</h2>
+<section id="install-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="install-quarto">Install Quarto</h3>
 <p>Install Quarto by downloading the installer for your platform from <a href="https://quarto.org/docs/get-started/">quarto.org/docs/get-started</a>, or via a package manager:</p>
 <ul>
 <li><strong>macOS (Homebrew):</strong> <code>brew install --cask quarto</code></li>
@@ -298,17 +295,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Verify the installation with <code>quarto check</code>.</p>
 </section>
-</section>
-<section id="development" class="level2">
-<h2 class="anchored" data-anchor-id="development">Development</h2>
+<section id="run-quarto-commands" class="level3">
+<h3 class="anchored" data-anchor-id="run-quarto-commands">Run quarto commands</h3>
 <p>To preview the site locally:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This runs <code>quarto preview</code>, which serves the site and reloads on changes.</p>
-<p>To publish to GitHub Pages:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-page</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This renders the site and pushes the output to the <code>gh-pages</code> branch. On first use, Quarto will prompt you to confirm the target repository. Ensure GitHub Pages is enabled in the repository settings (Settings → Pages → Source: <code>gh-pages</code> branch).</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
