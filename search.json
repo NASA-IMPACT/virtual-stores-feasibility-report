@@ -365,21 +365,11 @@
     ]
   },
   {
-    "objectID": "examples.html#how-to-use-this-library",
-    "href": "examples.html#how-to-use-this-library",
-    "title": "Virtualization Examples",
-    "section": "How to use this library",
-    "text": "How to use this library\nFind the example most similar to your dataset and use case. Adapt the patterns to your specific data, keeping in mind the trade-offs described in Known Limitations and Best Practices.",
-    "crumbs": [
-      "Examples"
-    ]
-  },
-  {
     "objectID": "examples.html#example-1-consistently-gridded-data-podaac",
     "href": "examples.html#example-1-consistently-gridded-data-podaac",
     "title": "Virtualization Examples",
     "section": "Example 1: Consistently gridded data — PODAAC",
-    "text": "Example 1: Consistently gridded data — PODAAC\nData type: Gridded ocean/atmosphere fields Virtualization approach: Collection-level aggregated chunk manifests (Kerchunk) Status: Production\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @DeanHenze @edshred2000]",
+    "text": "Example 1: Consistently gridded data — PODAAC\n\nData type: Gridded ocean/atmosphere fields\nVirtualization approach: Collection-level aggregated chunk manifests (Kerchunk)\nStatus: Production\n\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @DeanHenze @edshred2000]",
     "crumbs": [
       "Examples"
     ]
@@ -389,7 +379,7 @@
     "href": "examples.html#example-2-sar-displacement-data-asf",
     "title": "Virtualization Examples",
     "section": "Example 2: SAR displacement data — ASF",
-    "text": "Example 2: SAR displacement data — ASF\nData type: Synthetic aperture radar displacement products Virtualization approach: TBD Status: In development\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @jhkennedy]\n\nHave a solved pattern to contribute? (Link to contribution process to be added.)*",
+    "text": "Example 2: SAR displacement data — ASF\n\nData type: Synthetic aperture radar displacement products\nVirtualization approach: TBD\nStatus: In development\n\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @jhkennedy]\n\nHave a solved pattern to contribute? (Link to contribution process to be added.)*",
     "crumbs": [
       "Examples"
     ]
