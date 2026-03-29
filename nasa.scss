@@ -1,0 +1,210 @@
+/*-- scss:defaults --*/
+
+// NASA Brand Colors
+$nasa-blue:       #0B3D91;  // NASA insignia blue
+$nasa-red:        #FC3D21;  // NASA red
+$nasa-dark:       #17171B;  // Near-black for text
+$nasa-gray:       #D1D1D1;  // Border/divider gray
+$nasa-light-gray: #F5F5F5;  // Light background
+$white:           #FFFFFF;
+
+// Bootstrap overrides
+$primary:         $nasa-blue;
+$link-color:      $nasa-blue;
+$link-hover-color: darken($nasa-blue, 10%);
+
+$body-bg:         $white;
+$body-color:      $nasa-dark;
+
+// Typography — NASA web stack
+$font-family-sans-serif: "Public Sans", system-ui, -apple-system, sans-serif;
+$headings-font-family:   "Inter", "Public Sans", system-ui, sans-serif;
+$font-family-monospace:  "DM Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+$font-size-base:  1rem;
+$headings-font-weight: 700;
+$headings-color:  $nasa-dark;
+
+// Sidebar
+$sidebar-bg:             $nasa-blue;
+$sidebar-fg:             $white;
+$sidebar-hl:             rgba(255, 255, 255, 0.15);
+
+// Navbar (top bar, if used)
+$navbar-bg:              $nasa-blue;
+$navbar-fg:              $white;
+
+// Code blocks
+$code-bg:                $nasa-light-gray;
+$code-color:             $nasa-dark;
+
+// Table of contents
+$toc-color:              $nasa-blue;
+$toc-active-border:      $nasa-red;
+
+// Borders
+$border-color:           $nasa-gray;
+$border-radius:          0.25rem;
+
+// Callout colors
+$callout-color-note:     $nasa-blue;
+$callout-color-tip:      #2ECC71;
+$callout-color-warning:  #F39C12;
+$callout-color-important: $nasa-red;
+
+
+/*-- scss:rules --*/
+
+// Import NASA web fonts from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+// Sidebar styling
+.sidebar {
+  background-color: $white !important;
+
+  .sidebar-title a {
+    color: $nasa-dark !important;
+    font-family: $headings-font-family;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .sidebar-item a {
+    color: $nasa-dark !important;
+    font-size: 0.875rem;
+
+    &:hover,
+    &.active {
+      color: $nasa-blue !important;
+      background-color: rgba(255, 255, 255, 0.12) !important;
+      border-radius: 0.25rem;
+    }
+  }
+
+  .sidebar-section .sidebar-section-item {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+}
+
+// Page title
+h1.title {
+  color: $nasa-blue;
+  font-size: 2rem;
+  border-bottom: 3px solid $nasa-red;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headings-font-family;
+  color: $nasa-dark;
+}
+
+h2 {
+  border-bottom: 1px solid $nasa-gray;
+  padding-bottom: 0.25rem;
+}
+
+// Links
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// Buttons
+.btn-primary {
+  background-color: $nasa-red;
+  border-color: $nasa-red;
+
+  &:hover {
+    background-color: darken($nasa-red, 8%);
+    border-color: darken($nasa-red, 8%);
+  }
+}
+
+// TOC
+#TOC {
+  border-left: 3px solid $nasa-blue;
+  padding-left: 0.75rem;
+
+  a {
+    color: $nasa-dark;
+    font-size: 0.85rem;
+
+    &:hover,
+    &.active {
+      color: $nasa-blue;
+    }
+  }
+
+  .active > a {
+    color: $nasa-blue;
+    font-weight: 600;
+    border-left: 2px solid $nasa-red;
+    margin-left: -0.75rem;
+    padding-left: calc(0.75rem - 2px);
+  }
+}
+
+// Code blocks
+pre.sourceCode {
+  background-color: $nasa-light-gray;
+  border: 1px solid $nasa-gray;
+  border-left: 3px solid $nasa-blue;
+  border-radius: 0.25rem;
+}
+
+code {
+  color: $nasa-blue;
+  background-color: $nasa-light-gray;
+  padding: 0.1em 0.3em;
+  border-radius: 0.2rem;
+}
+
+// Callouts — keep NASA colors for borders
+.callout {
+  border-radius: 0.25rem;
+}
+
+// Footer
+.nav-footer {
+  border-top: 1px solid $nasa-gray;
+  background-color: $nasa-light-gray;
+  font-size: 0.8rem;
+  color: lighten($nasa-dark, 30%);
+}
+
+// Page navigation arrows
+.page-navigation {
+  border-top: 1px solid $nasa-gray;
+  margin-top: 2rem;
+
+  a {
+    color: $nasa-blue;
+    font-weight: 600;
+  }
+}
+
+// Tables
+table {
+  width: 100%;
+
+  thead th {
+    background-color: $nasa-blue;
+    color: $white;
+    font-family: $headings-font-family;
+    font-weight: 600;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: $nasa-light-gray;
+  }
+}
