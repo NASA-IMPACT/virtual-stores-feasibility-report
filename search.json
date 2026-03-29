@@ -204,7 +204,7 @@
     "section": "",
     "text": "This guide is intended for data providers and engineers who are new to virtual store technology and want to begin virtualizing NASA datasets.",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
@@ -214,7 +214,7 @@
     "section": "Prerequisites",
     "text": "Prerequisites\n(List required background knowledge, tools, and access credentials.)",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
@@ -224,7 +224,7 @@
     "section": "Step 1: Understand your data",
     "text": "Step 1: Understand your data\nBefore virtualizing, document:\n\nFile format (NetCDF, HDF5, GeoTIFF, etc.)\nGrid structure (uniform, non-uniform, swath)\nTypical file sizes and granule counts\nPrimary user access patterns",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
@@ -234,7 +234,7 @@
     "section": "Step 2: Choose a virtualization approach",
     "text": "Step 2: Choose a virtualization approach\n\n\n\nApproach\nBest for\nStatus\n\n\n\n\nKerchunk\nReference files for existing archives\nMature\n\n\nIcechunk\nTransactional stores, appending data\nActive development",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
@@ -244,7 +244,7 @@
     "section": "Step 3: Design your chunk manifest",
     "text": "Step 3: Design your chunk manifest\nRefer to Best Practices and Known Limitations before finalizing your chunk layout.",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
@@ -254,7 +254,7 @@
     "section": "Step 4: Generate and validate your virtual store",
     "text": "Step 4: Generate and validate your virtual store\n(Step-by-step instructions and code examples to be added.)",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
@@ -264,7 +264,7 @@
     "section": "Step 5: Register and publish",
     "text": "Step 5: Register and publish\n(Instructions for registering your virtual store with the relevant DAAC and making it discoverable.)",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
@@ -274,7 +274,7 @@
     "section": "Getting help",
     "text": "Getting help\n(Links to community resources, Slack channels, issue trackers, etc.)",
     "crumbs": [
-      "Onboarding Guide + Resources"
+      "Onboarding Guide"
     ]
   },
   {
