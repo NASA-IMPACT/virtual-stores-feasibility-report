@@ -34,6 +34,8 @@ website:
         text: Examples
       - href: contributing.qmd
         text: Contributing
+      - href: resources.qmd
+        text: Resources, References and Presentations        
 
 format:
   html:
