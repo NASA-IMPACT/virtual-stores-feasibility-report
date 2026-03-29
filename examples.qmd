@@ -5,23 +5,19 @@ subtitle: "Solved patterns across data types and use cases"
 
 This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.
 
-## How to use this library
-
-Find the example most similar to your dataset and use case. Adapt the patterns to your specific data, keeping in mind the trade-offs described in [Known Limitations](limitations.qmd) and [Best Practices](best-practices.qmd).
-
 ## Example 1: Consistently gridded data — PODAAC
 
-**Data type:** Gridded ocean/atmosphere fields
-**Virtualization approach:** Collection-level aggregated chunk manifests (Kerchunk)
-**Status:** Production
+* **Data type:** Gridded ocean/atmosphere fields
+* **Virtualization approach:** Collection-level aggregated chunk manifests (Kerchunk)
+* **Status:** Production
 
 [ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @DeanHenze @edshred2000]
 
 ## Example 2: SAR displacement data — ASF
 
-**Data type:** Synthetic aperture radar displacement products
-**Virtualization approach:** TBD
-**Status:** In development
+* **Data type:** Synthetic aperture radar displacement products
+* **Virtualization approach:** TBD
+* **Status:** In development
 
 [ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @jhkennedy]
 
