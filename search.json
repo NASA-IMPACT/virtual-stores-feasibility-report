@@ -14,7 +14,7 @@
     "href": "contributing.html#adding-pages",
     "title": "Contributing",
     "section": "Adding pages",
-    "text": "Adding pages\nTo add a new page: 1. Create new .qmd or .ipynb file 2. Add the new page to the sidebar section in _quarto.yml so it shows up in the sidebar navigation",
+    "text": "Adding pages\nTo add a new page:\n\nCreate new .qmd or .ipynb file\nAdd the new page to the sidebar section in _quarto.yml so it shows up in the sidebar navigation",
     "crumbs": [
       "Contributing"
     ]
