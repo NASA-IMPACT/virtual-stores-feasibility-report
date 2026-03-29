@@ -429,7 +429,7 @@
     "href": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
     "title": "Virtual Stores at NASA",
     "section": "Vision: NASA datasets accessible through a single entrypoint",
-    "text": "Vision: NASA datasets accessible through a single entrypoint\nVirtual stores will unify many NASA datasets through the Zarr data model. Long-term, this will enable:\n\nMany NASA datasets will be discoverable and accessible through a single entrypoint per dataset.\nLess pre-processing to be analysis-ready.\nUsers will not have to know about the underlying data format or storage location.\nA common API for reading, writing and analyzing NASA datasets. A common API will make these datasets more accessible and interoperable.",
+    "text": "Vision: NASA datasets accessible through a single entrypoint\n\nVirtual stores deliver a single entrypoint to a dataset comprised of many files. For NASA datasets this enables:\n\nLess pre-processing to be “analysis-ready”.\nUsers do not have to know about the underlying data format or storage location.\nGreater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.",
     "crumbs": [
       "Home"
     ]
