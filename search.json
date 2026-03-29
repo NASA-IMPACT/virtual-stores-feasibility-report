@@ -144,120 +144,57 @@
     ]
   },
   {
-    "objectID": "examples.html",
-    "href": "examples.html",
-    "title": "Virtualization Examples",
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources, References and Presentations",
     "section": "",
-    "text": "This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.",
+    "text": "ESIP 2025 Workshop on Virtual Zarr, Max Jones",
     "crumbs": [
-      "Examples"
+      "Resources, References and Presentations"
     ]
   },
   {
-    "objectID": "examples.html#how-to-use-this-library",
-    "href": "examples.html#how-to-use-this-library",
-    "title": "Virtualization Examples",
-    "section": "How to use this library",
-    "text": "How to use this library\nFind the example most similar to your dataset and use case. Adapt the patterns to your specific data, keeping in mind the trade-offs described in Known Limitations and Best Practices.",
-    "crumbs": [
-      "Examples"
-    ]
-  },
-  {
-    "objectID": "examples.html#example-1-consistently-gridded-data-podaac",
-    "href": "examples.html#example-1-consistently-gridded-data-podaac",
-    "title": "Virtualization Examples",
-    "section": "Example 1: Consistently gridded data — PODAAC",
-    "text": "Example 1: Consistently gridded data — PODAAC\nData type: Gridded ocean/atmosphere fields Virtualization approach: Collection-level aggregated chunk manifests (Kerchunk) Status: Production\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @DeanHenze @edshred2000]",
-    "crumbs": [
-      "Examples"
-    ]
-  },
-  {
-    "objectID": "examples.html#example-2-sar-displacement-data-asf",
-    "href": "examples.html#example-2-sar-displacement-data-asf",
-    "title": "Virtualization Examples",
-    "section": "Example 2: SAR displacement data — ASF",
-    "text": "Example 2: SAR displacement data — ASF\nData type: Synthetic aperture radar displacement products Virtualization approach: TBD Status: In development\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @jhkennedy]\n\nHave a solved pattern to contribute? (Link to contribution process to be added.)*",
-    "crumbs": [
-      "Examples"
-    ]
-  },
-  {
-    "objectID": "limitations.html",
-    "href": "limitations.html",
-    "title": "Known Limitations",
+    "objectID": "technical-overview.html",
+    "href": "technical-overview.html",
+    "title": "Technical Overview of Virtual Stores",
     "section": "",
-    "text": "Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores.",
-    "crumbs": [
-      "Guidance",
-      "Known Limitations"
-    ]
-  },
-  {
-    "objectID": "limitations.html#language-and-ecosystem-constraints",
-    "href": "limitations.html#language-and-ecosystem-constraints",
-    "title": "Known Limitations",
-    "section": "",
-    "text": "Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores.",
-    "crumbs": [
-      "Guidance",
-      "Known Limitations"
-    ]
-  },
-  {
-    "objectID": "limitations.html#early-structural-decisions-have-lasting-performance-consequences",
-    "href": "limitations.html#early-structural-decisions-have-lasting-performance-consequences",
-    "title": "Known Limitations",
-    "section": "Early structural decisions have lasting performance consequences",
-    "text": "Early structural decisions have lasting performance consequences\nFile chunking and chunk manifests cannot simultaneously optimize for all use cases. Further, chunk manifests depend on the chunking already inherent to the files. You cannot create a chunk manifest to access a unit smaller than chunks in the underlying files. The implication is, for example, if a set of files is optimized for spatial access it cannot simultaneously be optimized for access across the time dimension (i.e. time series).\n[ADD ME: DIAGRAM OF PANCAKES AND CHURROS]",
-    "crumbs": [
-      "Guidance",
-      "Known Limitations"
-    ]
-  },
-  {
-    "objectID": "nasa-ecosystem.html",
-    "href": "nasa-ecosystem.html",
-    "title": "Virtual Stores and the NASA Ecosystem",
-    "section": "",
-    "text": "There are a number of components to consider when envisioning virtual stores and their place in the broad NASA data ecosystem.\nVirtual stores provide a uniform interface to archival data through the Zarr data model and specification. However, to access and visualize this data, the ecosystem needs to adapt to integrate the Zarr data model and specification. While xarray and zarr-python provide powerful tools for working with this data, a number of existing powerful tools at NASA need to be considered to support NASA users.",
+    "text": "[ADD ME: DIAGRAM]\n\nZarr is a chunked, compressed array storage specification and format. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for structuring virtual stores at NASA.\nChunk manifests are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.\nIcechunk is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls virtual datasets.\nKerchunk is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.",
     "crumbs": [
       "Technical Aspects",
-      "Virtual Stores within the NASA Ecosystem"
+      "Technical Overview of Virtual Stores"
     ]
   },
   {
-    "objectID": "nasa-ecosystem.html#integration-with-egis",
-    "href": "nasa-ecosystem.html#integration-with-egis",
-    "title": "Virtual Stores and the NASA Ecosystem",
-    "section": "Integration with EGIS",
-    "text": "Integration with EGIS\n[ADDME: @abarciauskas-bgse]",
+    "objectID": "technical-overview.html#core-concepts",
+    "href": "technical-overview.html#core-concepts",
+    "title": "Technical Overview of Virtual Stores",
+    "section": "",
+    "text": "[ADD ME: DIAGRAM]\n\nZarr is a chunked, compressed array storage specification and format. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for structuring virtual stores at NASA.\nChunk manifests are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.\nIcechunk is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls virtual datasets.\nKerchunk is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.",
     "crumbs": [
       "Technical Aspects",
-      "Virtual Stores within the NASA Ecosystem"
+      "Technical Overview of Virtual Stores"
     ]
   },
   {
-    "objectID": "nasa-ecosystem.html#integration-with-harmony",
-    "href": "nasa-ecosystem.html#integration-with-harmony",
-    "title": "Virtual Stores and the NASA Ecosystem",
-    "section": "Integration with Harmony",
-    "text": "Integration with Harmony\n[ADDME: @owenlittlejohns]",
+    "objectID": "technical-overview.html#geozarr-and-multiscales",
+    "href": "technical-overview.html#geozarr-and-multiscales",
+    "title": "Technical Overview of Virtual Stores",
+    "section": "GeoZarr and multiscales",
+    "text": "GeoZarr and multiscales\nGeoZarr extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.\nAdoption of GeoZarr is recommended for future virtual store implementations to ensure interoperability and long-term maintainability. Adoption of multiscales should be considered, especially for high resolution data.",
     "crumbs": [
       "Technical Aspects",
-      "Virtual Stores within the NASA Ecosystem"
+      "Technical Overview of Virtual Stores"
     ]
   },
   {
-    "objectID": "nasa-ecosystem.html#discovery-and-integration-with-cmr",
-    "href": "nasa-ecosystem.html#discovery-and-integration-with-cmr",
-    "title": "Virtual Stores and the NASA Ecosystem",
-    "section": "Discovery and integration with CMR",
-    "text": "Discovery and integration with CMR\n[ADDME]",
+    "objectID": "technical-overview.html#chunk-manifest-protocol",
+    "href": "technical-overview.html#chunk-manifest-protocol",
+    "title": "Technical Overview of Virtual Stores",
+    "section": "Chunk manifest protocol",
+    "text": "Chunk manifest protocol\n[UNDER DEVELOPMENT]",
     "crumbs": [
       "Technical Aspects",
-      "Virtual Stores within the NASA Ecosystem"
+      "Technical Overview of Virtual Stores"
     ]
   },
   {
@@ -341,47 +278,120 @@
     ]
   },
   {
-    "objectID": "technical-overview.html",
-    "href": "technical-overview.html",
-    "title": "Technical Overview of Virtual Stores",
+    "objectID": "nasa-ecosystem.html",
+    "href": "nasa-ecosystem.html",
+    "title": "Virtual Stores and the NASA Ecosystem",
     "section": "",
-    "text": "[ADD ME: DIAGRAM]\n\nZarr is a chunked, compressed array storage specification and format. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for structuring virtual stores at NASA.\nChunk manifests are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.\nIcechunk is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls virtual datasets.\nKerchunk is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.",
+    "text": "There are a number of components to consider when envisioning virtual stores and their place in the broad NASA data ecosystem.\nVirtual stores provide a uniform interface to archival data through the Zarr data model and specification. However, to access and visualize this data, the ecosystem needs to adapt to integrate the Zarr data model and specification. While xarray and zarr-python provide powerful tools for working with this data, a number of existing powerful tools at NASA need to be considered to support NASA users.",
     "crumbs": [
       "Technical Aspects",
-      "Technical Overview of Virtual Stores"
+      "Virtual Stores within the NASA Ecosystem"
     ]
   },
   {
-    "objectID": "technical-overview.html#core-concepts",
-    "href": "technical-overview.html#core-concepts",
-    "title": "Technical Overview of Virtual Stores",
+    "objectID": "nasa-ecosystem.html#integration-with-egis",
+    "href": "nasa-ecosystem.html#integration-with-egis",
+    "title": "Virtual Stores and the NASA Ecosystem",
+    "section": "Integration with EGIS",
+    "text": "Integration with EGIS\n[ADDME: @abarciauskas-bgse]",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores within the NASA Ecosystem"
+    ]
+  },
+  {
+    "objectID": "nasa-ecosystem.html#integration-with-harmony",
+    "href": "nasa-ecosystem.html#integration-with-harmony",
+    "title": "Virtual Stores and the NASA Ecosystem",
+    "section": "Integration with Harmony",
+    "text": "Integration with Harmony\n[ADDME: @owenlittlejohns]",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores within the NASA Ecosystem"
+    ]
+  },
+  {
+    "objectID": "nasa-ecosystem.html#discovery-and-integration-with-cmr",
+    "href": "nasa-ecosystem.html#discovery-and-integration-with-cmr",
+    "title": "Virtual Stores and the NASA Ecosystem",
+    "section": "Discovery and integration with CMR",
+    "text": "Discovery and integration with CMR\n[ADDME]",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores within the NASA Ecosystem"
+    ]
+  },
+  {
+    "objectID": "limitations.html",
+    "href": "limitations.html",
+    "title": "Known Limitations",
     "section": "",
-    "text": "[ADD ME: DIAGRAM]\n\nZarr is a chunked, compressed array storage specification and format. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for structuring virtual stores at NASA.\nChunk manifests are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.\nIcechunk is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls virtual datasets.\nKerchunk is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.",
+    "text": "Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores.",
     "crumbs": [
-      "Technical Aspects",
-      "Technical Overview of Virtual Stores"
+      "Guidance",
+      "Known Limitations"
     ]
   },
   {
-    "objectID": "technical-overview.html#geozarr-and-multiscales",
-    "href": "technical-overview.html#geozarr-and-multiscales",
-    "title": "Technical Overview of Virtual Stores",
-    "section": "GeoZarr and multiscales",
-    "text": "GeoZarr and multiscales\nGeoZarr extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.\nAdoption of GeoZarr is recommended for future virtual store implementations to ensure interoperability and long-term maintainability. Adoption of multiscales should be considered, especially for high resolution data.",
+    "objectID": "limitations.html#language-and-ecosystem-constraints",
+    "href": "limitations.html#language-and-ecosystem-constraints",
+    "title": "Known Limitations",
+    "section": "",
+    "text": "Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores.",
     "crumbs": [
-      "Technical Aspects",
-      "Technical Overview of Virtual Stores"
+      "Guidance",
+      "Known Limitations"
     ]
   },
   {
-    "objectID": "technical-overview.html#chunk-manifest-protocol",
-    "href": "technical-overview.html#chunk-manifest-protocol",
-    "title": "Technical Overview of Virtual Stores",
-    "section": "Chunk manifest protocol",
-    "text": "Chunk manifest protocol\n[UNDER DEVELOPMENT]",
+    "objectID": "limitations.html#early-structural-decisions-have-lasting-performance-consequences",
+    "href": "limitations.html#early-structural-decisions-have-lasting-performance-consequences",
+    "title": "Known Limitations",
+    "section": "Early structural decisions have lasting performance consequences",
+    "text": "Early structural decisions have lasting performance consequences\nFile chunking and chunk manifests cannot simultaneously optimize for all use cases. Further, chunk manifests depend on the chunking already inherent to the files. You cannot create a chunk manifest to access a unit smaller than chunks in the underlying files. The implication is, for example, if a set of files is optimized for spatial access it cannot simultaneously be optimized for access across the time dimension (i.e. time series).\n[ADD ME: DIAGRAM OF PANCAKES AND CHURROS]",
     "crumbs": [
-      "Technical Aspects",
-      "Technical Overview of Virtual Stores"
+      "Guidance",
+      "Known Limitations"
+    ]
+  },
+  {
+    "objectID": "examples.html",
+    "href": "examples.html",
+    "title": "Virtualization Examples",
+    "section": "",
+    "text": "This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.",
+    "crumbs": [
+      "Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#how-to-use-this-library",
+    "href": "examples.html#how-to-use-this-library",
+    "title": "Virtualization Examples",
+    "section": "How to use this library",
+    "text": "How to use this library\nFind the example most similar to your dataset and use case. Adapt the patterns to your specific data, keeping in mind the trade-offs described in Known Limitations and Best Practices.",
+    "crumbs": [
+      "Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#example-1-consistently-gridded-data-podaac",
+    "href": "examples.html#example-1-consistently-gridded-data-podaac",
+    "title": "Virtualization Examples",
+    "section": "Example 1: Consistently gridded data — PODAAC",
+    "text": "Example 1: Consistently gridded data — PODAAC\nData type: Gridded ocean/atmosphere fields Virtualization approach: Collection-level aggregated chunk manifests (Kerchunk) Status: Production\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @DeanHenze @edshred2000]",
+    "crumbs": [
+      "Examples"
+    ]
+  },
+  {
+    "objectID": "examples.html#example-2-sar-displacement-data-asf",
+    "href": "examples.html#example-2-sar-displacement-data-asf",
+    "title": "Virtualization Examples",
+    "section": "Example 2: SAR displacement data — ASF",
+    "text": "Example 2: SAR displacement data — ASF\nData type: Synthetic aperture radar displacement products Virtualization approach: TBD Status: In development\n[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @jhkennedy]\n\nHave a solved pattern to contribute? (Link to contribution process to be added.)*",
+    "crumbs": [
+      "Examples"
     ]
   },
   {

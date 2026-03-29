@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Virtualization Examples – Virtual Store Feasibility Report</title>
+<title>Resources, References and Presentations – Virtual Store Feasibility Report</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -32,8 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./contributing.html" rel="next">
-<link href="./onboarding.html" rel="prev">
+<link href="./contributing.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./examples.html">Examples</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resources.html">Resources, References and Presentations</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples.html" class="sidebar-item-text sidebar-link active">
+  <a href="./examples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Examples</span></a>
   </div>
 </li>
@@ -199,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./resources.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Resources, References and Presentations</span></a>
   </div>
 </li>
@@ -208,24 +207,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#how-to-use-this-library" id="toc-how-to-use-this-library" class="nav-link active" data-scroll-target="#how-to-use-this-library">How to use this library</a></li>
-  <li><a href="#example-1-consistently-gridded-data-podaac" id="toc-example-1-consistently-gridded-data-podaac" class="nav-link" data-scroll-target="#example-1-consistently-gridded-data-podaac">Example 1: Consistently gridded data — PODAAC</a></li>
-  <li><a href="#example-2-sar-displacement-data-asf" id="toc-example-2-sar-displacement-data-asf" class="nav-link" data-scroll-target="#example-2-sar-displacement-data-asf">Example 2: SAR displacement data — ASF</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Virtualization Examples</h1>
-<p class="subtitle lead">Solved patterns across data types and use cases</p>
+<h1 class="title">Resources, References and Presentations</h1>
 </div>
 
 
@@ -242,25 +232,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.</p>
-<section id="how-to-use-this-library" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-this-library">How to use this library</h2>
-<p>Find the example most similar to your dataset and use case. Adapt the patterns to your specific data, keeping in mind the trade-offs described in <a href="./limitations.html">Known Limitations</a> and <a href="best-practices.qmd">Best Practices</a>.</p>
-</section>
-<section id="example-1-consistently-gridded-data-podaac" class="level2">
-<h2 class="anchored" data-anchor-id="example-1-consistently-gridded-data-podaac">Example 1: Consistently gridded data — PODAAC</h2>
-<p><strong>Data type:</strong> Gridded ocean/atmosphere fields <strong>Virtualization approach:</strong> Collection-level aggregated chunk manifests (Kerchunk) <strong>Status:</strong> Production</p>
-<p><span class="citation" data-cites="DeanHenze">[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @DeanHenze @edshred2000]</span></p>
-</section>
-<section id="example-2-sar-displacement-data-asf" class="level2">
-<h2 class="anchored" data-anchor-id="example-2-sar-displacement-data-asf">Example 2: SAR displacement data — ASF</h2>
-<p><strong>Data type:</strong> Synthetic aperture radar displacement products <strong>Virtualization approach:</strong> TBD <strong>Status:</strong> In development</p>
-<p><span class="citation" data-cites="jhkennedy">[ADD ME: Links to or detailed implementation notes, code snippets, and lessons learned to be added @jhkennedy]</span></p>
-<hr>
-<p><em>Have a solved pattern to contribute? </em>(Link to contribution process to be added.)*</p>
+<ul>
+<li><a href="https://virtual-zarr.github.io/esip-2025">ESIP 2025 Workshop on Virtual Zarr</a>, Max Jones</li>
+</ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -665,14 +641,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./onboarding.html" class="pagination-link" aria-label="Onboarding Guide + Resources">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Onboarding Guide + Resources</span>
+      <a href="./contributing.html" class="pagination-link" aria-label="Contributing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Contributing</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./contributing.html" class="pagination-link" aria-label="Contributing">
-        <span class="nav-page-text">Contributing</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
