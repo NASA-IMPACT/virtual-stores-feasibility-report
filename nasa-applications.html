@@ -223,7 +223,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mature-implementations" id="toc-mature-implementations" class="nav-link active" data-scroll-target="#mature-implementations">Mature implementations</a></li>
+  <li><a href="#mature-implementations" id="toc-mature-implementations" class="nav-link active" data-scroll-target="#mature-implementations">Mature implementations</a>
+  <ul class="collapse">
+  <li><a href="#inventory-table" id="toc-inventory-table" class="nav-link" data-scroll-target="#inventory-table">Inventory Table</a></li>
+  <li><a href="#po.daac" id="toc-po.daac" class="nav-link" data-scroll-target="#po.daac">PO.DAAC</a></li>
+  </ul></li>
   <li><a href="#developing-implementations" id="toc-developing-implementations" class="nav-link" data-scroll-target="#developing-implementations">Developing implementations</a>
   <ul class="collapse">
   <li><a href="#synthetic-aperture-radar-nisar" id="toc-synthetic-aperture-radar-nisar" class="nav-link" data-scroll-target="#synthetic-aperture-radar-nisar">Synthetic Aperture Radar (NISAR)</a></li>
@@ -256,16 +260,58 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="mature-implementations" class="level2">
 <h2 class="anchored" data-anchor-id="mature-implementations">Mature implementations</h2>
-<p>Collection-level aggregated chunk manifests have been successfully implemented at PODAAC for consistently gridded Level 3 and 4 datasets. To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter “Using Virtual Datasets” in the PO.DAAC online cookbook (https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html).</p>
-<p>One of the primary advantages of using virtual data stores (VDS), is that allows users to interact with entire datasets programmatically and holistically, e.g.&nbsp;in their Jupyter notebooks and Python scripts, whereby one can bypass the task of downloading, wrangling and merging data from all the individual files. Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataseti called OSTIA from the GHRSST project. It contains &gt;15,000 daily files from a 41 year times series and is over 11 TBs. Ideally what is desired is a single line of code, to access all the variables in the dataset (e.g.&nbsp;SST, SST uncertainty, and masks) in neatly organized multidimensional arrays (in this case 3D for latitude, longitude, and time), that then can be subsetted to desired regions and timeranges. In a nutshell, the PO.DAAC VDSs provide seemless access to just the desired and specific pieces of a time series, regardless of whether the user in inside or outside the NASA Earthdata Cloud, improving access and computation without need to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.</p>
-<p>The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.</p>
-<p><span class="citation" data-cites="DeanHenze">[ADD ME: PODAAC Virtual Stores Documentation @DeanHenze @edshred2000]</span></p>
-<p><strong>Characteristics:</strong></p>
+<p><strong>Current mature implementations share the following characteristics:</strong></p>
 <ul>
 <li>Consistent spatial and temporal resolution across each variable</li>
 <li>Uniform chunk grid and compression scheme across each variable</li>
 <li>Chunk manifest generated at collection level, spanning many granules</li>
 </ul>
+<section id="inventory-table" class="level3">
+<h3 class="anchored" data-anchor-id="inventory-table">Inventory Table</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Project</th>
+<th>Dataset</th>
+<th>Dataset location</th>
+<th>Notebooks and Repos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PO.DAAC</td>
+<td>10+ datasets</td>
+<td>See <a href="https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html">Using Virtual Datasets</a></td>
+<td><a href="https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html">Virtual Data Set Starter Notebook</a></td>
+</tr>
+<tr class="even">
+<td>VEDA</td>
+<td>RASI</td>
+<td>s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/</td>
+<td><a href="https://github.com/virtual-zarr/rasi-icechunk">Github Repo</a></td>
+</tr>
+<tr class="odd">
+<td>VEDA</td>
+<td>NLDAS</td>
+<td>s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/</td>
+<td><a href="https://github.com/virtual-zarr/nldas-icechunk">Github Repo</a></td>
+</tr>
+<tr class="even">
+<td>VEDA</td>
+<td>GEOS-CF</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="po.daac" class="level3">
+<h3 class="anchored" data-anchor-id="po.daac">PO.DAAC</h3>
+<p>Collection-level aggregated chunk manifests have been successfully implemented at PO.DAAC for consistently gridded Level 3 and 4 datasets. To date a total of 10 PO.DAAC datasets have been virtualized as detailed in a chapter “Using Virtual Datasets” in the <a href="https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html">PO.DAAC online cookbook</a>.</p>
+<p>One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users’ Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.</p>
+<p>Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains &gt;15,000 daily files from a 41 year times series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and timeranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.</p>
+<p>The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.</p>
+</section>
 </section>
 <section id="developing-implementations" class="level2">
 <h2 class="anchored" data-anchor-id="developing-implementations">Developing implementations</h2>
