@@ -35,22 +35,13 @@ across other DAACs.
 
 ## Developing implementations
 
-### Displacement data (NISAR)
+### Synthetic Aperture Radar (NISAR)
 
-Synthetic aperture radar displacement products from ASF are an active area of development for virtual store approaches.
-
-[ADD ME: NISAR Virtual Store Documentation @jhkennedy]
+Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.
 
 ### L2 Collections at PODAAC
 
-[ADD ME: PODAAC L2 Virtual Stores Documentation @DeanHenze @edshred2000]
-
-### Architectures for Ongoing Data
-
-Appending new data to an existing virtual store requires different strategies depending on the underlying technology:
-
-- **Icechunk**: supports transactional appends natively
-- **Kerchunk**: typically requires overwriting the reference JSON
+Virtualized L2 collections are currently under development at PO.DAAC.
 
 ### Non-uniform data
 
