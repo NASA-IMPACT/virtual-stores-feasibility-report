@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Applications of Virtual Stores at NASA – Virtual Store Feasibility Report</title>
+<title>Virtual Stores at NASA – Virtual Store Feasibility Report</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -197,20 +197,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./examples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Examples</span></a>
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources, References and Presentations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./contributing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Contributing</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Resources, References and Presentations</span></a>
   </div>
 </li>
     </ul>
@@ -223,14 +217,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mature-implementations" id="toc-mature-implementations" class="nav-link active" data-scroll-target="#mature-implementations">Mature implementations</a>
+  <li><a href="#virtual-stores-inventory" id="toc-virtual-stores-inventory" class="nav-link active" data-scroll-target="#virtual-stores-inventory">Virtual Stores Inventory</a></li>
+  <li><a href="#mature-implementations" id="toc-mature-implementations" class="nav-link" data-scroll-target="#mature-implementations">Mature implementations |</a>
   <ul class="collapse">
-  <li><a href="#inventory-table" id="toc-inventory-table" class="nav-link" data-scroll-target="#inventory-table">Inventory Table</a></li>
-  <li><a href="#po.daac" id="toc-po.daac" class="nav-link" data-scroll-target="#po.daac">PO.DAAC</a></li>
+  <li><a href="#example-1-consistently-gridded-data-podaac" id="toc-example-1-consistently-gridded-data-podaac" class="nav-link" data-scroll-target="#example-1-consistently-gridded-data-podaac">Example 1: Consistently gridded data — PODAAC</a></li>
   </ul></li>
   <li><a href="#developing-implementations" id="toc-developing-implementations" class="nav-link" data-scroll-target="#developing-implementations">Developing implementations</a>
   <ul class="collapse">
-  <li><a href="#synthetic-aperture-radar-nisar" id="toc-synthetic-aperture-radar-nisar" class="nav-link" data-scroll-target="#synthetic-aperture-radar-nisar">Synthetic Aperture Radar (NISAR)</a></li>
+  <li><a href="#example-2-synthetic-aperture-radar-nisar" id="toc-example-2-synthetic-aperture-radar-nisar" class="nav-link" data-scroll-target="#example-2-synthetic-aperture-radar-nisar">Example 2: Synthetic Aperture Radar (NISAR)</a></li>
   <li><a href="#l2-collections-at-podaac" id="toc-l2-collections-at-podaac" class="nav-link" data-scroll-target="#l2-collections-at-podaac">L2 Collections at PODAAC</a></li>
   </ul></li>
   </ul>
@@ -241,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./nasa-applications.html">Virtual Stores at NASA</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Applications of Virtual Stores at NASA</h1>
+<h1 class="title">Virtual Stores at NASA</h1>
 </div>
 
 
@@ -258,16 +252,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="mature-implementations" class="level2">
-<h2 class="anchored" data-anchor-id="mature-implementations">Mature implementations</h2>
-<p><strong>Current mature implementations share the following characteristics:</strong></p>
-<ul>
-<li>Consistent spatial and temporal resolution across each variable</li>
-<li>Uniform chunk grid and compression scheme across each variable</li>
-<li>Chunk manifest generated at collection level, spanning many granules</li>
-</ul>
-<section id="inventory-table" class="level3">
-<h3 class="anchored" data-anchor-id="inventory-table">Inventory Table</h3>
+<p>This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.</p>
+<section id="virtual-stores-inventory" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-stores-inventory">Virtual Stores Inventory</h2>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -305,8 +292,16 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 </section>
-<section id="po.daac" class="level3">
-<h3 class="anchored" data-anchor-id="po.daac">PO.DAAC</h3>
+<section id="mature-implementations" class="level2">
+<h2 class="anchored" data-anchor-id="mature-implementations">Mature implementations |</h2>
+<section id="example-1-consistently-gridded-data-podaac" class="level3">
+<h3 class="anchored" data-anchor-id="example-1-consistently-gridded-data-podaac">Example 1: Consistently gridded data — PODAAC</h3>
+<ul>
+<li><strong>Data type:</strong> Gridded ocean/atmosphere fields</li>
+<li><strong>Virtualization approach:</strong> Collection-level aggregated chunk manifests (Kerchunk)</li>
+<li><strong>Status:</strong> Production</li>
+<li><strong>Owners:</strong> Ed Armstrong and Dean Henze</li>
+</ul>
 <p>Collection-level aggregated chunk manifests have been successfully implemented at PO.DAAC for consistently gridded Level 3 and 4 datasets. To date a total of 10 PO.DAAC datasets have been virtualized as detailed in a chapter “Using Virtual Datasets” in the <a href="https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html">PO.DAAC online cookbook</a>.</p>
 <p>One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users’ Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.</p>
 <p>Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains &gt;15,000 daily files from a 41 year times series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and timeranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.</p>
@@ -315,8 +310,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="developing-implementations" class="level2">
 <h2 class="anchored" data-anchor-id="developing-implementations">Developing implementations</h2>
-<section id="synthetic-aperture-radar-nisar" class="level3">
-<h3 class="anchored" data-anchor-id="synthetic-aperture-radar-nisar">Synthetic Aperture Radar (NISAR)</h3>
+<section id="example-2-synthetic-aperture-radar-nisar" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-synthetic-aperture-radar-nisar">Example 2: Synthetic Aperture Radar (NISAR)</h3>
+<ul>
+<li><strong>Data type:</strong> Synthetic aperture radar products</li>
+<li><strong>Virtualization approach:</strong> TBD</li>
+<li><strong>Status:</strong> In development</li>
+<li><strong>Owner:</strong> Joe Kennedy</li>
+</ul>
 <p>Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.</p>
 </section>
 <section id="l2-collections-at-podaac" class="level3">
