@@ -142,8 +142,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./technical-features.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical Features</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./nasa-applications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Applications of Virtual Stores at NASA</span></a>
+ <span class="menu-text">Virtual Stores at NASA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -221,10 +227,12 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#example-nisar-time-series-analysis" id="toc-example-nisar-time-series-analysis" class="nav-link" data-scroll-target="#example-nisar-time-series-analysis">Example: NISAR time series analysis</a></li>
   </ul></li>
+  <li><a href="#adopt-icechunk" id="toc-adopt-icechunk" class="nav-link" data-scroll-target="#adopt-icechunk">Adopt icechunk</a></li>
   <li><a href="#adopt-geozarr-standards" id="toc-adopt-geozarr-standards" class="nav-link" data-scroll-target="#adopt-geozarr-standards">Adopt GeoZarr standards</a></li>
+  <li><a href="#adoption-of-multiscales" id="toc-adoption-of-multiscales" class="nav-link" data-scroll-target="#adoption-of-multiscales">Adoption of multiscales</a></li>
   <li><a href="#engage-with-the-evolving-chunk-manifest-protocol" id="toc-engage-with-the-evolving-chunk-manifest-protocol" class="nav-link" data-scroll-target="#engage-with-the-evolving-chunk-manifest-protocol">Engage with the evolving chunk manifest protocol</a></li>
   <li><a href="#prioritize-egis-integration-planning" id="toc-prioritize-egis-integration-planning" class="nav-link" data-scroll-target="#prioritize-egis-integration-planning">Prioritize EGIS integration planning</a></li>
-  <li><a href="#address-governance-gaps-identified-in-section-6" id="toc-address-governance-gaps-identified-in-section-6" class="nav-link" data-scroll-target="#address-governance-gaps-identified-in-section-6">Address governance gaps identified in Section 6</a></li>
+  <li><a href="#address-governance-gaps" id="toc-address-governance-gaps" class="nav-link" data-scroll-target="#address-governance-gaps">Address Governance Gaps</a></li>
   </ul>
 </nav>
     </div>
@@ -258,9 +266,17 @@ ul.task-list li input[type="checkbox"] {
 <p>For NISAR data where time series analysis is the primary use case, a frame-oriented chunk manifest design ensures efficient per-frame loading. This decision should be made deliberately, with awareness of the trade-offs for other access patterns (see <a href="./limitations.html">Known Limitations</a>).</p>
 </section>
 </section>
+<section id="adopt-icechunk" class="level2">
+<h2 class="anchored" data-anchor-id="adopt-icechunk">Adopt icechunk</h2>
+<p>Icechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format.</p>
+</section>
 <section id="adopt-geozarr-standards" class="level2">
 <h2 class="anchored" data-anchor-id="adopt-geozarr-standards">Adopt GeoZarr standards</h2>
-<p>GeoZarr should be adopted for all new virtual store implementations. This ensures geospatial interoperability and positions NASA data for long-term maintainability as the ecosystem matures.</p>
+<p><strong>Adoption of GeoZarr is recommended</strong> for future virtual store implementations to ensure interoperability and long-term maintainability.</p>
+</section>
+<section id="adoption-of-multiscales" class="level2">
+<h2 class="anchored" data-anchor-id="adoption-of-multiscales">Adoption of multiscales</h2>
+<p>Adoption of multiscales should be considered, especially for high resolution data.</p>
 </section>
 <section id="engage-with-the-evolving-chunk-manifest-protocol" class="level2">
 <h2 class="anchored" data-anchor-id="engage-with-the-evolving-chunk-manifest-protocol">Engage with the evolving chunk manifest protocol</h2>
@@ -270,9 +286,9 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="prioritize-egis-integration-planning">Prioritize EGIS integration planning</h2>
 <p>Integration with the Earthdata Geographic Information System (EGIS) has been identified as a future priority. Scoping should begin to ensure integration with EGIS is smooth.</p>
 </section>
-<section id="address-governance-gaps-identified-in-section-6" class="level2">
-<h2 class="anchored" data-anchor-id="address-governance-gaps-identified-in-section-6">Address governance gaps identified in Section 6</h2>
-<p>The governance decisions identified in <a href="./governance.html">Governance</a> — metadata placement standards, versioning policies, and stewardship ownership — should be resolved before virtual store technology is deployed more broadly across DAACs.</p>
+<section id="address-governance-gaps" class="level2">
+<h2 class="anchored" data-anchor-id="address-governance-gaps">Address Governance Gaps</h2>
+<p>The governance decisions identified in <a href="./governance.html">Governance</a> — metadata placement standards, versioning policies, and stewardship ownership — should be addressed as virtual store technology is deployed more broadly across DAACs.</p>
 
 
 </section>

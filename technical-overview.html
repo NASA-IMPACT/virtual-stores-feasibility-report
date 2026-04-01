@@ -32,7 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./nasa-applications.html" rel="next">
+<link href="./technical-features.qmd" rel="next">
 <link href="./executive_summary.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -142,8 +142,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./technical-features.qmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical Features</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./nasa-applications.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Applications of Virtual Stores at NASA</span></a>
+ <span class="menu-text">Virtual Stores at NASA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -218,8 +224,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core concepts</a></li>
-  <li><a href="#geozarr-and-multiscales" id="toc-geozarr-and-multiscales" class="nav-link" data-scroll-target="#geozarr-and-multiscales">GeoZarr and multiscales</a></li>
-  <li><a href="#chunk-manifest-protocol" id="toc-chunk-manifest-protocol" class="nav-link" data-scroll-target="#chunk-manifest-protocol">Chunk manifest protocol</a></li>
   </ul>
 </nav>
     </div>
@@ -249,20 +253,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
 <p>[ADD ME: DIAGRAM]</p>
 <ul>
-<li><strong>Zarr</strong> is a chunked, compressed array storage specification and format. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for structuring virtual stores at NASA.</li>
+<li><strong><a href="https://zarr.dev/">Zarr</a></strong> is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.</li>
 <li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.</li>
 <li><strong><a href="https://icechunk.io/">Icechunk</a></strong> is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls <a href="https://icechunk.io/en/stable/virtual/">virtual datasets</a>.</li>
 <li><strong>Kerchunk</strong> is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.</li>
+<li><strong>VirtualiZarr</strong> is a library for generating chunk manifests. Format-specific parsers are used to read chunk information and generate in-memory chunk manifests. VirtualiZarr can then write those chunk manifests to icechunk or kerchunk.</li>
+<li><strong><a href="https://geozarr.org/">GeoZarr</a></strong> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.</li>
 </ul>
-</section>
-<section id="geozarr-and-multiscales" class="level2">
-<h2 class="anchored" data-anchor-id="geozarr-and-multiscales">GeoZarr and multiscales</h2>
-<p><a href="https://geozarr.org/">GeoZarr</a> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.</p>
-<p><strong>Adoption of GeoZarr is recommended</strong> for future virtual store implementations to ensure interoperability and long-term maintainability. Adoption of multiscales should be considered, especially for high resolution data.</p>
-</section>
-<section id="chunk-manifest-protocol" class="level2">
-<h2 class="anchored" data-anchor-id="chunk-manifest-protocol">Chunk manifest protocol</h2>
-<p>[UNDER DEVELOPMENT]</p>
 
 
 </section>
@@ -675,8 +672,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nasa-applications.html" class="pagination-link" aria-label="Applications of Virtual Stores at NASA">
-        <span class="nav-page-text">Applications of Virtual Stores at NASA</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./technical-features.qmd" class="pagination-link" aria-label="Technical Features">
+        <span class="nav-page-text">Technical Features</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
