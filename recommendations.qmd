@@ -10,9 +10,17 @@ The most important design input for a virtual store is a clear understanding of 
 
 For NISAR data where time series analysis is the primary use case, a frame-oriented chunk manifest design ensures efficient per-frame loading. This decision should be made deliberately, with awareness of the trade-offs for other access patterns (see [Known Limitations](limitations.qmd)).
 
+## Adopt icechunk
+
+Icechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format.
+
 ## Adopt GeoZarr standards
 
-GeoZarr should be adopted for all new virtual store implementations. This ensures geospatial interoperability and positions NASA data for long-term maintainability as the ecosystem matures.
+**Adoption of GeoZarr is recommended** for future virtual store implementations to ensure interoperability and long-term maintainability.
+
+## Adoption of multiscales
+
+Adoption of multiscales should be considered, especially for high resolution data.
 
 ## Engage with the evolving chunk manifest protocol
 
@@ -22,6 +30,6 @@ TBD: The chunk manifest protocol specification is speculative at this time.
 
 Integration with the Earthdata Geographic Information System (EGIS) has been identified as a future priority. Scoping should begin to ensure integration with EGIS is smooth.
 
-## Address governance gaps identified in Section 6
+## Address Governance Gaps
 
-The governance decisions identified in [Governance](governance.qmd) — metadata placement standards, versioning policies, and stewardship ownership — should be resolved before virtual store technology is deployed more broadly across DAACs.
+The governance decisions identified in [Governance](governance.qmd) — metadata placement standards, versioning policies, and stewardship ownership — should be addressed as virtual store technology is deployed more broadly across DAACs.

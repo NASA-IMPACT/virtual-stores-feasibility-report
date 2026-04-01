@@ -43,17 +43,3 @@ Synthetic aperture radar products from ASF are an active area of development for
 
 Virtualized L2 collections are currently under development at PO.DAAC.
 
-### Non-uniform data
-
-Some NASA collections present additional complexity:
-
-- Varying compression schemes and chunk grids across a logical array (usually across granules). We often call this "quirky" data.
-- L2 (often orbital swath data) with varying coordinates and projections.
-
-These patterns are under active investigation. 
-
-[ADD ME: More about those developments from @maxrjones and @d-v-b]
-
-## Out of scope / not currently supported
-
-*(Specific data types or patterns that are not currently supported will be enumerated here as they are identified.)*

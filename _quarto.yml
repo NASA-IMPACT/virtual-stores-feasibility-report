@@ -18,8 +18,10 @@ website:
         contents:
           - href: technical-overview.qmd
             text: Technical Overview of Virtual Stores
+          - href: technical-features.qmd
+            text: Technical Features
           - href: nasa-applications.qmd
-            text: Applications of Virtual Stores at NASA
+            text: Virtual Stores at NASA
           - href: nasa-ecosystem.qmd
             text: Virtual Stores within the NASA Ecosystem
       - section: Guidance
