@@ -1,25 +1,26 @@
 ---
-title: "Applications of Virtual Stores at NASA"
+title: "Virtual Stores at NASA"
 ---
 
-## Mature implementations
+This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.
 
-**Current mature implementations share the following characteristics:**
-
-- Consistent spatial and temporal resolution across each variable
-- Uniform chunk grid and compression scheme across each variable
-- Chunk manifest generated at collection level, spanning many granules
-
-### Inventory Table
+## Virtual Stores Inventory
 
 | Project | Dataset      | Dataset location                                                                                                 | Notebooks and Repos                                                                                                     |
 |---------|--------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
 | PO.DAAC | 10+ datasets | See [Using Virtual Datasets](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html) | [Virtual Data Set Starter Notebook](https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html) |
 | VEDA    | RASI         | s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/                                                         | [Github Repo](https://github.com/virtual-zarr/rasi-icechunk)                                                                           |
 | VEDA    | NLDAS        | s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/                                                      | [Github Repo](https://github.com/virtual-zarr/nldas-icechunk)                                                                      |
-| VEDA    | GEOS-CF      |                                                                                                                  |                                                                                                                         |                                                                                                             |
+| VEDA    | GEOS-CF      |                                                                                                                  |                                                                                                                         |                          
 
-### PO.DAAC
+## Mature implementations                                                                                   |
+
+### Example 1: Consistently gridded data — PODAAC
+
+* **Data type:** Gridded ocean/atmosphere fields
+* **Virtualization approach:** Collection-level aggregated chunk manifests (Kerchunk)
+* **Status:** Production
+* **Owners:** Ed Armstrong and Dean Henze
 
 Collection-level aggregated chunk manifests have been successfully implemented at PO.DAAC for consistently gridded Level 3 and 4 datasets. To date a total of 10 PO.DAAC datasets have been virtualized as detailed in a chapter "Using Virtual Datasets" in the [PO.DAAC online cookbook](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
 
@@ -31,7 +32,12 @@ The PO.DAAC VDS implementation model represents a mature approach and is recomme
 
 ## Developing implementations
 
-### Synthetic Aperture Radar (NISAR)
+### Example 2: Synthetic Aperture Radar (NISAR)
+
+* **Data type:** Synthetic aperture radar products
+* **Virtualization approach:** TBD
+* **Status:** In development
+* **Owner:** Joe Kennedy
 
 Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.
 

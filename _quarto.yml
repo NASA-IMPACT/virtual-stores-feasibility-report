@@ -34,12 +34,10 @@ website:
         text: Best Practices + Recommendations
       - href: onboarding.qmd
         text: Onboarding Guide
-      - href: examples.qmd
-        text: Examples
-      - href: contributing.qmd
-        text: Contributing
       - href: resources.qmd
-        text: Resources, References and Presentations        
+        text: Resources, References and Presentations
+      - href: contributing.qmd
+        text: Contributing        
 
 format:
   html:
