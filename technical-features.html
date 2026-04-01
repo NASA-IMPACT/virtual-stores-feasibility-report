@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Resources, References and Presentations – Virtual Store Feasibility Report</title>
+<title>Technical Features – Virtual Store Feasibility Report</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -32,7 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./contributing.html" rel="prev">
+<link href="./nasa-applications.html" rel="next">
+<link href="./technical-overview.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -83,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./resources.html">Resources, References and Presentations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-features.html">Technical Features</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -141,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./technical-features.html" class="sidebar-item-text sidebar-link">
+  <a href="./technical-features.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Technical Features</span></a>
   </div>
 </li>
@@ -208,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link active">
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources, References and Presentations</span></a>
   </div>
 </li>
@@ -217,15 +218,31 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#mature-support" id="toc-mature-support" class="nav-link active" data-scroll-target="#mature-support">Mature Support</a></li>
+  <li><a href="#developing-support" id="toc-developing-support" class="nav-link" data-scroll-target="#developing-support">Developing Support</a>
+  <ul class="collapse">
+  <li><a href="#non-uniform-grids" id="toc-non-uniform-grids" class="nav-link" data-scroll-target="#non-uniform-grids">Non-uniform grids</a></li>
+  <li><a href="#non-cubable-data" id="toc-non-cubable-data" class="nav-link" data-scroll-target="#non-cubable-data">Non-cubable data</a></li>
+  </ul></li>
+  <li><a href="#no-plans-for-support" id="toc-no-plans-for-support" class="nav-link" data-scroll-target="#no-plans-for-support">No plans for support</a>
+  <ul class="collapse">
+  <li><a href="#unsupported-data-formats" id="toc-unsupported-data-formats" class="nav-link" data-scroll-target="#unsupported-data-formats">Unsupported data formats</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-features.html">Technical Features</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Resources, References and Presentations</h1>
+<h1 class="title">Technical Features</h1>
+<p class="subtitle lead">Additional information on technical features and their maturity levels</p>
 </div>
 
 
@@ -242,11 +259,45 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="mature-support" class="level1">
+<h1>Mature Support</h1>
+</section>
+<section id="developing-support" class="level1">
+<h1>Developing Support</h1>
+<section id="non-uniform-grids" class="level2">
+<h2 class="anchored" data-anchor-id="non-uniform-grids">Non-uniform grids</h2>
+<p>Some NASA collections present additional complexity due having varying compression schemes and chunk grids across a logical array (usually across granules). At this point in time, Zarr assumes consistent chunk shape and compression across the entire array.</p>
+<p>However, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.</p>
+</section>
+<section id="non-cubable-data" class="level2">
+<h2 class="anchored" data-anchor-id="non-cubable-data">Non-cubable data</h2>
+<p>COMING SOON</p>
+</section>
+</section>
+<section id="no-plans-for-support" class="level1">
+<h1>No plans for support</h1>
+<section id="unsupported-data-formats" class="level2">
+<h2 class="anchored" data-anchor-id="unsupported-data-formats">Unsupported data formats</h2>
+<p>Data format support is limited to formats with VirtualiZarr parser implementations.</p>
+<p>Parsers maintained by VirtualiZarr include:</p>
 <ul>
-<li><a href="https://virtual-zarr.github.io/esip-2025">ESIP 2025 Workshop on Virtual Zarr</a>, Max Jones</li>
+<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/hdf/hdf.py">HDFParser</a></li>
+<li><a href="https://github.com/zarr-developers/VirtualiZarr/tree/main/virtualizarr/parsers/kerchunk">Kerchunk (Parquet or JSON)</a></li>
+<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/dmrpp.py">DMRPPParser</a></li>
+<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/fits.py">FITSParser</a></li>
+<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/netcdf3.py">NetCDF3Parser</a></li>
+<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/zarr.py">ZarrParser</a></li>
 </ul>
+<p>Parsers maintained outside of VirtualiZarr include:</p>
+<ul>
+<li><a href="https://virtual-tiff.readthedocs.io/en/latest/">virtual-tiff</a></li>
+<li><a href="https://github.com/virtual-zarr/hrrr-parser">hrrr-parser</a></li>
+</ul>
+<p>Custom parsers for additional formats can be implemented using the VirtualiZarr <a href="https://virtualizarr.readthedocs.io/en/stable/custom_parsers.html">CustomParsers</a> guide.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -651,11 +702,14 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./contributing.html" class="pagination-link" aria-label="Contributing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Contributing</span>
+      <a href="./technical-overview.html" class="pagination-link" aria-label="Technical Overview of Virtual Stores">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Technical Overview of Virtual Stores</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./nasa-applications.html" class="pagination-link" aria-label="Virtual Stores at NASA">
+        <span class="nav-page-text">Virtual Stores at NASA</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
