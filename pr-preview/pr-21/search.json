@@ -1,0 +1,545 @@
+[
+  {
+    "objectID": "contributing.html",
+    "href": "contributing.html",
+    "title": "Contributing",
+    "section": "",
+    "text": "We welcome PRs to this repo from anyone. If you open a PR with new or revised content, please add yourself to the authors list in index.qmd.\nThis site uses Quarto to generate website pages using markdown and jupyter notebooks.",
+    "crumbs": [
+      "Contributing"
+    ]
+  },
+  {
+    "objectID": "contributing.html#adding-pages",
+    "href": "contributing.html#adding-pages",
+    "title": "Contributing",
+    "section": "Adding pages",
+    "text": "Adding pages\nTo add a new page:\n\nCreate new .qmd or .ipynb file\nAdd the new page to the sidebar section in _quarto.yml so it shows up in the sidebar navigation",
+    "crumbs": [
+      "Contributing"
+    ]
+  },
+  {
+    "objectID": "contributing.html#previews",
+    "href": "contributing.html#previews",
+    "title": "Contributing",
+    "section": "Previews",
+    "text": "Previews\nTo preview changes, you can run this site locally (see instructions to setup quarto locally below) or use the automated preview generation when opening a PR (see the PR preview workflow).",
+    "crumbs": [
+      "Contributing"
+    ]
+  },
+  {
+    "objectID": "contributing.html#local-development",
+    "href": "contributing.html#local-development",
+    "title": "Contributing",
+    "section": "Local Development",
+    "text": "Local Development\n\nInstall Quarto\nInstall Quarto by downloading the installer for your platform from quarto.org/docs/get-started, or via a package manager:\n\nmacOS (Homebrew): brew install --cask quarto\nLinux: Download the .deb or .rpm package from the Quarto website\nWindows: Download the .msi installer from the Quarto website\n\nVerify the installation with quarto check.\n\n\nRun quarto commands\nTo preview the site locally:\nquarto preview\nThis runs quarto preview, which serves the site and reloads on changes.",
+    "crumbs": [
+      "Contributing"
+    ]
+  },
+  {
+    "objectID": "governance.html",
+    "href": "governance.html",
+    "title": "Governance Decisions Required",
+    "section": "",
+    "text": "Clear standards are needed for where metadata lives within the Common Metadata Repository (CMR) metadata models.\n\n\n(Define what metadata belongs at the collection level and how it should be structured.)\n\n\n\n(Define what metadata belongs at the granule level and how it relates to collection-level metadata.)",
+    "crumbs": [
+      "Guidance",
+      "Governance"
+    ]
+  },
+  {
+    "objectID": "governance.html#metadata-placement-standards",
+    "href": "governance.html#metadata-placement-standards",
+    "title": "Governance Decisions Required",
+    "section": "",
+    "text": "Clear standards are needed for where metadata lives within the Common Metadata Repository (CMR) metadata models.\n\n\n(Define what metadata belongs at the collection level and how it should be structured.)\n\n\n\n(Define what metadata belongs at the granule level and how it relates to collection-level metadata.)",
+    "crumbs": [
+      "Guidance",
+      "Governance"
+    ]
+  },
+  {
+    "objectID": "governance.html#versioning-and-update-policies-for-virtual-layers",
+    "href": "governance.html#versioning-and-update-policies-for-virtual-layers",
+    "title": "Governance Decisions Required",
+    "section": "Versioning and update policies for virtual layers",
+    "text": "Versioning and update policies for virtual layers\nVirtual stores are living artifacts that will need to be updated as source data is corrected, reprocessed, or extended. Policies are needed to govern:\n\nWhen and how virtual store versions are incremented\nHow consumers are notified of updates\nHow to handle backward compatibility\n\n(Versioning policies to be defined.)",
+    "crumbs": [
+      "Guidance",
+      "Governance"
+    ]
+  },
+  {
+    "objectID": "governance.html#ownership-and-stewardship-of-virtual-store-assets",
+    "href": "governance.html#ownership-and-stewardship-of-virtual-store-assets",
+    "title": "Governance Decisions Required",
+    "section": "Ownership and stewardship of virtual store assets",
+    "text": "Ownership and stewardship of virtual store assets\n(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)",
+    "crumbs": [
+      "Guidance",
+      "Governance"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Virtual Stores at NASA",
+    "section": "",
+    "text": "⚠️ UNDER DEVELOPMENT ⚠️",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
+    "href": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
+    "title": "Virtual Stores at NASA",
+    "section": "Vision: NASA datasets accessible through a single entrypoint",
+    "text": "Vision: NASA datasets accessible through a single entrypoint\n\nVirtual stores deliver a single entrypoint to a dataset comprised of many files. For NASA datasets this enables:\n\nLess pre-processing to be “analysis-ready”.\nUsers do not have to know about the underlying data format or storage location.\nGreater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#what-are-virtual-stores-and-what-do-they-enable",
+    "href": "index.html#what-are-virtual-stores-and-what-do-they-enable",
+    "title": "Virtual Stores at NASA",
+    "section": "What are virtual stores and what do they enable?",
+    "text": "What are virtual stores and what do they enable?\nCore to virtual store technology is lightweight metadata pointing to data byte ranges in existing files. Virtual store technology enables data users to access subsets of large scientific datasets without downloading, scanning and pre-processing any files.",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#benefits-for-data-users",
+    "href": "index.html#benefits-for-data-users",
+    "title": "Virtual Stores at NASA",
+    "section": "Benefits for data users",
+    "text": "Benefits for data users\n\nLogical dataset access access large number of files, without downloading any data\nConsistent access patterns across diverse data types",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#benefits-for-data-providers-and-nasa",
+    "href": "index.html#benefits-for-data-providers-and-nasa",
+    "title": "Virtual Stores at NASA",
+    "section": "Benefits for data providers and NASA",
+    "text": "Benefits for data providers and NASA\n\nCost savings through reduced egress and compute\nProviding analysis-ready access to existing archives without reformatting",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "executive_summary.html",
+    "href": "executive_summary.html",
+    "title": "Executive Summary",
+    "section": "",
+    "text": "This report assesses the current state and future direction of virtual store technology for NASA data. It documents mature implementations, developing approaches, known limitations, governance gaps, and recommended next steps.",
+    "crumbs": [
+      "Executive Summary"
+    ]
+  },
+  {
+    "objectID": "executive_summary.html#purpose-of-this-report",
+    "href": "executive_summary.html#purpose-of-this-report",
+    "title": "Executive Summary",
+    "section": "",
+    "text": "This report assesses the current state and future direction of virtual store technology for NASA data. It documents mature implementations, developing approaches, known limitations, governance gaps, and recommended next steps.",
+    "crumbs": [
+      "Executive Summary"
+    ]
+  },
+  {
+    "objectID": "executive_summary.html#summary-of-recommendations-and-current-state",
+    "href": "executive_summary.html#summary-of-recommendations-and-current-state",
+    "title": "Executive Summary",
+    "section": "Summary of recommendations and current state",
+    "text": "Summary of recommendations and current state\nVirtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types. Key recommendations include adopting Icechunk, GeoZarr and multiscales standards, engaging with any evolving chunk manifest protocol, planning for EGIS integration, and addressing governance gaps.\nSee the Recommendations section for the full summary.",
+    "crumbs": [
+      "Executive Summary"
+    ]
+  },
+  {
+    "objectID": "technical-overview.html",
+    "href": "technical-overview.html",
+    "title": "Technical Overview of Virtual Stores",
+    "section": "",
+    "text": "[ADD ME: DIAGRAM]\n\nZarr is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.\nChunk manifests are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.\nIcechunk is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls virtual datasets.\nKerchunk is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.\nVirtualiZarr is a library for generating chunk manifests. Format-specific parsers are used to read chunk information and generate in-memory chunk manifests. VirtualiZarr can then write those chunk manifests to icechunk or kerchunk.\nGeoZarr extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Overview of Virtual Stores"
+    ]
+  },
+  {
+    "objectID": "technical-overview.html#core-concepts",
+    "href": "technical-overview.html#core-concepts",
+    "title": "Technical Overview of Virtual Stores",
+    "section": "",
+    "text": "[ADD ME: DIAGRAM]\n\nZarr is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.\nChunk manifests are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.\nIcechunk is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls virtual datasets.\nKerchunk is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.\nVirtualiZarr is a library for generating chunk manifests. Format-specific parsers are used to read chunk information and generate in-memory chunk manifests. VirtualiZarr can then write those chunk manifests to icechunk or kerchunk.\nGeoZarr extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Overview of Virtual Stores"
+    ]
+  },
+  {
+    "objectID": "onboarding.html",
+    "href": "onboarding.html",
+    "title": "Onboarding Guide",
+    "section": "",
+    "text": "This guide is intended for data providers and engineers who are new to virtual store technology and want to begin virtualizing NASA datasets.",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#prerequisites",
+    "href": "onboarding.html#prerequisites",
+    "title": "Onboarding Guide",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n(List required background knowledge, tools, and access credentials.)",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#step-1-understand-your-data",
+    "href": "onboarding.html#step-1-understand-your-data",
+    "title": "Onboarding Guide",
+    "section": "Step 1: Understand your data",
+    "text": "Step 1: Understand your data\nBefore virtualizing, document:\n\nFile format (NetCDF, HDF5, GeoTIFF, etc.)\nGrid structure (uniform, non-uniform, swath)\nTypical file sizes and granule counts\nPrimary user access patterns",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#step-2-choose-a-virtualization-approach",
+    "href": "onboarding.html#step-2-choose-a-virtualization-approach",
+    "title": "Onboarding Guide",
+    "section": "Step 2: Choose a virtualization approach",
+    "text": "Step 2: Choose a virtualization approach\n\n\n\nApproach\nBest for\nStatus\n\n\n\n\nKerchunk\nReference files for existing archives\nMature\n\n\nIcechunk\nTransactional stores, appending data\nActive development",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#step-3-design-your-chunk-manifest",
+    "href": "onboarding.html#step-3-design-your-chunk-manifest",
+    "title": "Onboarding Guide",
+    "section": "Step 3: Design your chunk manifest",
+    "text": "Step 3: Design your chunk manifest\nRefer to Best Practices and Known Limitations before finalizing your chunk layout.",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#step-4-generate-and-validate-your-virtual-store",
+    "href": "onboarding.html#step-4-generate-and-validate-your-virtual-store",
+    "title": "Onboarding Guide",
+    "section": "Step 4: Generate and validate your virtual store",
+    "text": "Step 4: Generate and validate your virtual store\n(Step-by-step instructions and code examples to be added.)",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#step-5-register-and-publish",
+    "href": "onboarding.html#step-5-register-and-publish",
+    "title": "Onboarding Guide",
+    "section": "Step 5: Register and publish",
+    "text": "Step 5: Register and publish\n(Instructions for registering your virtual store with the relevant DAAC and making it discoverable.)",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#getting-help",
+    "href": "onboarding.html#getting-help",
+    "title": "Onboarding Guide",
+    "section": "Getting help",
+    "text": "Getting help\n(Links to community resources, Slack channels, issue trackers, etc.)",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "nasa-ecosystem.html",
+    "href": "nasa-ecosystem.html",
+    "title": "Virtual Stores and the NASA Ecosystem",
+    "section": "",
+    "text": "There are a number of components to consider when envisioning virtual stores and their place in the broad NASA data ecosystem.\nVirtual stores provide a uniform interface to archival data through the Zarr data model and specification. However, to access and visualize this data, the ecosystem needs to adapt to integrate the Zarr data model and specification. While xarray and zarr-python provide powerful tools for working with this data, a number of existing powerful tools at NASA need to be considered to support NASA users.",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores within the NASA Ecosystem"
+    ]
+  },
+  {
+    "objectID": "nasa-ecosystem.html#integration-with-egis",
+    "href": "nasa-ecosystem.html#integration-with-egis",
+    "title": "Virtual Stores and the NASA Ecosystem",
+    "section": "Integration with EGIS",
+    "text": "Integration with EGIS\n[ADDME: @abarciauskas-bgse]",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores within the NASA Ecosystem"
+    ]
+  },
+  {
+    "objectID": "nasa-ecosystem.html#integration-with-harmony",
+    "href": "nasa-ecosystem.html#integration-with-harmony",
+    "title": "Virtual Stores and the NASA Ecosystem",
+    "section": "Integration with Harmony",
+    "text": "Integration with Harmony\nHarmony is an ESDIS Project enterprise system for managing transformation requests for NASA Earth science data. It offers users the capability to retrieve the data they need in a format that is appropriate for their use-cases. This may include spatial, temporal or variable subsets, reprojection or aggregation of data originally hosted in multiple archived files.\nTraditionally, Harmony has performed operations on the native data files in the ESDIS Project archive. A virtual store representing an entire collection offers several potential benefits to a system such as Harmony:\n\nOnly retrieving relevant bytes of native data files, which would limit the amount of data held in-memory and stored in compute environments, while potentially offering significant performance improvements.\nRemoving the need for services that stack data from multiple individual input files, as this aggregation will have already occurred.\nAllowing for analyses of a data collections as a single entity (e.g., long duration time series).\nReducing complexity of code within services by utilizing common tools such as xarray.\nAllowing the same services to work on different native data formats, as they can interact with a virtual data store layer using the same client software,\n\n\nHarmony virtual data store architecture\n\n\n\nHarmony virtual data access service\n\n\nThe diagram above illustrates how virtual data access can be used within the NASA ecosystem in a transformation service hosted in Harmony.\nKey to this implementation is that metadata must be hosted in the Common Metadata Repository (CMR), allowing Harmony to identify the location of an aggregated chunk manifest. This chunk manifest is read by the Harmony service, allowing it to perform subsetting and only interact with the chunks that are necessary to fulfil the user’s request.\nNote: The aggregated chunk manifest does not have to be co-located with the native data files to which it refers.\n\n\nFurther considerations\nHarmony is designed to return a URL to a data object representing only what a user requested. With a virtual data store representing an entire data product, it is possible to request a large amount of data. Safeguards may be required to handle computationally intensive transformations.\nVirtual data stores are particularly useful for operations that only seek to perform partial access to the store. For example, spatial, temporal or variable subsetting. Indeed, for subsetting of this nature, open-source software like Harmony can be used to educate end-users how to independently use packages such as xarray to directly interrogate a virtual data store. However, some transformations create an output where the native data are changed, such as to a new map projection. In these latter instances, an output object would be derived, which aligns with the traditional model of Harmony providing output files for ad hoc transformation requests. Virtual data stores are remain useful in such as case, as they still reduce the number of accessed bytes, and allow requests to easily combine data from multiple native data files.\nAs an ESDIS Project enterprise software application, Harmony relies on CMR metadata. For a Harmony service to offer transformation capabilities to a broad selection of data in the ESDIS Project archive, the representation of virtual data stores needs to be consistent between different data collections.",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores within the NASA Ecosystem"
+    ]
+  },
+  {
+    "objectID": "nasa-ecosystem.html#discovery-and-integration-with-cmr",
+    "href": "nasa-ecosystem.html#discovery-and-integration-with-cmr",
+    "title": "Virtual Stores and the NASA Ecosystem",
+    "section": "Discovery and integration with CMR",
+    "text": "Discovery and integration with CMR\n[ADDME]",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores within the NASA Ecosystem"
+    ]
+  },
+  {
+    "objectID": "limitations.html",
+    "href": "limitations.html",
+    "title": "Known Limitations",
+    "section": "",
+    "text": "Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores.",
+    "crumbs": [
+      "Guidance",
+      "Known Limitations"
+    ]
+  },
+  {
+    "objectID": "limitations.html#language-and-ecosystem-constraints",
+    "href": "limitations.html#language-and-ecosystem-constraints",
+    "title": "Known Limitations",
+    "section": "",
+    "text": "Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores.",
+    "crumbs": [
+      "Guidance",
+      "Known Limitations"
+    ]
+  },
+  {
+    "objectID": "limitations.html#early-structural-decisions-have-lasting-performance-consequences",
+    "href": "limitations.html#early-structural-decisions-have-lasting-performance-consequences",
+    "title": "Known Limitations",
+    "section": "Early structural decisions have lasting performance consequences",
+    "text": "Early structural decisions have lasting performance consequences\nFile chunking and chunk manifests cannot simultaneously optimize for all use cases. Further, chunk manifests depend on the chunking already inherent to the files. You cannot create a chunk manifest to access a unit smaller than chunks in the underlying files. The implication is, for example, if a set of files is optimized for spatial access it cannot simultaneously be optimized for access across the time dimension (i.e. time series).\n[ADD ME: DIAGRAM OF PANCAKES AND CHURROS]",
+    "crumbs": [
+      "Guidance",
+      "Known Limitations"
+    ]
+  },
+  {
+    "objectID": "resources.html",
+    "href": "resources.html",
+    "title": "Resources, References and Presentations",
+    "section": "",
+    "text": "ESIP 2025 Workshop on Virtual Zarr, Max Jones",
+    "crumbs": [
+      "Resources, References and Presentations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html",
+    "href": "recommendations.html",
+    "title": "Recommendations Summary",
+    "section": "",
+    "text": "The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.\n\n\nFor NISAR data where time series analysis is the primary use case, a frame-oriented chunk manifest design ensures efficient per-frame loading. This decision should be made deliberately, with awareness of the trade-offs for other access patterns (see Known Limitations).",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns",
+    "href": "recommendations.html#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns",
+    "title": "Recommendations Summary",
+    "section": "",
+    "text": "The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.\n\n\nFor NISAR data where time series analysis is the primary use case, a frame-oriented chunk manifest design ensures efficient per-frame loading. This decision should be made deliberately, with awareness of the trade-offs for other access patterns (see Known Limitations).",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#adopt-icechunk",
+    "href": "recommendations.html#adopt-icechunk",
+    "title": "Recommendations Summary",
+    "section": "Adopt icechunk",
+    "text": "Adopt icechunk\nIcechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format.",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#adopt-geozarr-standards",
+    "href": "recommendations.html#adopt-geozarr-standards",
+    "title": "Recommendations Summary",
+    "section": "Adopt GeoZarr standards",
+    "text": "Adopt GeoZarr standards\nAdoption of GeoZarr is recommended for future virtual store implementations to ensure interoperability and long-term maintainability.",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#adoption-of-multiscales",
+    "href": "recommendations.html#adoption-of-multiscales",
+    "title": "Recommendations Summary",
+    "section": "Adoption of multiscales",
+    "text": "Adoption of multiscales\nAdoption of multiscales should be considered, especially for high resolution data.",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#engage-with-the-evolving-chunk-manifest-protocol",
+    "href": "recommendations.html#engage-with-the-evolving-chunk-manifest-protocol",
+    "title": "Recommendations Summary",
+    "section": "Engage with the evolving chunk manifest protocol",
+    "text": "Engage with the evolving chunk manifest protocol\nTBD: The chunk manifest protocol specification is speculative at this time.",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#prioritize-egis-integration-planning",
+    "href": "recommendations.html#prioritize-egis-integration-planning",
+    "title": "Recommendations Summary",
+    "section": "Prioritize EGIS integration planning",
+    "text": "Prioritize EGIS integration planning\nIntegration with the Earthdata Geographic Information System (EGIS) has been identified as a future priority. Scoping should begin to ensure integration with EGIS is smooth.",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "recommendations.html#address-governance-gaps",
+    "href": "recommendations.html#address-governance-gaps",
+    "title": "Recommendations Summary",
+    "section": "Address Governance Gaps",
+    "text": "Address Governance Gaps\nThe governance decisions identified in Governance — metadata placement standards, versioning policies, and stewardship ownership — should be addressed as virtual store technology is deployed more broadly across DAACs.",
+    "crumbs": [
+      "Best Practices + Recommendations"
+    ]
+  },
+  {
+    "objectID": "technical-features.html",
+    "href": "technical-features.html",
+    "title": "Technical Features",
+    "section": "",
+    "text": "Current mature implementations share the following characteristics:\n\nConsistent spatial and temporal resolution across each variable\nUniform chunk grid and compression scheme across each variable\nChunk manifest generated at collection level, spanning many granules",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Features"
+    ]
+  },
+  {
+    "objectID": "technical-features.html#mature-support",
+    "href": "technical-features.html#mature-support",
+    "title": "Technical Features",
+    "section": "",
+    "text": "Current mature implementations share the following characteristics:\n\nConsistent spatial and temporal resolution across each variable\nUniform chunk grid and compression scheme across each variable\nChunk manifest generated at collection level, spanning many granules",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Features"
+    ]
+  },
+  {
+    "objectID": "technical-features.html#developing-support",
+    "href": "technical-features.html#developing-support",
+    "title": "Technical Features",
+    "section": "Developing Support",
+    "text": "Developing Support",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Features"
+    ]
+  },
+  {
+    "objectID": "technical-features.html#non-uniform-grids",
+    "href": "technical-features.html#non-uniform-grids",
+    "title": "Technical Features",
+    "section": "Non-uniform grids",
+    "text": "Non-uniform grids\nSome NASA collections present additional complexity due having varying compression schemes and chunk grids across a logical array (usually across granules). At this point in time, Zarr assumes consistent chunk shape and compression across the entire array.\nHowever, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Features"
+    ]
+  },
+  {
+    "objectID": "technical-features.html#non-cubable-data",
+    "href": "technical-features.html#non-cubable-data",
+    "title": "Technical Features",
+    "section": "Non-cubable data",
+    "text": "Non-cubable data\nCOMING SOON",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Features"
+    ]
+  },
+  {
+    "objectID": "technical-features.html#unsupported-data-formats",
+    "href": "technical-features.html#unsupported-data-formats",
+    "title": "Technical Features",
+    "section": "Unsupported data formats",
+    "text": "Unsupported data formats\nData format support is limited to formats with VirtualiZarr parser implementations.\nParsers maintained by VirtualiZarr include:\n\nHDFParser\nKerchunk (Parquet or JSON)\nDMRPPParser\nFITSParser\nNetCDF3Parser\nZarrParser\n\nParsers maintained outside of VirtualiZarr include:\n\nvirtual-tiff\nhrrr-parser\n\nCustom parsers for additional formats can be implemented using the VirtualiZarr CustomParsers guide.",
+    "crumbs": [
+      "Technical Aspects",
+      "Technical Features"
+    ]
+  },
+  {
+    "objectID": "nasa-applications.html",
+    "href": "nasa-applications.html",
+    "title": "Virtual Stores at NASA",
+    "section": "",
+    "text": "This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores at NASA"
+    ]
+  },
+  {
+    "objectID": "nasa-applications.html#virtual-stores-inventory",
+    "href": "nasa-applications.html#virtual-stores-inventory",
+    "title": "Virtual Stores at NASA",
+    "section": "Virtual Stores Inventory",
+    "text": "Virtual Stores Inventory\n\n\n\nProject\nDataset\nDataset location\nNotebooks and Repos\n\n\n\n\nPO.DAAC\n10+ datasets\nSee Using Virtual Datasets\nVirtual Data Set Starter Notebook\n\n\nVEDA\nRASI\ns3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/\nGithub Repo\n\n\nVEDA\nNLDAS\ns3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/\nGithub Repo\n\n\nVEDA\nGEOS-CF",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores at NASA"
+    ]
+  },
+  {
+    "objectID": "nasa-applications.html#mature-implementations",
+    "href": "nasa-applications.html#mature-implementations",
+    "title": "Virtual Stores at NASA",
+    "section": "Mature implementations |",
+    "text": "Mature implementations |\n\nExample 1: Consistently gridded data — PODAAC\n\nData type: Gridded ocean/atmosphere fields\nVirtualization approach: Collection-level aggregated chunk manifests (Kerchunk)\nStatus: Production\nOwners: Ed Armstrong and Dean Henze\n\nCollection-level aggregated chunk manifests have been successfully implemented at PO.DAAC for consistently gridded Level 3 and 4 datasets. To date a total of 10 PO.DAAC datasets have been virtualized as detailed in a chapter “Using Virtual Datasets” in the PO.DAAC online cookbook.\nOne of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users’ Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.\nTake for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains &gt;15,000 daily files from a 41 year times series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and timeranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.\nThe PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores at NASA"
+    ]
+  },
+  {
+    "objectID": "nasa-applications.html#developing-implementations",
+    "href": "nasa-applications.html#developing-implementations",
+    "title": "Virtual Stores at NASA",
+    "section": "Developing implementations",
+    "text": "Developing implementations\n\nExample 2: Synthetic Aperture Radar (NISAR)\n\nData type: Synthetic aperture radar products\nVirtualization approach: TBD\nStatus: In development\nOwner: Joe Kennedy\n\nSynthetic aperture radar products from ASF are an active area of development for virtual store approaches.\n\n\nL2 Collections at PODAAC\nVirtualized L2 collections are currently under development at PO.DAAC.",
+    "crumbs": [
+      "Technical Aspects",
+      "Virtual Stores at NASA"
+    ]
+  }
+]
