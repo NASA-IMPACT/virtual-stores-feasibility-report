@@ -12,3 +12,6 @@ File chunking and chunk manifests cannot simultaneously optimize for all use cas
 
 [ADD ME: DIAGRAM OF PANCAKES AND CHURROS]
 
+## Chunk sizes must be consistent across files
+
+Variable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in [this Zarr feature request](https://github.com/zarr-developers/zarr-specs/issues/138). This presents challenges for Level-2 data, an example of which is described in [this GitHub issue for a TEMPO data collection.](https://github.com/zarr-developers/VirtualiZarr/issues/487).
