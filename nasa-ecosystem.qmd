@@ -18,3 +18,52 @@ Virtual stores provide a uniform interface to archival data through the Zarr dat
 ## Discovery and integration with CMR
 
 [ADDME]
+
+## Integration with earthaccess
+
+`earthaccess` currently supports data virtualization (via virtualizarr) that can be used to streamline the creation and access of virtual stores.
+The current implementation allows end-users and data providers to generate a virtual store at scale with a single line of code:
+
+```python
+import earthaccess as ea
+
+granules = ea.search_data(**params)
+
+vds = ea.virtualize(granules, **virtualizarr_options)
+
+# then we can persist the vds into kerchunk or icechunk
+vds.virtualize.to_kerchunk(*args)
+# or 
+vds.virtualize.to_icechunk(*args)
+
+```
+
+This approach allows users to easily create virtual stores from their search results, and then persist those virtual stores without having to manually configure anything (I/O drivers and authentication).
+By using CMR search results we could for example, create tailored virtual stores e.g only certain files that meet certain criteria, seasonal datasets (by searching and including only data from a region or temporal range etc.)
+
+
+Once a virtual store is created, updating it will also be streamlined with `earthaccess`, the store(s) metadata will be listed in a CMR collection level record or a new UMM association,
+then we will be able to use `earthaccess` to update the virtual store with new granules that get added to the collection, or even remove granules that get deleted from the collection. 
+This would allow users to maintain up-to-date virtual stores without having to manually track changes to the underlying data.
+
+```python
+
+colection = ea.search_datasets(
+  short_name="SPL4SMGP"
+)[0]
+
+icechunk_store = ea.open_virtual_store(colection, name="yearly_store")
+
+# then we can use a CMR search to look for new granules with created_at
+new_granules = ea.search_data(**params)
+new_vds = ea.virtualize(new_granules, **vz_options)
+
+# append the new to the current store
+new_vds.virtualize.to_icechunk(icechunk_store, append_dim="time")
+```
+
+The same way, we can use `icechunk_store` to open it using xarray and visualize it with tools like `hvplot` or `matplotlib`.
+
+```python
+ds = xr.open_zarr(icechunk_store, consolidated=False, zarr_format=3)
+```
