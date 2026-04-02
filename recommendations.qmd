@@ -12,7 +12,7 @@ For NISAR data where time series analysis is the primary use case, a frame-orien
 
 ## Adopt icechunk
 
-Icechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format.
+Icechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format. 
 
 ## Adopt GeoZarr standards
 
@@ -33,3 +33,11 @@ Integration with the Earthdata Geographic Information System (EGIS) has been ide
 ## Address Governance Gaps
 
 The governance decisions identified in [Governance](governance.qmd) — metadata placement standards, versioning policies, and stewardship ownership — should be addressed as virtual store technology is deployed more broadly across DAACs.
+
+## Streamline end-user experience
+
+The path from Earthdata Login to open dataset should be simplified to broaden virtual stores adoption. This includes streamlining authentication processes and ensuring that users can easily discover and access virtual stores through familiar tools and interfaces.
+
+## Documentation and onboarding 
+
+Materials should be developed to support data providers in virtualizing their datasets and to help users understand how to access and work with virtual stores. This includes clear guides, best practices, and examples of code for generating and using virtual stores.
