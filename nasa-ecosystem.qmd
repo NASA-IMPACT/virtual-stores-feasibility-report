@@ -50,6 +50,8 @@ Virtual data stores are particularly useful for operations that only seek to per
 
 As an ESDIS Project enterprise software application, Harmony relies on CMR metadata. For a Harmony service to offer transformation capabilities to a broad selection of data in the ESDIS Project archive, the representation of virtual data stores needs to be consistent between different data collections.
 
+For further discussion of metadata representations in CMR, see [Metadata Placement Standards](./governance.qmd#metadata-placement-standards).
+
 ## Discovery and integration with CMR
 
 [ADDME]
