@@ -13,7 +13,7 @@ Virtual stores provide a uniform interface to archival data through the Zarr dat
 
 ## Integration with Harmony
 
-[Harmony](https://harmony.earthdata.nasa.gov/docs) is an ESDIS Project enterprise system for managing transformation requests for NASA Earth science data. It offers users the capability to retrieve the data they need in a format that is appropriate for their use-cases. This may include spatial, temporal or variable subsets, reprojection or aggregation of data originally hosted in multiple archived files.
+[Harmony](https://harmony.earthdata.nasa.gov/docs) is an ESDIS Project enterprise system for managing transformation requests for NASA Earth science data. It offers users the capability to retrieve the data they need in a format that is appropriate for their use cases. Users can request spatial, temporal and variable subsets. Results can be reprojections and/or aggregations of data originally hosted in multiple archived files.
 
 Traditionally, Harmony has performed operations on the native data files in the ESDIS Project archive. A virtual store representing an entire collection offers several potential benefits to a system such as Harmony:
 
