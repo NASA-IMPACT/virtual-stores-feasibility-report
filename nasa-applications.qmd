@@ -12,6 +12,8 @@ This page collects worked examples of virtual store implementations, serving as 
 | VEDA    | RASI         | s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/                                                         | [Github Repo](https://github.com/virtual-zarr/rasi-icechunk)                                                                           |
 | VEDA    | NLDAS        | s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/                                                      | [Github Repo](https://github.com/virtual-zarr/nldas-icechunk)                                                                      |
 | VEDA    | GEOS-CF      |                                                                                                                  |                                                                                                                         |                          
+| ASDC    | TEMPO        | `s3://asdc-prod-public/virtual-reference-docs/TEMPO_L3_V04_icechunk_for_202601/`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)                                                                      |
+| ASDC    | PREFIRE        | `s3://asdc-prod-public/virtual-reference-docs/PREFIRE_SAT2_3-SFC-SORTED-ALLSKY_R01/prefire-monthly-kerchunk_created20250819.json`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb)                                                                      |
 
 ## Mature implementations                                                                                   |
 
@@ -31,6 +33,27 @@ Take for example one of PO.DAAC’s gridded sea surface temperature (SST) datase
 The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.
 
 ## Developing implementations
+
+### Example 1: Air quality and radiance satellite data — ASDC
+
+* **Data type:** Air quality satellite data (TEMPO L3 NO₂); surface spectral radiance (PREFIRE)
+* **Virtualization approach:** Icechunk in S3 (TEMPO); Kerchunk in S3 (PREFIRE)
+* **Status:** Proof of concept (TEMPO); Proof of concept (PREFIRE)
+* **Owner:** ASDC Data Services Team
+
+#### TEMPO L3 Virtual Datacube — Icechunk Proof of Concept
+
+A month of TEMPO L3 V04 NO₂ granules (January 2026, ~30 GB) was consolidated into a single Icechunk store (~6 MB reference layer). The store was built locally in four incremental append-and-commit steps, then manually uploaded to S3 (`asdc-prod-public` bucket). The [demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb) authenticates via earthaccess, opens the store read-only, and loads the full month as a single xarray Dataset — producing cartopy map visualizations of tropospheric NO₂ columns using both index slicing and coordinate-based selection.
+
+**Next steps:**
+
+1. **Direct-to-S3 appending.** The store is currently built locally and uploaded as a static snapshot. The next step is appending directly to a store in S3 so new granules can be committed incrementally without a local intermediate — enabling a continuously growing, cloud-hosted datacube.
+2. **Streamlined end-user experience.** Opening the store currently requires manual S3 configuration, credential helper classes, and multiple Icechunk API calls. This needs to be reduced to an Earthdata Login and a store identifier.
+3. **Preserve netCDF group hierarchy.** The current process flattens the native netCDF group structure (`/geolocation`, `/product`, `/support_data`) into a single level. The next step is to use xarray DataTree to preserve the hierarchy in the Icechunk store.
+
+#### PREFIRE Virtual Store — Kerchunk Proof of Concept
+
+A parallel proof of concept uses Kerchunk to provide virtualized access to PREFIRE surface spectral radiance data. A [demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb) is available.
 
 ### Example 2: Synthetic Aperture Radar (NISAR)
 
