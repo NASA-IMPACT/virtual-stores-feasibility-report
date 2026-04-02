@@ -41,6 +41,19 @@ The PO.DAAC VDS implementation model represents a mature approach and is recomme
 
 Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.
 
+### Example 3: Generating and Distributing Manifest Files at GES DISC
+
+* **Data type:** Level 3/4 Products
+* **Virtualization approach:** Kerchunk Manifest Files
+* **Status:** In development
+* **Owner:** Hailiang Zhang, Christine Smit, Chris Battisto
+
+GES DISC is working to provide users with VirtualiZarr services as part of its on-prem aggregation service deprecation efforts. The current plan is to enable VirtualiZarr support for the 10 most popular collections previously served through on-prem aggregation services.
+GES DISC conducted benchmarking for manifest generation using a representative MERRA-2 dataset (M2T1NXAER), which contains approximately 4.3 TB of data. Running the manifest generation in a cloud-based dask cluster resulted in a total processing time of about 5 hours.
+In addition, GES DISC evaluated data subsetting performance. The test results showed that using Parquet-based Kerchunk manifests delivers roughly 10× better performance compared to JSON-based Kerchunk manifests. However, Parquet-based approaches have limitations, such as lack of support for incremental data appending. The VirtualiZarr team appears to be moving toward Icechunk as a longer-term solution. As a short term solution, we are generating Parquet Kerchunk manifests for historical static datasets, with plans to transition to Icechunk in the future for improved flexibility.
+During Parquet manifest generation, we also tuned configuration parameters such as record size. These optimizations are expected to improve user request performance by an additional ~20%.
+
+
 ### L2 Collections at PODAAC
 
 Virtualized L2 collections are currently under development at PO.DAAC.
