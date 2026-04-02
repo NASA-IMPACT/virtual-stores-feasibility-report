@@ -10,20 +10,61 @@ Clear standards are needed for where metadata lives within the Common Metadata R
 
 *(Define what metadata belongs at the collection level and how it should be structured.)*
 
+A virtual store that spans an entire collection (e.g., a single
+Icechunk store aggregating all TEMPO L3 V04 granules) needs to be
+discoverable alongside the collection it virtualizes. Possible
+approaches include adding a related URL to the existing UMM-C
+record or registering the store as a UMM-S service entry. Each
+carries different implications for search behavior in Earthdata
+Search and for how downstream tools resolve data access.
+
 ### Granule-level metadata
 
 *(Define what metadata belongs at the granule level and how it relates to collection-level metadata.)*
 
 ## Versioning and update policies for virtual layers
 
-Virtual stores are living artifacts that will need to be updated as source data is corrected, reprocessed, or extended. Policies are needed to govern:
+Virtual stores are living artifacts, but "change" can originate from
+two independent sources, each requiring its own policy response.
+
+### Source data changes
+
+When a mission reprocesses its archive — for example, when TEMPO
+moves from V04 to V05 — the virtual store built against V04 becomes
+stale. Will the virtual store be versioned in lockstep with the source data (rebuilt from scratch on each reprocessing campaign) or versioned independently (with its own lifecycle and compatibility guarantees)? Or, with Icechunk's transactional model, commits could track which source data version they reference, allowing a single store to evolve while maintaining an audit trail.
+
+### Virtual store technology changes
+
+Virtual stores introduce a dependency on external, actively evolving
+tools — most notably Icechunk, VirtualiZarr, and the Zarr
+specification itself. When these tools release breaking changes,
+alter their internal storage format, or deprecate features a store
+relies on, existing stores may need to be rebuilt or migrated.
+
+Policies are needed to govern the response to upstream
+technology changes, including whether stores are pinned to specific
+tool versions, how migration responsibility is assigned, and what
+testing is required before upgrading the toolchain behind a
+production store.
+
+### Common policy needs
+
+Regardless of the trigger, policies are needed to govern:
 
 - When and how virtual store versions are incremented
-- How consumers are notified of updates
-- How to handle backward compatibility
-
-*(Versioning policies to be defined.)*
+- How consumers are notified of breaking vs. non-breaking updates
+- Backward compatibility: Whether previous versions of a virtual store remain accessible during and after a version transition, and if so, for how long
 
 ## Ownership and stewardship of virtual store assets
 
 *(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)*
+
+Creating a virtual store is a one-time engineering effort;
+maintaining it is an ongoing operational commitment. As source data
+grows, is reprocessed, or is deprecated, the virtual store must
+follow.
+
+A virtual store touches multiple teams, including the science team that defines the data, the DAAC archive team that manages source files, and the mission POCs that coordinate releases and user communication. Which team is responsible for rebuilding the
+virtual store after a reprocessing campaign? Who monitors for drift
+between the store and the archive? Who decides when a virtual store
+has reached end of life?
