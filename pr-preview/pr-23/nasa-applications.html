@@ -224,8 +224,8 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#developing-implementations" id="toc-developing-implementations" class="nav-link" data-scroll-target="#developing-implementations">Developing implementations</a>
   <ul class="collapse">
-  <li><a href="#example-1-air-quality-and-radiance-satellite-data-asdc" id="toc-example-1-air-quality-and-radiance-satellite-data-asdc" class="nav-link" data-scroll-target="#example-1-air-quality-and-radiance-satellite-data-asdc">Example 1: Air quality and radiance satellite data — ASDC</a></li>
   <li><a href="#example-2-synthetic-aperture-radar-nisar" id="toc-example-2-synthetic-aperture-radar-nisar" class="nav-link" data-scroll-target="#example-2-synthetic-aperture-radar-nisar">Example 2: Synthetic Aperture Radar (NISAR)</a></li>
+  <li><a href="#example-3-air-quality-and-radiance-satellite-data-asdc" id="toc-example-3-air-quality-and-radiance-satellite-data-asdc" class="nav-link" data-scroll-target="#example-3-air-quality-and-radiance-satellite-data-asdc">Example 3: Air quality and radiance satellite data — ASDC</a></li>
   <li><a href="#l2-collections-at-podaac" id="toc-l2-collections-at-podaac" class="nav-link" data-scroll-target="#l2-collections-at-podaac">L2 Collections at PODAAC</a></li>
   </ul></li>
   </ul>
@@ -323,8 +323,18 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="developing-implementations" class="level2">
 <h2 class="anchored" data-anchor-id="developing-implementations">Developing implementations</h2>
-<section id="example-1-air-quality-and-radiance-satellite-data-asdc" class="level3">
-<h3 class="anchored" data-anchor-id="example-1-air-quality-and-radiance-satellite-data-asdc">Example 1: Air quality and radiance satellite data — ASDC</h3>
+<section id="example-2-synthetic-aperture-radar-nisar" class="level3">
+<h3 class="anchored" data-anchor-id="example-2-synthetic-aperture-radar-nisar">Example 2: Synthetic Aperture Radar (NISAR)</h3>
+<ul>
+<li><strong>Data type:</strong> Synthetic aperture radar products</li>
+<li><strong>Virtualization approach:</strong> TBD</li>
+<li><strong>Status:</strong> In development</li>
+<li><strong>Owner:</strong> Joe Kennedy</li>
+</ul>
+<p>Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.</p>
+</section>
+<section id="example-3-air-quality-and-radiance-satellite-data-asdc" class="level3">
+<h3 class="anchored" data-anchor-id="example-3-air-quality-and-radiance-satellite-data-asdc">Example 3: Air quality and radiance satellite data — ASDC</h3>
 <ul>
 <li><strong>Data type:</strong> Air quality satellite data (TEMPO L3 NO₂); surface spectral radiance (PREFIRE)</li>
 <li><strong>Virtualization approach:</strong> Icechunk in S3 (TEMPO); Kerchunk in S3 (PREFIRE)</li>
@@ -345,16 +355,6 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="prefire-virtual-store-kerchunk-proof-of-concept">PREFIRE Virtual Store — Kerchunk Proof of Concept</h4>
 <p>A parallel proof of concept uses Kerchunk to provide virtualized access to PREFIRE surface spectral radiance data. A <a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb">demo notebook</a> is available.</p>
 </section>
-</section>
-<section id="example-2-synthetic-aperture-radar-nisar" class="level3">
-<h3 class="anchored" data-anchor-id="example-2-synthetic-aperture-radar-nisar">Example 2: Synthetic Aperture Radar (NISAR)</h3>
-<ul>
-<li><strong>Data type:</strong> Synthetic aperture radar products</li>
-<li><strong>Virtualization approach:</strong> TBD</li>
-<li><strong>Status:</strong> In development</li>
-<li><strong>Owner:</strong> Joe Kennedy</li>
-</ul>
-<p>Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.</p>
 </section>
 <section id="l2-collections-at-podaac" class="level3">
 <h3 class="anchored" data-anchor-id="l2-collections-at-podaac">L2 Collections at PODAAC</h3>
