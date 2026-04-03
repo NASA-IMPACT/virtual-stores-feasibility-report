@@ -329,6 +329,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>new_vds.virtualize.to_icechunk(icechunk_store, append_dim<span class="op">=</span><span class="st">"time"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The same way, we can use <code>icechunk_store</code> to open it using xarray and visualize it with tools like <code>hvplot</code> or <code>matplotlib</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_zarr(icechunk_store, consolidated<span class="op">=</span><span class="va">False</span>, zarr_format<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>[Expand]</p>
+<p>This section will describe how virtual stores integrate with CMR’s existing discovery infrastructure, including how stores could be represented within UMM metadata models and surfaced through Earthdata Search. For the related governance decisions on metadata placement standards, see <a href="./governance.html#metadata-placement-standards">Governance</a>.</p>
 
 
 </section>
