@@ -358,7 +358,7 @@
     "href": "resources.html",
     "title": "Resources, References and Presentations",
     "section": "",
-    "text": "ESIP 2025 Workshop on Virtual Zarr, Max Jones",
+    "text": "Code tutorials not already present in the NASA Applications section:\n\nESIP 2025 Workshop on Virtual Zarr, Max Jones\n\nPresentation Video Recordings:\n\nVirtualiZarr: Create virtual Zarr stores using xarray syntax, Tom Nicholas, Pangeo Showcase 2024\nKerchunk and the Zarr v2 model, Miguel A. Jimenez Urias, session of the Cloud Computing Cluster, ESIP February 2026\n\nArticles and blog posts:\n\n“Working With Non-Cloud Optimized Data Just Got Easier”, NASA Earthdata feature article, Jan 2026",
     "crumbs": [
       "Resources, References and Presentations"
     ]
