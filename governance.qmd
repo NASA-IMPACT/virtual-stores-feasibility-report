@@ -72,10 +72,15 @@ Regardless of the trigger, policies are needed to govern:
 
 *(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)*
 
-Creating a virtual store is a one-time engineering effort;
-maintaining it is an ongoing operational commitment. As source data
-grows, is reprocessed, or is deprecated, the virtual store must
-follow.
+Creating a virtual store requires upfront engineering and design
+decisions; maintaining it is an ongoing operational and engineering
+commitment. The maintenance burden depends significantly on
+decisions made at the outset — versioning strategy, automation of
+rebuild pipelines, monitoring for drift — and investing in these
+foundations early will reduce the long-term effort. But as source
+data grows, is reprocessed, or is deprecated, the virtual store
+must be updated or retired accordingly, and that work needs clear
+ownership.
 
 A virtual store touches multiple teams: the science team that
 defines the data, the DAAC archive team that manages source files,
