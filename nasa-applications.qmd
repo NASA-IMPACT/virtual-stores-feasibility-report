@@ -6,14 +6,15 @@ This page collects worked examples of virtual store implementations, serving as 
 
 ## Virtual Stores Inventory
 
-| Project | Dataset      | Dataset location                                                                                                 | Notebooks and Repos                                                                                                     |
-|---------|--------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| PO.DAAC | 10+ datasets | See [Using Virtual Datasets](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html) | [Virtual Data Set Starter Notebook](https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html) |
-| VEDA    | RASI         | s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/                                                         | [Github Repo](https://github.com/virtual-zarr/rasi-icechunk)                                                                           |
-| VEDA    | NLDAS        | s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/                                                      | [Github Repo](https://github.com/virtual-zarr/nldas-icechunk)                                                                      |
-| VEDA    | GEOS-CF      |                                                                                                                  |                                                                                                                         |                          
-| ASDC    | TEMPO        | `s3://asdc-prod-public/virtual-reference-docs/TEMPO_L3_V04_icechunk_for_202601/`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)                                                                      |
-| ASDC    | PREFIRE        | `s3://asdc-prod-public/virtual-reference-docs/PREFIRE_SAT2_3-SFC-SORTED-ALLSKY_R01/prefire-monthly-kerchunk_created20250819.json`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb)                                                                      |
+| Project | Dataset      | Dataset location                                                                                                                   | Notebooks and Repos                                                                                                     |
+|---------|--------------|------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| PO.DAAC | 10+ datasets | See [Using Virtual Datasets](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html)                             | [Virtual Data Set Starter Notebook](https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html) |
+| NSIDC   | SMAP L4      | [10 years of SPL4SMGP](https://its-live-data.s3-us-west-2.amazonaws.com/test-space/vds/SPL4SMGP.parquet) — more coming soon  | [SPL4SMGP Notebook](https://github.com/nsidc/NSIDC-Data-Tutorials/blob/main/notebooks/SMAP/smap_virtual.ipynb) |
+| VEDA    | RASI         | s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/                                                                           | [Github Repo](https://github.com/virtual-zarr/rasi-icechunk)                                                            |
+| VEDA    | NLDAS        | s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/                                                                        | [Github Repo](https://github.com/virtual-zarr/nldas-icechunk)                                                           |
+| VEDA    | GEOS-CF      |                                                                                                                                    |                                                                                                                         |
+| ASDC    | TEMPO        | `s3://asdc-prod-public/virtual-reference-docs/TEMPO_L3_V04_icechunk_for_202601/`                                                   | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)|
+| ASDC    | PREFIRE      | `s3://asdc-prod-public/virtual-reference-docs/PREFIRE_SAT2_3-SFC-SORTED-ALLSKY_R01/prefire-monthly-kerchunk_created20250819.json`  | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb)|
 
 ## Mature implementations                                                                                   |
 
@@ -93,6 +94,17 @@ references in JSON. The next step is to build an Icechunk store in S3
 for the same dataset and compare the user experience and performance 
 of the two approaches.
 
+### Example 5: SMAP L4 soil moisture - NSIDC
+* **Data type:** Soil moisture
+* **Virtualization approach:** Kerchunk Parquet in S3
+* **Status:** Proof of concept
+* **Owner:** NSIDC
+
+
+We assembled 10 years of SPL4SMGP a global Level-4 data from the SMAP mission totalling 40TB, 3-hour, 9km resolution.
+During this process, we corrected source file metadata issues within the virtual store by properly assigning coordinates and values to the time dimension.
+By integrating earthaccess and leveraging dmrpp files, we were able to accelerate the creation of this virtual store by an order of magnitude.
+This prototype is first of potentially many virtual data cubes at NSIDC DAAC.
 
 ### L2 Collections at PODAAC
 
