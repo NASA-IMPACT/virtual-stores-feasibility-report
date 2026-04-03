@@ -220,6 +220,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#language-and-ecosystem-constraints" id="toc-language-and-ecosystem-constraints" class="nav-link active" data-scroll-target="#language-and-ecosystem-constraints">Language and ecosystem constraints</a></li>
   <li><a href="#early-structural-decisions-have-lasting-performance-consequences" id="toc-early-structural-decisions-have-lasting-performance-consequences" class="nav-link" data-scroll-target="#early-structural-decisions-have-lasting-performance-consequences">Early structural decisions have lasting performance consequences</a></li>
   <li><a href="#chunk-sizes-must-be-consistent-across-files" id="toc-chunk-sizes-must-be-consistent-across-files" class="nav-link" data-scroll-target="#chunk-sizes-must-be-consistent-across-files">Chunk sizes must be consistent across files</a></li>
+  <li><a href="#authentication-and-credential-complexity" id="toc-authentication-and-credential-complexity" class="nav-link" data-scroll-target="#authentication-and-credential-complexity">Authentication and credential complexity</a></li>
   </ul>
 </nav>
     </div>
@@ -257,6 +258,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="chunk-sizes-must-be-consistent-across-files" class="level2">
 <h2 class="anchored" data-anchor-id="chunk-sizes-must-be-consistent-across-files">Chunk sizes must be consistent across files</h2>
 <p>Variable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in <a href="https://github.com/zarr-developers/zarr-specs/issues/138">this Zarr feature request</a>. This presents challenges for Level-2 data, an example of which is described in <a href="https://github.com/zarr-developers/VirtualiZarr/issues/487">this GitHub issue for a TEMPO data collection.</a>.</p>
+</section>
+<section id="authentication-and-credential-complexity" class="level2">
+<h2 class="anchored" data-anchor-id="authentication-and-credential-complexity">Authentication and credential complexity</h2>
+<p>Opening a virtual store backed by NASA data currently requires multiple steps beyond standard Earthdata Login — including S3 credential configuration, credential helper classes, and tool-specific API calls to open the store before any data is accessed. This friction exists because virtual stores sit at the intersection of several authentication boundaries: the store itself (which may be in a public or protected S3 bucket), the source data files the store references (which typically require Earthdata Login credentials), and the tools used to read the store (which have their own authentication interfaces). Until this is simplified to something comparable to the experience earthaccess provides for direct file access, credential complexity will remain a practical barrier to adoption — particularly for researchers who are not cloud-infrastructure specialists.</p>
 
 
 </section>

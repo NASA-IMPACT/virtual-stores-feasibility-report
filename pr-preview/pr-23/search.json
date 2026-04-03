@@ -44,7 +44,7 @@
     "href": "governance.html",
     "title": "Governance Decisions Required",
     "section": "",
-    "text": "Clear standards are needed for where metadata lives within the Common Metadata Repository (CMR) metadata models.\n\n\n(Define what metadata belongs at the collection level and how it should be structured.)\nA virtual store that spans an entire collection (e.g., a single Icechunk store aggregating all TEMPO L3 V04 granules) needs to be discoverable alongside the collection it virtualizes. Possible approaches include adding a related URL to the existing UMM-C record or registering the store as a UMM-S service entry. Each carries different implications for search behavior in Earthdata Search and for how downstream tools resolve data access.\n\n\n\n(Define what metadata belongs at the granule level and how it relates to collection-level metadata.)",
+    "text": "Clear standards are needed for where metadata lives within the Common Metadata Repository (CMR) metadata models.\n\n\n(Define what metadata belongs at the collection level and how it should be structured.)\nA virtual store that spans an entire collection (e.g., a single Icechunk store aggregating all TEMPO L3 V04 granules) needs to be discoverable alongside the collection it virtualizes. Possible approaches include adding a related URL to the existing UMM-C record or registering the store as a UMM-S service entry. Each carries different implications for search behavior in Earthdata Search and for how downstream tools resolve data access.\n\n\n\n(Expand on what metadata belongs at the granule level, whether granule-level virtual references are needed, how it relates to collection-level metadata.)\nFor virtual stores that aggregate at the collection level, granule-level metadata placement may not apply. DMR++ provides granule-level references for OPeNDAP.",
     "crumbs": [
       "Guidance",
       "Governance"
@@ -55,7 +55,7 @@
     "href": "governance.html#metadata-placement-standards",
     "title": "Governance Decisions Required",
     "section": "",
-    "text": "Clear standards are needed for where metadata lives within the Common Metadata Repository (CMR) metadata models.\n\n\n(Define what metadata belongs at the collection level and how it should be structured.)\nA virtual store that spans an entire collection (e.g., a single Icechunk store aggregating all TEMPO L3 V04 granules) needs to be discoverable alongside the collection it virtualizes. Possible approaches include adding a related URL to the existing UMM-C record or registering the store as a UMM-S service entry. Each carries different implications for search behavior in Earthdata Search and for how downstream tools resolve data access.\n\n\n\n(Define what metadata belongs at the granule level and how it relates to collection-level metadata.)",
+    "text": "Clear standards are needed for where metadata lives within the Common Metadata Repository (CMR) metadata models.\n\n\n(Define what metadata belongs at the collection level and how it should be structured.)\nA virtual store that spans an entire collection (e.g., a single Icechunk store aggregating all TEMPO L3 V04 granules) needs to be discoverable alongside the collection it virtualizes. Possible approaches include adding a related URL to the existing UMM-C record or registering the store as a UMM-S service entry. Each carries different implications for search behavior in Earthdata Search and for how downstream tools resolve data access.\n\n\n\n(Expand on what metadata belongs at the granule level, whether granule-level virtual references are needed, how it relates to collection-level metadata.)\nFor virtual stores that aggregate at the collection level, granule-level metadata placement may not apply. DMR++ provides granule-level references for OPeNDAP.",
     "crumbs": [
       "Guidance",
       "Governance"
@@ -66,7 +66,7 @@
     "href": "governance.html#versioning-and-update-policies-for-virtual-layers",
     "title": "Governance Decisions Required",
     "section": "Versioning and update policies for virtual layers",
-    "text": "Versioning and update policies for virtual layers\nVirtual stores are living artifacts, but “change” can originate from two independent sources, each requiring its own policy response.\n\nSource data changes\nWhen a mission reprocesses its archive — for example, when TEMPO moves from V04 to V05 — the virtual store built against V04 becomes stale. Will the virtual store be versioned in lockstep with the source data (rebuilt from scratch on each reprocessing campaign) or versioned independently (with its own lifecycle and compatibility guarantees)? Or, with Icechunk’s transactional model, commits could track which source data version they reference, allowing a single store to evolve while maintaining an audit trail.\n\n\nVirtual store technology changes\nVirtual stores introduce a dependency on external, actively evolving tools — most notably Icechunk, VirtualiZarr, and the Zarr specification itself. When these tools release breaking changes, alter their internal storage format, or deprecate features a store relies on, existing stores may need to be rebuilt or migrated.\nPolicies are needed to govern the response to upstream technology changes, including whether stores are pinned to specific tool versions, how migration responsibility is assigned, and what testing is required before upgrading the toolchain behind a production store.\n\n\nCommon policy needs\nRegardless of the trigger, policies are needed to govern:\n\nWhen and how virtual store versions are incremented\nHow consumers are notified of breaking vs. non-breaking updates\nBackward compatibility: Whether previous versions of a virtual store remain accessible during and after a version transition, and if so, for how long",
+    "text": "Versioning and update policies for virtual layers\nVirtual stores are living artifacts, but “change” can originate from two independent sources, each requiring its own policy response.\n\nSource data changes\nWhen a mission reprocesses its archive, the virtual store built against the previous version becomes stale. There are several possible responses:\n\nLockstep versioning: Rebuild the virtual store from scratch with each reprocessing campaign. Simple and predictable, but potentially expensive for large archives.\nIndependent versioning: The virtual store maintains its own version lifecycle, decoupled from the source data version. More flexible, but introduces the risk of version drift and requires clear compatibility documentation.\nTransactional evolution: Icechunk’s commit model could track which source data version each commit references, allowing a single store to evolve while maintaining an audit trail. Whether this is operationally viable at DAAC scale is untested.\n\n\n\nVirtual store technology changes\nVirtual stores introduce a dependency on external, actively evolving tools — most notably Icechunk, VirtualiZarr, and the Zarr specification itself. When these tools release breaking changes, alter their internal storage format, or deprecate features a store relies on, existing stores may need to be rebuilt or migrated.\nPolicies are needed to govern the response to upstream technology changes, including whether stores are pinned to specific tool versions, how migration responsibility is assigned, and what testing is required before upgrading the toolchain behind a production store.\n\n\nCommon policy needs\nRegardless of the trigger, policies are needed to govern:\n\nWhen and how virtual store versions are incremented\nHow consumers are notified of breaking vs. non-breaking updates\nBackward compatibility: Whether previous versions of a virtual store remain accessible during and after a version transition, and if so, for how long",
     "crumbs": [
       "Guidance",
       "Governance"
@@ -77,7 +77,7 @@
     "href": "governance.html#ownership-and-stewardship-of-virtual-store-assets",
     "title": "Governance Decisions Required",
     "section": "Ownership and stewardship of virtual store assets",
-    "text": "Ownership and stewardship of virtual store assets\n(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)\nCreating a virtual store is a one-time engineering effort; maintaining it is an ongoing operational commitment. As source data grows, is reprocessed, or is deprecated, the virtual store must follow.\nA virtual store touches multiple teams, including the science team that defines the data, the DAAC archive team that manages source files, and the mission POCs that coordinate releases and user communication. Which team is responsible for rebuilding the virtual store after a reprocessing campaign? Who monitors for drift between the store and the archive? Who decides when a virtual store has reached end of life?",
+    "text": "Ownership and stewardship of virtual store assets\n(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)\nCreating a virtual store is a one-time engineering effort; maintaining it is an ongoing operational commitment. As source data grows, is reprocessed, or is deprecated, the virtual store must follow.\nA virtual store touches multiple teams: the science team that defines the data, the DAAC archive team that manages source files, and the mission POCs that coordinate releases and user communication. Which team is responsible for rebuilding the virtual store after a reprocessing campaign? Who monitors for drift between the store and the archive? Who decides when a virtual store has reached end of life?",
     "crumbs": [
       "Guidance",
       "Governance"
@@ -240,7 +240,7 @@
     "href": "onboarding.html#step-4-generate-and-validate-your-virtual-store",
     "title": "Onboarding Guide",
     "section": "Step 4: Generate and validate your virtual store",
-    "text": "Step 4: Generate and validate your virtual store\n(Step-by-step instructions and code examples to be added.)",
+    "text": "Step 4: Generate and validate your virtual store\n(Step-by-step instructions and code examples to be added.)\nThe toolchain offers multiple entry points at this step:\n\nearthaccess.virtualize() provides a higher-level interface that handles common cases with less configuration.\nIcechunk API directly offers more control over commit behavior, store configuration, and append workflows.\n\nGeneration can run in series or in parallel (e.g., using Dask), depending on the number of granules and available compute.",
     "crumbs": [
       "Onboarding Guide"
     ]
@@ -261,6 +261,16 @@
     "title": "Onboarding Guide",
     "section": "Getting help",
     "text": "Getting help\n(Links to community resources, Slack channels, issue trackers, etc.)",
+    "crumbs": [
+      "Onboarding Guide"
+    ]
+  },
+  {
+    "objectID": "onboarding.html#common-gotchas",
+    "href": "onboarding.html#common-gotchas",
+    "title": "Onboarding Guide",
+    "section": "Common gotchas",
+    "text": "Common gotchas\nBefore starting, review the Known Limitations section — several apply directly to onboarding decisions:\n\nChunk size consistency — verify your files share a common chunking scheme before building the store, not after.\nEarly structural decisions — understand your users’ dominant access patterns before choosing a chunk layout.\n\nAdditionally, netCDF group hierarchies may need to be flattened during virtualization. Support for netCDF groups in virtual stores is a work-in-progress. If preserving hierarchy matters for your dataset, test this early with xarray DataTree.",
     "crumbs": [
       "Onboarding Guide"
     ]
@@ -303,7 +313,7 @@
     "href": "nasa-ecosystem.html#discovery-and-integration-with-cmr",
     "title": "Virtual Stores and the NASA Ecosystem",
     "section": "Discovery and integration with CMR",
-    "text": "Discovery and integration with CMR\n[ADDME] - see governance.qmd for discussion of metadata placement standards",
+    "text": "Discovery and integration with CMR\n[Expand]\nThis section will describe how virtual stores integrate with CMR’s existing discovery infrastructure, including how stores could be represented within UMM metadata models and surfaced through Earthdata Search. For the related governance decisions on metadata placement standards, see Governance.",
     "crumbs": [
       "Technical Aspects",
       "Virtual Stores within the NASA Ecosystem"
@@ -348,6 +358,17 @@
     "title": "Known Limitations",
     "section": "Chunk sizes must be consistent across files",
     "text": "Chunk sizes must be consistent across files\nVariable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in this Zarr feature request. This presents challenges for Level-2 data, an example of which is described in this GitHub issue for a TEMPO data collection..",
+    "crumbs": [
+      "Guidance",
+      "Known Limitations"
+    ]
+  },
+  {
+    "objectID": "limitations.html#authentication-and-credential-complexity",
+    "href": "limitations.html#authentication-and-credential-complexity",
+    "title": "Known Limitations",
+    "section": "Authentication and credential complexity",
+    "text": "Authentication and credential complexity\nOpening a virtual store backed by NASA data currently requires multiple steps beyond standard Earthdata Login — including S3 credential configuration, credential helper classes, and tool-specific API calls to open the store before any data is accessed. This friction exists because virtual stores sit at the intersection of several authentication boundaries: the store itself (which may be in a public or protected S3 bucket), the source data files the store references (which typically require Earthdata Login credentials), and the tools used to read the store (which have their own authentication interfaces). Until this is simplified to something comparable to the experience earthaccess provides for direct file access, credential complexity will remain a practical barrier to adoption — particularly for researchers who are not cloud-infrastructure specialists.",
     "crumbs": [
       "Guidance",
       "Known Limitations"
@@ -448,7 +469,7 @@
     "href": "recommendations.html#streamline-end-user-experience",
     "title": "Recommendations Summary",
     "section": "Streamline end-user experience",
-    "text": "Streamline end-user experience\nThe path from Earthdata Login to open dataset should be simplified to broaden virtual stores adoption. This includes streamlining authentication processes and ensuring that users can easily discover and access virtual stores through familiar tools and interfaces.",
+    "text": "Streamline end-user experience\nThe authentication and credential complexity currently required to open a virtual store is a significant barrier to adoption. For virtual stores to see broad use, the path from Earthdata Login to an open xarray Dataset or Datatree should be reduced to a store identifier and authentication — comparable to the experience earthaccess already provides for direct file access.",
     "crumbs": [
       "Best Practices + Recommendations"
     ]
@@ -458,7 +479,7 @@
     "href": "recommendations.html#documentation-and-onboarding",
     "title": "Recommendations Summary",
     "section": "Documentation and onboarding",
-    "text": "Documentation and onboarding\nMaterials should be developed to support data providers in virtualizing their datasets and to help users understand how to access and work with virtual stores. This includes clear guides, best practices, and examples of code for generating and using virtual stores.",
+    "text": "Documentation and onboarding\nVirtual store documentation is already underway — PO.DAAC’s cookbook chapter, ASDC’s demo notebooks, and the Onboarding Guide in this report all represent ongoing efforts. The next step is consolidating and improving these materials to serve two distinct audiences: data providers virtualizing datasets, and data users accessing virtual stores. Provider-facing documentation should develop the existing worked examples into reusable templates covering format-specific considerations, chunking decisions, and validation. User-facing documentation should lower the barrier to working with virtual stores — particularly around authentication setup, available access patterns, and how virtual store access differs from traditional file-based workflows. Coordinating these efforts across DAACs will reduce duplication and help establish consistent guidance as adoption grows.",
     "crumbs": [
       "Best Practices + Recommendations"
     ]
