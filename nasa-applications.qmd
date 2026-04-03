@@ -12,6 +12,8 @@ This page collects worked examples of virtual store implementations, serving as 
 | VEDA    | RASI         | s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/                                                         | [Github Repo](https://github.com/virtual-zarr/rasi-icechunk)                                                                           |
 | VEDA    | NLDAS        | s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/                                                      | [Github Repo](https://github.com/virtual-zarr/nldas-icechunk)                                                                      |
 | VEDA    | GEOS-CF      |                                                                                                                  |                                                                                                                         |                          
+| ASDC    | TEMPO        | `s3://asdc-prod-public/virtual-reference-docs/TEMPO_L3_V04_icechunk_for_202601/`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)                                                                      |
+| ASDC    | PREFIRE        | `s3://asdc-prod-public/virtual-reference-docs/PREFIRE_SAT2_3-SFC-SORTED-ALLSKY_R01/prefire-monthly-kerchunk_created20250819.json`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb)                                                                      |
 
 ## Mature implementations                                                                                   |
 
@@ -40,6 +42,68 @@ The PO.DAAC VDS implementation model represents a mature approach and is recomme
 * **Owner:** Joe Kennedy
 
 Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.
+
+### Example 3: Generating and Distributing Manifest Files at GES DISC
+
+* **Data type:** Level 3/4 Products
+* **Virtualization approach:** Kerchunk Manifest Files
+* **Status:** In development
+* **Owner:** Hailiang Zhang, Christine Smit, Chris Battisto
+
+GES DISC is working to provide users with virtual Zarr services as part of its on-prem aggregation service deprecation efforts. The current plan is to enable virtual Zarr support for the 10 most popular collections previously served through on-prem aggregation services.
+GES DISC conducted benchmarking for manifest generation using a representative MERRA-2 dataset (M2T1NXAER), which contains approximately 4.3 TB of data. Running the manifest generation in a cloud-based dask cluster resulted in a total processing time of about 5 hours.
+In addition, GES DISC evaluated data subsetting performance. The test results showed that using Parquet-based Kerchunk manifests delivers roughly 10× better performance compared to JSON-based Kerchunk manifests. However, Parquet-based approaches have limitations, such as lack of support for incremental data appending. The VirtualiZarr team appears to be moving toward Icechunk as a longer-term solution. As a short term solution, we are generating Parquet Kerchunk manifests for historical static datasets, with plans to transition to Icechunk in the future for improved flexibility.
+
+### Example 4: Air quality satellite data (TEMPO) — ASDC
+
+* **Data type:** Air quality satellite data (TEMPO L3 NO₂)
+* **Virtualization approach:** Icechunk in S3
+* **Status:** Proof of concept
+* **Owner:** ASDC
+
+A month of TEMPO L3 V04 NO₂ granules (January 2026, ~30 GB) was
+consolidated into a single Icechunk store (~6 MB reference layer).
+The store was built locally in four incremental append-and-commit
+steps, then manually uploaded to S3 (`asdc-prod-public` bucket).
+The [demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)
+authenticates via earthaccess, opens the store read-only, and loads
+the full month as a single xarray Dataset — producing cartopy map
+visualizations of tropospheric NO₂ columns using both index slicing
+and coordinate-based selection.
+
+**Next steps:**
+
+1. **Direct-to-S3 appending.** The store is currently built locally
+   and uploaded as a static snapshot. The next step is appending
+   directly to a store in S3 so new granules can be committed
+   incrementally without a local intermediate — enabling a
+   continuously growing, cloud-hosted datacube.
+2. **Streamlined end-user experience.** Opening the store currently
+   requires manual S3 configuration, credential helper classes, and
+   multiple Icechunk API calls. This needs to be reduced to an
+   Earthdata Login and a store identifier.
+3. **Preserve netCDF group hierarchy.** The current process flattens
+   the native netCDF group structure (`/geolocation`, `/product`,
+   `/support_data`) into a single level. The next step is to use
+   xarray DataTree to preserve the hierarchy in the Icechunk store.
+
+### Example 5: Surface emissivity (PREFIRE) — ASDC
+
+* **Data type:** Surface emissivity
+* **Virtualization approach:** Kerchunk in S3
+* **Status:** Proof of concept
+* **Owner:** ASDC
+
+A Kerchunk proof of concept provides virtualized access to
+monthly-aggregated PREFIRE surface emissivity data. A
+[demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb)
+is available. Kerchunk was chosen for this proof of concept to
+explore and develop best practices for virtualizing, as Kerchunk
+allows for more straightforward inspection and debugging of the 
+references in JSON. The next step is to build an Icechunk store in S3 
+for the same dataset and compare the user experience and performance 
+of the two approaches.
+
 
 ### L2 Collections at PODAAC
 

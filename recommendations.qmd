@@ -12,7 +12,7 @@ For NISAR data where time series analysis is the primary use case, a frame-orien
 
 ## Adopt icechunk
 
-Icechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format.
+Icechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format. 
 
 ## Adopt GeoZarr standards
 
@@ -33,3 +33,30 @@ Integration with the Earthdata Geographic Information System (EGIS) has been ide
 ## Address Governance Gaps
 
 The governance decisions identified in [Governance](governance.qmd) — metadata placement standards, versioning policies, and stewardship ownership — should be addressed as virtual store technology is deployed more broadly across DAACs.
+
+## Streamline end-user experience
+
+The [authentication and credential complexity](
+limitations.qmd#authentication-and-credential-complexity) currently
+required to open a virtual store is a significant barrier to
+adoption. For virtual stores to see broad use, the path from
+Earthdata Login to an open xarray Dataset or Datatree should be reduced to a
+store identifier and authentication — comparable to the experience
+earthaccess already provides for direct file access.
+
+## Documentation and onboarding
+
+Virtual store documentation is already underway — PO.DAAC's cookbook
+chapter, ASDC's demo notebooks, and the [Onboarding Guide](
+onboarding.qmd) in this report all represent ongoing efforts. The
+next step is consolidating and improving these materials to serve
+two distinct audiences: data providers virtualizing datasets, and
+data users accessing virtual stores. Provider-facing documentation
+should develop the existing worked examples into reusable templates
+covering format-specific considerations, chunking decisions, and
+validation. User-facing documentation should lower the barrier to
+working with virtual stores — particularly around authentication
+setup, available access patterns, and how virtual store access
+differs from traditional file-based workflows. Coordinating these
+efforts across DAACs will reduce duplication and help establish
+consistent guidance as adoption grows.
