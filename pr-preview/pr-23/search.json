@@ -357,7 +357,7 @@
     "href": "limitations.html#chunk-sizes-must-be-consistent-across-files",
     "title": "Known Limitations",
     "section": "Chunk sizes must be consistent across files",
-    "text": "Chunk sizes must be consistent across files\nVariable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in this Zarr feature request. This presents challenges for Level-2 data, an example of which is described in this GitHub issue for a TEMPO data collection..",
+    "text": "Chunk sizes must be consistent across files\nVariable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in this Zarr feature request. This presents challenges for any dataset where the grid shape differs, even slightly, across granules. The TEMPO collection, as described in this GitHub issue, is an example where even a small different in grid shape can make the dataset incompatible with the current Zarr model.\n\n\n\n\n\n\nNote\n\n\n\nNote work to support variable-length chunks is underway, see https://github.com/zarr-developers/zarr-python/pull/3802.",
     "crumbs": [
       "Guidance",
       "Known Limitations"

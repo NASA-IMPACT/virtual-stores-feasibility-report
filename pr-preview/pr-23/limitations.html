@@ -257,7 +257,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="chunk-sizes-must-be-consistent-across-files" class="level2">
 <h2 class="anchored" data-anchor-id="chunk-sizes-must-be-consistent-across-files">Chunk sizes must be consistent across files</h2>
-<p>Variable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in <a href="https://github.com/zarr-developers/zarr-specs/issues/138">this Zarr feature request</a>. This presents challenges for Level-2 data, an example of which is described in <a href="https://github.com/zarr-developers/VirtualiZarr/issues/487">this GitHub issue for a TEMPO data collection.</a>.</p>
+<p>Variable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in <a href="https://github.com/zarr-developers/zarr-specs/issues/138">this Zarr feature request</a>. This presents challenges for any dataset where the grid shape differs, even slightly, across granules. <a href="https://github.com/zarr-developers/VirtualiZarr/issues/487">The TEMPO collection, as described in this GitHub issue</a>, is an example where even a small different in grid shape can make the dataset incompatible with the current Zarr model.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note work to support variable-length chunks is underway, see https://github.com/zarr-developers/zarr-python/pull/3802.</p>
+</div>
+</div>
 </section>
 <section id="authentication-and-credential-complexity" class="level2">
 <h2 class="anchored" data-anchor-id="authentication-and-credential-complexity">Authentication and credential complexity</h2>
