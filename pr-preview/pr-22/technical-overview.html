@@ -247,12 +247,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
 <p>[ADD ME: DIAGRAM]</p>
 <ul>
-<li><strong><a href="https://zarr.dev/">Zarr</a></strong> is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.</li>
+<li><a href="https://zarr.dev/"><strong>Zarr</strong></a> is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.</li>
 <li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.</li>
-<li><strong><a href="https://icechunk.io/">Icechunk</a></strong> is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls <a href="https://icechunk.io/en/stable/virtual/">virtual datasets</a>.</li>
-<li><strong>Kerchunk</strong> is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.</li>
-<li><strong>VirtualiZarr</strong> is a library for generating chunk manifests. Format-specific parsers are used to read chunk information and generate in-memory chunk manifests. VirtualiZarr can then write those chunk manifests to icechunk or kerchunk.</li>
-<li><strong><a href="https://geozarr.org/">GeoZarr</a></strong> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata. Multiscale representations allow efficient access at varying levels of aggregation.</li>
+<li><a href="https://icechunk.io/"><strong>Icechunk</strong></a> is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls <a href="https://icechunk.io/en/stable/virtual/">virtual datasets</a>.</li>
+<li><a href="https://fsspec.github.io/kerchunk/"><strong>Kerchunk</strong></a> is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.</li>
+<li><a href="https://virtualizarr.readthedocs.io/"><strong>VirtualiZarr</strong></a> is a library for generating chunk manifests. Format-specific parsers are used to read chunk information and generate in-memory chunk manifests. VirtualiZarr can then write those chunk manifests to icechunk or kerchunk.</li>
+<li><a href="https://geozarr.org/"><strong>GeoZarr</strong></a> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata.</li>
 </ul>
 
 

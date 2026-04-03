@@ -224,6 +224,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#step-4-generate-and-validate-your-virtual-store" id="toc-step-4-generate-and-validate-your-virtual-store" class="nav-link" data-scroll-target="#step-4-generate-and-validate-your-virtual-store">Step 4: Generate and validate your virtual store</a></li>
   <li><a href="#step-5-register-and-publish" id="toc-step-5-register-and-publish" class="nav-link" data-scroll-target="#step-5-register-and-publish">Step 5: Register and publish</a></li>
   <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
+  <li><a href="#common-gotchas" id="toc-common-gotchas" class="nav-link" data-scroll-target="#common-gotchas">Common gotchas</a></li>
   </ul>
 </nav>
     </div>
@@ -259,7 +260,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="step-1-understand-your-data">Step 1: Understand your data</h2>
 <p>Before virtualizing, document:</p>
 <ul>
-<li>File format (NetCDF, HDF5, GeoTIFF, etc.)</li>
+<li>File format (NetCDF, HDF5, GeoTIFF, etc.) and any data hierarchy</li>
 <li>Grid structure (uniform, non-uniform, swath)</li>
 <li>Typical file sizes and granule counts</li>
 <li>Primary user access patterns</li>
@@ -296,6 +297,12 @@ ul.task-list li input[type="checkbox"] {
 <section id="step-4-generate-and-validate-your-virtual-store" class="level2">
 <h2 class="anchored" data-anchor-id="step-4-generate-and-validate-your-virtual-store">Step 4: Generate and validate your virtual store</h2>
 <p><em>(Step-by-step instructions and code examples to be added.)</em></p>
+<p>The toolchain offers multiple entry points at this step:</p>
+<ul>
+<li><strong>earthaccess.virtualize()</strong> provides a higher-level interface that handles common cases with less configuration.</li>
+<li><strong>Icechunk API directly</strong> offers more control over commit behavior, store configuration, and append workflows.</li>
+</ul>
+<p>Generation can run in series or in parallel (e.g., using Dask), depending on the number of granules and available compute.</p>
 </section>
 <section id="step-5-register-and-publish" class="level2">
 <h2 class="anchored" data-anchor-id="step-5-register-and-publish">Step 5: Register and publish</h2>
@@ -304,6 +311,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="getting-help">Getting help</h2>
 <p><em>(Links to community resources, Slack channels, issue trackers, etc.)</em></p>
+</section>
+<section id="common-gotchas" class="level2">
+<h2 class="anchored" data-anchor-id="common-gotchas">Common gotchas</h2>
+<p>Before starting, review the <a href="./limitations.html">Known Limitations</a> section — several apply directly to onboarding decisions:</p>
+<ul>
+<li><a href="./limitations.html#chunk-sizes-must-be-consistent-across-files">Chunk size consistency</a> — verify your files share a common chunking scheme before building the store, not after.</li>
+<li><a href="./limitations.html#early-structural-decisions-have-lasting-performance-consequences">Early structural decisions</a> — understand your users’ dominant access patterns before choosing a chunk layout.</li>
+</ul>
+<p>Additionally, netCDF group hierarchies may need to be flattened during virtualization. Support for netCDF groups in virtual stores is a work-in-progress. If preserving hierarchy matters for your dataset, test this early with xarray DataTree.</p>
 
 
 </section>
