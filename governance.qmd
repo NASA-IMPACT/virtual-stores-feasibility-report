@@ -29,9 +29,20 @@ two independent sources, each requiring its own policy response.
 
 ### Source data changes
 
-When a mission reprocesses its archive — for example, when TEMPO
-moves from V04 to V05 — the virtual store built against V04 becomes
-stale. Will the virtual store be versioned in lockstep with the source data (rebuilt from scratch on each reprocessing campaign) or versioned independently (with its own lifecycle and compatibility guarantees)? Or, with Icechunk's transactional model, commits could track which source data version they reference, allowing a single store to evolve while maintaining an audit trail.
+When a mission reprocesses its archive, the virtual store built against 
+the previous version becomes stale. There are several possible responses:
+
+- **Lockstep versioning:** Rebuild the virtual store from scratch
+  with each reprocessing campaign. Simple and predictable, but
+  potentially expensive for large archives.
+- **Independent versioning:** The virtual store maintains its own
+  version lifecycle, decoupled from the source data version.
+  More flexible, but introduces the risk of version drift and
+  requires clear compatibility documentation.
+- **Transactional evolution:** Icechunk's commit model could track
+  which source data version each commit references, allowing a
+  single store to evolve while maintaining an audit trail. Whether
+  this is operationally viable at DAAC scale is untested.
 
 ### Virtual store technology changes
 
