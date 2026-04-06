@@ -218,10 +218,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#virtual-stores-inventory" id="toc-virtual-stores-inventory" class="nav-link active" data-scroll-target="#virtual-stores-inventory">Virtual Stores Inventory</a></li>
-  <li><a href="#mature-implementations" id="toc-mature-implementations" class="nav-link" data-scroll-target="#mature-implementations">Mature implementations |</a>
+  <li><a href="#mature-implementations" id="toc-mature-implementations" class="nav-link" data-scroll-target="#mature-implementations">Mature implementations</a>
   <ul class="collapse">
   <li><a href="#example-1-consistently-gridded-data-podaac" id="toc-example-1-consistently-gridded-data-podaac" class="nav-link" data-scroll-target="#example-1-consistently-gridded-data-podaac">Example 1: Consistently gridded data — PODAAC</a></li>
-  <li><a href="#example-2-opera-displacement-portal-asf" id="toc-example-2-opera-displacement-portal-asf" class="nav-link" data-scroll-target="#example-2-opera-displacement-portal-asf">Example 2: OPERA Displacement portal — ASF</a></li>
+  <li><a href="#example-2-opera-displacement-portal-asf" id="toc-example-2-opera-displacement-portal-asf" class="nav-link" data-scroll-target="#example-2-opera-displacement-portal-asf">Example 2: OPERA displacement portal — ASF</a></li>
   </ul></li>
   <li><a href="#developing-implementations" id="toc-developing-implementations" class="nav-link" data-scroll-target="#developing-implementations">Developing implementations</a>
   <ul class="collapse">
@@ -315,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
 </table>
 </section>
 <section id="mature-implementations" class="level2">
-<h2 class="anchored" data-anchor-id="mature-implementations">Mature implementations |</h2>
+<h2 class="anchored" data-anchor-id="mature-implementations">Mature implementations</h2>
 <section id="example-1-consistently-gridded-data-podaac" class="level3">
 <h3 class="anchored" data-anchor-id="example-1-consistently-gridded-data-podaac">Example 1: Consistently gridded data — PODAAC</h3>
 <ul>
@@ -330,15 +330,15 @@ ul.task-list li input[type="checkbox"] {
 <p>The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.</p>
 </section>
 <section id="example-2-opera-displacement-portal-asf" class="level3">
-<h3 class="anchored" data-anchor-id="example-2-opera-displacement-portal-asf">Example 2: OPERA Displacement portal — ASF</h3>
+<h3 class="anchored" data-anchor-id="example-2-opera-displacement-portal-asf">Example 2: OPERA displacement portal — ASF</h3>
 <ul>
 <li><strong>Data type:</strong> Frame-based, L3 radar line-of-site displacements</li>
 <li><strong>Virtualization approach:</strong> Granule chunk manifests (Kerchunk) and frame-aggregated chunk manifests (Kerchunk)</li>
 <li><strong>Status:</strong> Production</li>
-<li><strong>Owners:</strong> Kim Fairbanks (technical PoC), Kathleen Kristenson (Portal), Cassandra Wagner (Kerchunk ingest)</li>
+<li><strong>Owners:</strong> Kim Fairbanks (technical poc), Kathleen Kristenson (portal), Cassandra Wagner (kerchunk ingest)</li>
 </ul>
-<p>The <a href="https://www.jpl.nasa.gov/go/opera/products/disp-product-suite/">OPERA DISP-S1</a> products provide surface deformation time series data over much of North and Central America from 2016 onward. These products are Level-3 products derived from Sentinel-1 Synthetic Aperture Radar (SAR) data, and are a powerful tool for identifying areas of subsidence and uplift. Many use-cases for these products are time-series based, where users want to understand the deformation pattern of that area through time. To meet this user need, the OPERA project with ASF DAAC developed the <a href="https://displacement.asf.alaska.edu/">Opera Displacement Portal</a> which plots the short-wavelength displacement time series for any point location.</p>
-<p>The time-series view into the data is provided by kerchunk-based virtual Zarr stores. Each OPERA DISP-S1 granule is provided as geostationary frames in netCDF-4 format by the OPERA project, where each granule is associated with only one frame, but a frame is associated with a “stack” or granules over time. Upon ingest, ASF DAAC creates a kerchunk-based virtual zarr store of each individual granule, and then aggregates just the short-wavelength variable from each granule within a frame into a kerchunk-based virtual zarr time series stack. Both the individual-granule zarr sore and the associated frame time-series stack are reported in the granule’s UMM metadata as a related URL and is discoverable via standard NASA Earthdata discovery and access tools.</p>
+<p>The <a href="https://www.jpl.nasa.gov/go/opera/products/disp-product-suite/">OPERA DISP-S1</a> products provide surface deformation time series data over much of North and Central America from 2016 onward. These products are Level-3 products derived from Sentinel-1 synthetic aperture radar (SAR) data, and are a powerful tool for identifying areas of subsidence and uplift. Many use-cases for these products are time-series based, where users want to understand the deformation pattern of that area through time. To meet this user need, the OPERA project and ASF DAAC developed the <a href="https://displacement.asf.alaska.edu/">Opera Displacement Portal</a> which plots the short-wavelength displacement time series for any point location.</p>
+<p>The time-series view into the data is provided by kerchunk-based virtual Zarr stores. Each OPERA DISP-S1 granule is provided as geostationary frames in netCDF-4 format by the OPERA project, where each granule is associated with only one frame, but a frame is associated with a “stack” or granules over time. Upon ingest, ASF DAAC creates a kerchunk-based virtual zarr store of each individual granule, and then aggregates just the short-wavelength variable from each granule within a frame into a kerchunk-based virtual zarr time series stack. Both the individual-granule zarr store and the associated frame time-series stack are reported in the granule’s UMM metadata as a related URL and is discoverable via standard NASA Earthdata discovery and access tools.</p>
 <p>The ASF virtual Zarr store implementation model represents a mature approach and is recommended as a baseline implementation for similar dataset types across other DAACs. This model is easily adapted to any framed-dataset where users would benefit from a time-series view into the data.</p>
 </section>
 </section>
