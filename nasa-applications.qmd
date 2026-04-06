@@ -1,33 +1,34 @@
 ---
-title: "Applications of Virtual Stores at NASA"
+title: "Applications of Virtual Store Technology at NASA"
 ---
 
 ## Mature implementations
 
-**Current mature implementations share the following characteristics:**
+Collection-level aggregated chunk manifests have been successfully implemented at PODAAC for consistently gridded 
+Level 3 and 4 datasets.  To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter 
+"Using Virtual Datasets" in the PO.DAAC online cookbook (https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
+
+
+One of the primary advantages of using virtual data stores (VDS), is that allows users to interact with entire datasets 
+programmatically and holistically, e.g. in their Jupyter notebooks and Python scripts, whereby one can bypass the task of downloading, 
+wrangling and merging data from all the individual files. Take for example one of PO.DAAC’s gridded sea surface temperature
+(SST) dataseti called OSTIA from the GHRSST project. 
+It contains >15,000 daily files from a 41 year times series and is over 11 TBs. Ideally what is desired is a single line of code, 
+to access all the variables in the dataset 
+(e.g. SST, SST uncertainty, and masks) in neatly organized multidimensional arrays (in this case 3D for latitude, longitude, and time), 
+that then can be subsetted to desired regions and timeranges. In a nutshell, the PO.DAAC VDSs provide seemless access to just the 
+desired and specific pieces of a time series, regardless of whether the user in inside or outside the NASA Earthdata Cloud, 
+improving access and computation without need to download massive datasets and operate on them in a file-by-file method 
+as traditional science workflows often do.
+
+The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types 
+across other DAACs.
+
+**Characteristics:**
 
 - Consistent spatial and temporal resolution across each variable
 - Uniform chunk grid and compression scheme across each variable
 - Chunk manifest generated at collection level, spanning many granules
-
-### Inventory Table
-
-| Project | Dataset      | Dataset location                                                                                                 | Notebooks and Repos                                                                                                     |
-|---------|--------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| PO.DAAC | 10+ datasets | See [Using Virtual Datasets](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html) | [Virtual Data Set Starter Notebook](https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html) |
-| VEDA    | RASI         | s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/                                                         | [Github Repo](https://github.com/virtual-zarr/rasi-icechunk)                                                                           |
-| VEDA    | NLDAS        | s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/                                                      | [Github Repo](https://github.com/virtual-zarr/nldas-icechunk)                                                                      |
-| VEDA    | GEOS-CF      |                                                                                                                  |                                                                                                                         |                                                                                                             |
-
-### PO.DAAC
-
-Collection-level aggregated chunk manifests have been successfully implemented at PO.DAAC for consistently gridded Level 3 and 4 datasets. To date a total of 10 PO.DAAC datasets have been virtualized as detailed in a chapter "Using Virtual Datasets" in the [PO.DAAC online cookbook](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
-
-One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users' Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.
-
-Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains >15,000 daily files from a 41 year times series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and timeranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.
-
-The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.
 
 ## Developing implementations
 
