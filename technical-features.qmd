@@ -7,15 +7,16 @@ subtitle: Additional information on technical features and their maturity levels
 
 **Current mature implementations share the following characteristics:**
 
-- Consistent spatial and temporal resolution across each variable
-- Uniform chunk grid and compression scheme across each variable
-- Chunk manifest generated at collection level, spanning many granules
+- Virtual datasets are used to provide alternate views into data, with views ranging from the entire collection, to subsets of a collection, to subsets of a granule.
+- Consistent spatial and temporal resolution across each variable within a view
+- Uniform chunk grid and compression scheme across each variable within a view
+- Chunk manifest are generated for a particular view and may span many granules
 
 ## Developing Support
 
 ## Non-uniform grids
 
-Some NASA collections present additional complexity due having varying compression schemes and chunk grids across a logical array (usually across granules). At this point in time, Zarr assumes consistent chunk shape and compression across the entire array. 
+Some NASA collections present additional complexity due having varying compression schemes and chunk grids across a logical array (usually across granules). At this point in time, Zarr assumes consistent chunk shape and compression across the entire array.
 
 However, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.
 
@@ -25,7 +26,7 @@ COMING SOON
 
 # No plans for support
 
-## Unsupported data formats
+## Supported data formats
 
 Data format support is limited to formats with VirtualiZarr parser implementations.
 
@@ -37,7 +38,7 @@ Parsers maintained by VirtualiZarr include:
 * [FITSParser](https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/fits.py)
 * [NetCDF3Parser](https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/netcdf3.py)
 * [ZarrParser](https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/zarr.py)
-  
+
 Parsers maintained outside of VirtualiZarr include:
 
 * [virtual-tiff](https://virtual-tiff.readthedocs.io/en/latest/)
