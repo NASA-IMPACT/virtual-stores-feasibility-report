@@ -4,6 +4,8 @@ project:
 website:
   page-navigation: true
   title: "Virtual Store Feasibility Report"
+  repo-url: https://github.com/NASA-IMPACT/virtual-stores-feasibility-report
+  repo-actions: ['edit']
   sidebar:
     pinned: true
     align: center
