@@ -2,4 +2,16 @@
 title: "Resources, References and Presentations"
 ---
 
+Code tutorials not already present in the [NASA Applications](nasa-applications.qmd) section:
+
 * [ESIP 2025 Workshop on Virtual Zarr](https://virtual-zarr.github.io/esip-2025), Max Jones
+
+Presentation Video Recordings:
+
+* [VirtualiZarr: Create virtual Zarr stores using xarray syntax](https://www.youtube.com/watch?v=ioxgzhDaYiE), Tom Nicholas, Pangeo Showcase 2024
+
+* [Kerchunk and the Zarr v2 model](https://www.youtube.com/watch?v=l9WGHg8oOHw), Miguel A. Jimenez Urias, session of the Cloud Computing Cluster, ESIP February 2026
+
+Articles and blog posts:
+
+* ["Working With Non-Cloud Optimized Data Just Got Easier"](https://www.earthdata.nasa.gov/news/feature-articles/working-non-cloud-optimized-data-just-got-easier), NASA Earthdata feature article, Jan 2026

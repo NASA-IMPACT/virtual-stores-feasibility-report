@@ -13,7 +13,7 @@ This guide is intended for data providers and engineers who are new to virtual s
 
 Before virtualizing, document:
 
-- File format (NetCDF, HDF5, GeoTIFF, etc.)
+- File format (NetCDF, HDF5, GeoTIFF, etc.) and any data hierarchy
 - Grid structure (uniform, non-uniform, swath)
 - Typical file sizes and granule counts
 - Primary user access patterns
@@ -33,6 +33,16 @@ Refer to [Best Practices](best-practices.qmd) and [Known Limitations](limitation
 
 *(Step-by-step instructions and code examples to be added.)*
 
+The toolchain offers multiple entry points at this step:
+
+- **earthaccess.virtualize()** provides a higher-level interface
+  that handles common cases with less configuration.
+- **Icechunk API directly** offers more control over commit
+  behavior, store configuration, and append workflows.
+
+Generation can run in series or in parallel (e.g., using Dask),
+depending on the number of granules and available compute.
+
 ## Step 5: Register and publish
 
 *(Instructions for registering your virtual store with the relevant DAAC and making it discoverable.)*
@@ -40,3 +50,21 @@ Refer to [Best Practices](best-practices.qmd) and [Known Limitations](limitation
 ## Getting help
 
 *(Links to community resources, Slack channels, issue trackers, etc.)*
+
+## Common gotchas
+
+Before starting, review the [Known Limitations](limitations.qmd)
+section — several apply directly to onboarding decisions:
+
+- [Chunk size consistency](
+  limitations.qmd#chunk-sizes-must-be-consistent-across-files) —
+  verify your files share a common chunking scheme before building
+  the store, not after.
+- [Early structural decisions](
+  limitations.qmd#early-structural-decisions-have-lasting-performance-consequences) —
+  understand your users' dominant access patterns before choosing a
+  chunk layout.
+
+Additionally, netCDF group hierarchies may need to be flattened during
+virtualization. Support for netCDF groups in virtual stores is a work-in-progress. 
+If preserving hierarchy matters for your dataset, test this early with xarray DataTree.

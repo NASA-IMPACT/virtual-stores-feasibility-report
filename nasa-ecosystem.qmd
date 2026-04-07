@@ -58,4 +58,8 @@ For further discussion of metadata representations in CMR, see [Metadata Placeme
 
 ## Discovery and integration with CMR
 
-[ADDME]
+This section will describe how virtual stores integrate with CMR's
+existing discovery infrastructure, including how stores could be
+represented within UMM metadata models and surfaced through
+Earthdata Search. For the related governance decisions on metadata
+placement standards, see [Governance](governance.qmd#metadata-placement-standards).
