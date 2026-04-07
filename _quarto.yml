@@ -4,6 +4,8 @@ project:
 website:
   page-navigation: true
   title: "Virtual Store Feasibility Report"
+  repo-url: https://github.com/NASA-IMPACT/virtual-stores-feasibility-report
+  repo-actions: ['edit']
   sidebar:
     pinned: true
     align: center
@@ -18,8 +20,10 @@ website:
         contents:
           - href: technical-overview.qmd
             text: Technical Overview of Virtual Stores
+          - href: technical-features.qmd
+            text: Technical Features
           - href: nasa-applications.qmd
-            text: Applications of Virtual Stores at NASA
+            text: Virtual Stores at NASA
           - href: nasa-ecosystem.qmd
             text: Virtual Stores within the NASA Ecosystem
       - section: Guidance
@@ -32,12 +36,10 @@ website:
         text: Best Practices + Recommendations
       - href: onboarding.qmd
         text: Onboarding Guide
-      - href: examples.qmd
-        text: Examples
-      - href: contributing.qmd
-        text: Contributing
       - href: resources.qmd
-        text: Resources, References and Presentations        
+        text: Resources, References and Presentations
+      - href: contributing.qmd
+        text: Contributing        
 
 format:
   html:

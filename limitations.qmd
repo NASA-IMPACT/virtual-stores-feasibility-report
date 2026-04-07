@@ -12,3 +12,29 @@ File chunking and chunk manifests cannot simultaneously optimize for all use cas
 
 [ADD ME: DIAGRAM OF PANCAKES AND CHURROS]
 
+## Chunk sizes must be consistent across files
+
+Variable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in [this Zarr feature request](https://github.com/zarr-developers/zarr-specs/issues/138). This presents challenges for any dataset where the grid shape differs, even slightly, across granules. [The TEMPO collection, as described in this GitHub issue](https://github.com/zarr-developers/VirtualiZarr/issues/487), is an example where even a small different in grid shape can make the dataset incompatible with the current Zarr model.
+
+::: {.callout-note}
+Note work to support variable-length chunks is underway, see https://github.com/zarr-developers/zarr-python/pull/3802.
+:::
+
+
+
+## Authentication and credential complexity
+
+Opening a virtual store backed by NASA data currently requires
+multiple steps beyond standard Earthdata Login — including S3
+credential configuration, credential helper classes, and
+tool-specific API calls to open the store before any data is
+accessed. This friction exists because virtual stores sit at the
+intersection of several authentication boundaries: the store itself
+(which may be in a public or protected S3 bucket), the source
+data files the store references (which typically require Earthdata
+Login credentials), and the tools used to read the store (which
+have their own authentication interfaces). Until this is simplified
+to something comparable to the experience earthaccess provides for
+direct file access, credential complexity will remain a practical
+barrier to adoption — particularly for researchers who are not
+cloud-infrastructure specialists.

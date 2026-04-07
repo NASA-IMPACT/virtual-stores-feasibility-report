@@ -1,35 +1,21 @@
 ---
-title: "Applications of Virtual Store Technology at NASA"
+title: "Virtual Stores at NASA"
 ---
 
+This page collects worked examples of virtual store implementations, serving as a reference for virtual layer producers. Each example documents the data type, chosen approach, design decisions, and lessons learned.
+
+## Virtual Stores Inventory
+
+| Project | Dataset      | Dataset location                                                                                                 | Notebooks and Repos                                                                                                     |
+|---------|--------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| PO.DAAC | 10+ datasets | See [Using Virtual Datasets](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html) | [Virtual Data Set Starter Notebook](https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html) |
+| VEDA    | RASI         | s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/                                                         | [Github Repo](https://github.com/virtual-zarr/rasi-icechunk)                                                                           |
+| VEDA    | NLDAS        | s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/                                                      | [Github Repo](https://github.com/virtual-zarr/nldas-icechunk)                                                                      |
+| VEDA    | GEOS-CF      |                                                                                                                  |                                                                                                                         |                          
+| ASDC    | TEMPO        | `s3://asdc-prod-public/virtual-reference-docs/TEMPO_L3_V04_icechunk_for_202601/`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)                                                                      |
+| ASDC    | PREFIRE        | `s3://asdc-prod-public/virtual-reference-docs/PREFIRE_SAT2_3-SFC-SORTED-ALLSKY_R01/prefire-monthly-kerchunk_created20250819.json`                                                      | [Demo Notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb)                                                                      |
+
 ## Mature implementations
-
-Collection-level aggregated chunk manifests have been successfully implemented at PODAAC for consistently gridded 
-Level 3 and 4 datasets.  To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter 
-"Using Virtual Datasets" in the PO.DAAC online cookbook (https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
-
-
-One of the primary advantages of using virtual data stores (VDS), is that allows users to interact with entire datasets 
-programmatically and holistically, e.g. in their Jupyter notebooks and Python scripts, whereby one can bypass the task of downloading, 
-wrangling and merging data from all the individual files. Take for example one of PO.DAAC’s gridded sea surface temperature
-(SST) dataseti called OSTIA from the GHRSST project. 
-It contains >15,000 daily files from a 41 year times series and is over 11 TBs. Ideally what is desired is a single line of code, 
-to access all the variables in the dataset 
-(e.g. SST, SST uncertainty, and masks) in neatly organized multidimensional arrays (in this case 3D for latitude, longitude, and time), 
-that then can be subsetted to desired regions and timeranges. In a nutshell, the PO.DAAC VDSs provide seemless access to just the 
-desired and specific pieces of a time series, regardless of whether the user in inside or outside the NASA Earthdata Cloud, 
-improving access and computation without need to download massive datasets and operate on them in a file-by-file method 
-as traditional science workflows often do.
-
-Recently, the PO.DAAC has developed a novel approach to virtualizing non-gridded Level 2 datasets that have well behaved repeat orbits. 
-The implmentation requires a new dimension and coordinate to be added to the orginal dataset in the virtual dataset creation process. 
-Often this new dimension is the orbit start time, or a simple sequential granule index number. For example for the VDS for the 
-SWOT_L2_LR_SSH_Basic_D dataset, the new dimension is a sequential numeric list called 'granule', with new additional coordinate variables 
-of cycle, pass, orbit start time, and filename. A user can then query for unique cycle/passes from the VDS or use a space/time CMR
-query to find regional intersecting orbits, and determine the exact filenames for subsetted data.
-
-The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types 
-across other DAACs.
 
 **Characteristics:**
 
@@ -37,38 +23,103 @@ across other DAACs.
 - Uniform chunk grid and compression scheme across each variable
 - Chunk manifest generated at collection level, spanning many granules
 
+### Example 1: Consistently gridded data — PODAAC
+
+* **Data type:** Gridded ocean/atmosphere fields
+* **Virtualization approach:** Collection-level aggregated chunk manifests (Kerchunk)
+* **Status:** Production
+* **Owners:** Ed Armstrong and Dean Henze
+
+Collection-level aggregated chunk manifests have been successfully implemented at PODAAC for consistently gridded 
+Level 3 and 4 datasets.  To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter 
+"Using Virtual Datasets" in the PO.DAAC online cookbook (https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
+
+One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users’ Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.
+
+Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains >15,000 daily files from a 41 year times series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and timeranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.
+
+The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.
+
 ## Developing implementations
 
-### Displacement data (NISAR)
+### Example 2: Synthetic Aperture Radar (NISAR)
 
+* **Data type:** Synthetic aperture radar products
+* **Virtualization approach:** TBD
+* **Status:** In development
+* **Owner:** Joe Kennedy
 
+Synthetic aperture radar products from ASF are an active area of development for virtual store approaches.
+
+### Example 3: Generating and Distributing Manifest Files at GES DISC
+
+* **Data type:** Level 3/4 Products
+* **Virtualization approach:** Kerchunk Manifest Files
+* **Status:** In development
+* **Owner:** Hailiang Zhang, Christine Smit, Chris Battisto
+
+GES DISC is working to provide users with virtual Zarr services as part of its on-prem aggregation service deprecation efforts. The current plan is to enable virtual Zarr support for the 10 most popular collections previously served through on-prem aggregation services.
+GES DISC conducted benchmarking for manifest generation using a representative MERRA-2 dataset (M2T1NXAER), which contains approximately 4.3 TB of data. Running the manifest generation in a cloud-based dask cluster resulted in a total processing time of about 5 hours.
+In addition, GES DISC evaluated data subsetting performance. The test results showed that using Parquet-based Kerchunk manifests delivers roughly 10× better performance compared to JSON-based Kerchunk manifests. However, Parquet-based approaches have limitations, such as lack of support for incremental data appending. The VirtualiZarr team appears to be moving toward Icechunk as a longer-term solution. As a short term solution, we are generating Parquet Kerchunk manifests for historical static datasets, with plans to transition to Icechunk in the future for improved flexibility.
+
+### Example 4: Air quality satellite data (TEMPO) — ASDC
+
+* **Data type:** Air quality satellite data (TEMPO L3 NO₂)
+* **Virtualization approach:** Icechunk in S3
+* **Status:** Proof of concept
+* **Owner:** ASDC
+
+A month of TEMPO L3 V04 NO₂ granules (January 2026, ~30 GB) was
+consolidated into a single Icechunk store (~6 MB reference layer).
+The store was built locally in four incremental append-and-commit
+steps, then manually uploaded to S3 (`asdc-prod-public` bucket).
+The [demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)
+authenticates via earthaccess, opens the store read-only, and loads
+the full month as a single xarray Dataset — producing cartopy map
+visualizations of tropospheric NO₂ columns using both index slicing
+and coordinate-based selection.
+
+**Next steps:**
+
+1. **Direct-to-S3 appending.** The store is currently built locally
+   and uploaded as a static snapshot. The next step is appending
+   directly to a store in S3 so new granules can be committed
+   incrementally without a local intermediate — enabling a
+   continuously growing, cloud-hosted datacube.
+2. **Streamlined end-user experience.** Opening the store currently
+   requires manual S3 configuration, credential helper classes, and
+   multiple Icechunk API calls. This needs to be reduced to an
+   Earthdata Login and a store identifier.
+3. **Preserve netCDF group hierarchy.** The current process flattens
+   the native netCDF group structure (`/geolocation`, `/product`,
+   `/support_data`) into a single level. The next step is to use
+   xarray DataTree to preserve the hierarchy in the Icechunk store.
+
+### Example 5: Surface emissivity (PREFIRE) — ASDC
+
+* **Data type:** Surface emissivity
+* **Virtualization approach:** Kerchunk in S3
+* **Status:** Proof of concept
+* **Owner:** ASDC
+
+A Kerchunk proof of concept provides virtualized access to
+monthly-aggregated PREFIRE surface emissivity data. A
+[demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb)
+is available. Kerchunk was chosen for this proof of concept to
+explore and develop best practices for virtualizing, as Kerchunk
+allows for more straightforward inspection and debugging of the 
+references in JSON. The next step is to build an Icechunk store in S3 
+for the same dataset and compare the user experience and performance 
+of the two approaches.
 
 Synthetic aperture radar displacement products from ASF are an active area of development for virtual store approaches.
 
-[ADD ME: NISAR Virtual Store Documentation @jhkennedy]
-
 ### L2 Collections at PODAAC
 
-[ADD ME: PODAAC L2 Virtual Stores Documentation @DeanHenze @edshred2000]
+Recently, PO.DAAC has developed a novel approach to virtualizing non-gridded Level 2 datasets that have well behaved repeat orbits. 
+The implmentation requires a new dimension and coordinate to be added to the orginal dataset in the virtual dataset creation process. 
+Often this new dimension is the orbit start time, or a simple sequential granule index number. For example for the VDS for the 
+SWOT_L2_LR_SSH_Basic_D dataset, the new dimension is a sequential numeric list called 'granule', with new additional coordinate variables 
+of cycle, pass, orbit start time, and filename. A user can then query for unique cycle/passes from the VDS or use a space/time CMR
+query to find regional intersecting orbits, and determine the exact filenames for subsetted data.
 
-### Architectures for Ongoing Data
-
-Appending new data to an existing virtual store requires different strategies depending on the underlying technology:
-
-- **Icechunk**: supports transactional appends natively
-- **Kerchunk**: typically requires overwriting the reference JSON
-
-### Non-uniform data
-
-Some NASA collections present additional complexity:
-
-- Varying compression schemes and chunk grids across a logical array (usually across granules). We often call this "quirky" data.
-- L2 (often orbital swath data) with varying coordinates and projections.
-
-These patterns are under active investigation. 
-
-[ADD ME: More about those developments from @maxrjones and @d-v-b]
-
-## Out of scope / not currently supported
-
-*(Specific data types or patterns that are not currently supported will be enumerated here as they are identified.)*

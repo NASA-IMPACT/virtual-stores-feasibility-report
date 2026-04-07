@@ -10,20 +10,82 @@ Clear standards are needed for where metadata lives within the Common Metadata R
 
 *(Define what metadata belongs at the collection level and how it should be structured.)*
 
+A virtual store that spans an entire collection (e.g., a single
+Icechunk store aggregating all TEMPO L3 V04 granules) needs to be
+discoverable alongside the collection it virtualizes. Possible
+approaches include adding a related URL to the existing UMM-C
+record or registering the store as a UMM-S service entry. Each
+carries different implications for search behavior in Earthdata
+Search and for how downstream tools resolve data access.
+
 ### Granule-level metadata
 
-*(Define what metadata belongs at the granule level and how it relates to collection-level metadata.)*
+*(Expand on what metadata belongs at the granule level, whether granule-level virtual references are needed, how it relates to collection-level metadata.)*
+
+For virtual stores that aggregate at the collection level, granule-level metadata placement may not apply. DMR++ provides granule-level references for OPeNDAP.
 
 ## Versioning and update policies for virtual layers
 
-Virtual stores are living artifacts that will need to be updated as source data is corrected, reprocessed, or extended. Policies are needed to govern:
+Virtual stores are living artifacts, but "change" can originate from
+two independent sources, each requiring its own policy response.
+
+### Source data changes
+
+When a mission reprocesses its archive, the virtual store built against 
+the previous version becomes stale. There are several possible responses:
+
+- **Lockstep versioning:** Rebuild the virtual store from scratch
+  with each reprocessing campaign. Simple and predictable, but
+  potentially expensive for large archives.
+- **Independent versioning:** The virtual store maintains its own
+  version lifecycle, decoupled from the source data version.
+  More flexible, but introduces the risk of version drift and
+  requires clear compatibility documentation.
+- **Transactional evolution:** Icechunk's commit model could track
+  which source data version each commit references, allowing a
+  single store to evolve while maintaining an audit trail. Whether
+  this is operationally viable at DAAC scale is untested.
+
+### Virtual store technology changes
+
+Virtual stores introduce a dependency on external, actively evolving
+tools — most notably Icechunk, VirtualiZarr, and the Zarr
+specification itself. When these tools release breaking changes,
+alter their internal storage format, or deprecate features a store
+relies on, existing stores may need to be rebuilt or migrated.
+
+Policies are needed to govern the response to upstream
+technology changes, including whether stores are pinned to specific
+tool versions, how migration responsibility is assigned, and what
+testing is required before upgrading the toolchain behind a
+production store.
+
+### Common policy needs
+
+Regardless of the trigger, policies are needed to govern:
 
 - When and how virtual store versions are incremented
-- How consumers are notified of updates
-- How to handle backward compatibility
-
-*(Versioning policies to be defined.)*
+- How consumers are notified of breaking vs. non-breaking updates
+- Backward compatibility: Whether previous versions of a virtual store remain accessible during and after a version transition, and if so, for how long
 
 ## Ownership and stewardship of virtual store assets
 
 *(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)*
+
+Creating a virtual store requires upfront engineering and design
+decisions; maintaining it is an ongoing operational and engineering
+commitment. The maintenance burden depends significantly on
+decisions made at the outset — versioning strategy, automation of
+rebuild pipelines, monitoring for drift — and investing in these
+foundations early will reduce the long-term effort. But as source
+data grows, is reprocessed, or is deprecated, the virtual store
+must be updated or retired accordingly, and that work needs clear
+ownership.
+
+A virtual store touches multiple teams: the science team that
+defines the data, the DAAC archive team that manages source files,
+and the mission POCs that coordinate releases and user
+communication. Which team is responsible for rebuilding the virtual
+store after a reprocessing campaign? Who monitors for drift between
+the store and the archive? Who decides when a virtual store has
+reached end of life?
