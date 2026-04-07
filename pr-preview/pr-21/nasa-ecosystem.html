@@ -225,7 +225,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#discovery-and-integration-with-cmr" id="toc-discovery-and-integration-with-cmr" class="nav-link" data-scroll-target="#discovery-and-integration-with-cmr">Discovery and integration with CMR</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/nasa-ecosystem.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -289,6 +289,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="data-volume" class="level4">
 <h4 class="anchored" data-anchor-id="data-volume">Data Volume</h4>
 <p>Harmony is designed to return a URL to a data object representing only what a user requested. With a virtual data store representing an entire data product, it is possible to request a large amount of data. Safeguards may be required to handle computationally intensive transformations.</p>
+<p>Currently, Harmony users can request transformation of any number of files in a data collection. For most use cases, this means parallelizing the processing of multiple inputs (usually files) in different Kubernetes pods. Aggregation may occur but, generally, a single pod only needs to download, process and output a single object with a comparable size to an archival data file. In other words, input size is roughly output size because inputs <em>and</em> outputs are typically single files. Currently, with a whole-collection virtual data store, a single Harmony invocation would conduct processing and construction of an output in one Kubernetes pod. If a single file-like output object is requested, an output file object could become too large for traditional download-based workflows.</p>
+<p>Alternatives solutions for parallel processing exist, such as dask.</p>
 </section>
 <section id="derived-products" class="level4">
 <h4 class="anchored" data-anchor-id="derived-products">Derived products</h4>
@@ -303,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="discovery-and-integration-with-cmr" class="level2">
 <h2 class="anchored" data-anchor-id="discovery-and-integration-with-cmr">Discovery and integration with CMR</h2>
-<p>[ADDME]</p>
+<p>This section will describe how virtual stores integrate with CMR’s existing discovery infrastructure, including how stores could be represented within UMM metadata models and surfaced through Earthdata Search. For the related governance decisions on metadata placement standards, see <a href="./governance.html#metadata-placement-standards">Governance</a>.</p>
 
 
 </section>
@@ -726,4 +728,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/nasa-ecosystem.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
