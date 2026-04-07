@@ -219,7 +219,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#core-concepts" id="toc-core-concepts" class="nav-link active" data-scroll-target="#core-concepts">Core concepts</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/technical-overview.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -248,12 +248,12 @@ ul.task-list li input[type="checkbox"] {
 <p>[ADD ME: DIAGRAM]</p>
 <ul>
 <li><a href="https://zarr.dev/"><strong>Zarr</strong></a> is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.</li>
-<li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.</li>
+<li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk, Kerchunk, and DMR++ are common implementations of chunk manifests.</li>
 <li><a href="https://icechunk.io/"><strong>Icechunk</strong></a> is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls <a href="https://icechunk.io/en/stable/virtual/">virtual datasets</a>.</li>
 <li><a href="https://fsspec.github.io/kerchunk/"><strong>Kerchunk</strong></a> is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.</li>
 <li><a href="https://opendap.github.io/DMRpp-wiki/DMRpp.html"><strong>DMRPP</strong></a> is a chunk manifest format from <a href="https://opendap.github.io/DMRpp-wiki/DMRpp.html">OPeNDAP</a>, semantically equivalent to Kerchunk or Zarr chunk manifest is mostly used internally on datasets supported by OPeNDAP. This format is however not stackable (consolidating many chunk manifests into one) like Kerchunk or Icechunk. When available it can speed up the creation of virtual stores.</li>
 <li><a href="https://virtualizarr.readthedocs.io/"><strong>VirtualiZarr</strong></a> is a library for generating chunk manifests. Format-specific parsers are used to read chunk information and generate in-memory chunk manifests. VirtualiZarr can then write those chunk manifests to icechunk or kerchunk.</li>
-<li><a href="https://geozarr.org/"><strong>GeoZarr</strong></a> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata.</li>
+<li><a href="https://geozarr.org/"><strong>GeoZarr</strong></a> extends Zarr with geospatial conventions, including coordinate reference systems and spatial metadata.</li>
 </ul>
 
 
@@ -677,4 +677,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/technical-overview.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
