@@ -21,6 +21,13 @@ desired and specific pieces of a time series, regardless of whether the user in 
 improving access and computation without need to download massive datasets and operate on them in a file-by-file method 
 as traditional science workflows often do.
 
+Recently, the PO.DAAC has developed a novel approach to virtualizing non-gridded Level 2 datasets that have well behaved repeat orbits. 
+The implmentation requires a new dimension and coordinate to be added to the orginal dataset in the virtual dataset creation process. 
+Often this new dimension is the orbit start time, or a simple sequential granule index number. For example for the VDS for the 
+SWOT_L2_LR_SSH_Basic_D dataset, the new dimension is a sequential numeric list called 'granule', with new additional coordinate variables 
+of cycle, pass, orbit start time, and filename. A user can then query for unique cycle/passes from the VDS or use a space/time CMR
+query to find regional intersecting orbits, and determine the exact filenames for subsetted data.
+
 The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types 
 across other DAACs.
 
@@ -33,6 +40,8 @@ across other DAACs.
 ## Developing implementations
 
 ### Displacement data (NISAR)
+
+
 
 Synthetic aperture radar displacement products from ASF are an active area of development for virtual store approaches.
 
