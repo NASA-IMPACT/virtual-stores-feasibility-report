@@ -8,7 +8,7 @@ Clear standards are needed for where metadata lives within the Common Metadata R
 
 ### Collection-level metadata
 
-*(Define what metadata belongs at the collection level and how it should be structured.)*
+Existing metadata curation approaches include the addition of a RelatedURL representing the collection-level virtual store in the CMR Unified Metadata Model - Collection (UMM-C) record. However, no ESDIS-level standards currently exist regarding this practice, which is needed in order to ensure that virtual stores are discoverable through common tools and geospatial workflows such as `earthaccess`. The ESDIS Metadata Stewardship Team ensures consistent and accurate metadata curation practices are applied across all ESDIS data holdings. We recommend this team provides virtual store metadata recommendations to be adopted by ESDIS metadata curators, in order to improve and expand virtual store discoverability for end-users. 
 
 A virtual store that spans an entire collection (e.g., a single
 Icechunk store aggregating all TEMPO L3 V04 granules) needs to be
