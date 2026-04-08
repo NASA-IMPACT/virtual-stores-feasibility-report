@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-028c30cb1342a02cc1af3444e6f684b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -257,11 +257,24 @@ ul.task-list li input[type="checkbox"] {
 <h1>Mature Support</h1>
 <p><strong>Current mature implementations share the following characteristics:</strong></p>
 <ul>
-<li>Virtual stores are used to provide alternate views into data. These views can range from an entire collection, to subsets of a collection, to subsets of a granule.</li>
+<li>Virtual stores are used to provide alternate views (defined below) into the data. These views can range from an entire collection, to subsets of a collection, to subsets of a granule.</li>
 <li>Consistent spatial and temporal resolution across each variable (i.e.&nbsp;array) within a virtual store</li>
 <li>Uniform chunk grid and compression scheme across each variable within a virtual store</li>
-<li>Chunk manifest are generated for a particular view and may span many granules</li>
+<li>Chunk manifests are generated for a particular view and may span many granules</li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We define the term “view” in a virtual store context to mean the different ways the same dataset can be represented. For example, a view of the same dataset could be representing the entire dataset as a cube or some a subset of the dataset, or a single variable array or a data tree of multiple groups of arrays. Different views will make sense given a datasets characteristics and the intended use cases.</p>
+</div>
+</div>
 <section id="supported-data-formats" class="level2">
 <h2 class="anchored" data-anchor-id="supported-data-formats">Supported data formats</h2>
 <p>Data format support is limited to formats with VirtualiZarr parser implementations. Parsers maintained by VirtualiZarr include:</p>
