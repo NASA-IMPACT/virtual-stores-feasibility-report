@@ -229,6 +229,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#example-3-generating-and-distributing-manifest-files-at-ges-disc" id="toc-example-3-generating-and-distributing-manifest-files-at-ges-disc" class="nav-link" data-scroll-target="#example-3-generating-and-distributing-manifest-files-at-ges-disc">Example 3: Generating and Distributing Manifest Files at GES DISC</a></li>
   <li><a href="#example-4-air-quality-satellite-data-tempo-asdc" id="toc-example-4-air-quality-satellite-data-tempo-asdc" class="nav-link" data-scroll-target="#example-4-air-quality-satellite-data-tempo-asdc">Example 4: Air quality satellite data (TEMPO) — ASDC</a></li>
   <li><a href="#example-5-surface-emissivity-prefire-asdc" id="toc-example-5-surface-emissivity-prefire-asdc" class="nav-link" data-scroll-target="#example-5-surface-emissivity-prefire-asdc">Example 5: Surface emissivity (PREFIRE) — ASDC</a></li>
+  <li><a href="#example-5-smap-l4-soil-moisture---nsidc" id="toc-example-5-smap-l4-soil-moisture---nsidc" class="nav-link" data-scroll-target="#example-5-smap-l4-soil-moisture---nsidc">Example 5: SMAP L4 soil moisture - NSIDC</a></li>
   <li><a href="#l2-collections-at-podaac" id="toc-l2-collections-at-podaac" class="nav-link" data-scroll-target="#l2-collections-at-podaac">L2 Collections at PODAAC</a></li>
   </ul></li>
   </ul>
@@ -276,38 +277,44 @@ ul.task-list li input[type="checkbox"] {
 <td><a href="https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html">Virtual Data Set Starter Notebook</a></td>
 </tr>
 <tr class="even">
+<td>NSIDC</td>
+<td>SMAP L4</td>
+<td><a href="https://its-live-data.s3-us-west-2.amazonaws.com/test-space/vds/SPL4SMGP.parquet">10 years of SPL4SMGP</a> — more coming soon</td>
+<td><a href="https://github.com/nsidc/NSIDC-Data-Tutorials/blob/main/notebooks/SMAP/smap_virtual.ipynb">SPL4SMGP Notebook</a></td>
+</tr>
+<tr class="odd">
 <td>VEDA</td>
 <td>RASI</td>
 <td>s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/</td>
 <td><a href="https://github.com/virtual-zarr/rasi-icechunk">Github Repo</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>VEDA</td>
 <td>NLDAS</td>
 <td>s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/</td>
 <td><a href="https://github.com/virtual-zarr/nldas-icechunk">Github Repo</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>VEDA</td>
 <td>GEOS-CF</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>ASDC</td>
 <td>TEMPO</td>
 <td><code>s3://asdc-prod-public/virtual-reference-docs/TEMPO_L3_V04_icechunk_for_202601/</code></td>
 <td><a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb">Demo Notebook</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ASDC</td>
 <td>PREFIRE</td>
 <td><code>s3://asdc-prod-public/virtual-reference-docs/PREFIRE_SAT2_3-SFC-SORTED-ALLSKY_R01/prefire-monthly-kerchunk_created20250819.json</code></td>
 <td><a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb">Demo Notebook</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>ASF</td>
-<td></td>
+<td>OPERA_L3_DISP-S1</td>
 <td>See <code>RelatedUrls</code> with <code>"Format": "Zarr"</code> in <a href="https://cmr.earthdata.nasa.gov/search/granules.umm_json?collection_concept_id=C3294057315-ASF">C3294057315-ASF</a></td>
 <td>Powers the <a href="https://displacement.asf.alaska.edu/#/">OPERA Displacement Portal</a></td>
 </tr>
@@ -338,7 +345,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Owners:</strong> Kim Fairbanks (technical poc), Kathleen Kristenson (portal), Cassandra Wagner (kerchunk ingest)</li>
 </ul>
 <p>The <a href="https://www.jpl.nasa.gov/go/opera/products/disp-product-suite/">OPERA DISP-S1</a> products provide surface deformation time series data over much of North and Central America from 2016 onward. These products are Level-3 products derived from Sentinel-1 synthetic aperture radar (SAR) data, and are a powerful tool for identifying areas of subsidence and uplift. Many use-cases for these products are time-series based, where users want to understand the deformation pattern of that area through time. To meet this user need, the OPERA project and ASF DAAC developed the <a href="https://displacement.asf.alaska.edu/">Opera Displacement Portal</a> which plots the short-wavelength displacement time series for any point location.</p>
-<p>The time-series view into the data is provided by kerchunk-based virtual Zarr stores. Each OPERA DISP-S1 granule is provided as geostationary frames in netCDF-4 format by the OPERA project, where each granule is associated with only one frame, but a frame is associated with a “stack” or granules over time. Upon ingest, ASF DAAC creates a kerchunk-based virtual zarr store of each individual granule, and then aggregates just the short-wavelength variable from each granule within a frame into a kerchunk-based virtual zarr time series stack. Both the individual-granule zarr store and the associated frame time-series stack are reported in the granule’s UMM metadata as a related URL and is discoverable via standard NASA Earthdata discovery and access tools.</p>
+<p>The time-series view into the data is provided by kerchunk-based virtual Zarr stores. OPERA DISP-S1 granules are provided in netCDF4 format and “framed” such that they have a consistent (geostationary) spatial extent over time. Individual granules are produced at the same 12-day cadence as the Sentinel-1 mission so an OPERA frame will have a time-series “stack” of granules associated with it. Upon ingest, ASF DAAC creates a kerchunk-based virtual zarr store of each individual granule, and then aggregates just the short-wavelength variable from the stack of granules within a frame into a kerchunk-based virtual zarr store. Both the individual-granule zarr store and the associated frame-stack zarr store are reported in the granule’s UMM metadata as a related URL and is discoverable via standard NASA Earthdata discovery and access tools.</p>
 <p>The ASF virtual Zarr store implementation model represents a mature approach and is recommended as a baseline implementation for similar dataset types across other DAACs. This model is easily adapted to any framed-dataset where users would benefit from a time-series view into the data.</p>
 </section>
 </section>
@@ -353,7 +360,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Owner:</strong> Joseph H. Kennedy (Prototype)</li>
 </ul>
 <p>ASF is looking to develop virtual Zarr stores for time-series analyses of the <a href="https://nisar-docs.asf.alaska.edu/products-overview/">L2+ Geocoded NISAR products</a>. Building off of ASF’s experience with the OPERA Displacement portal (described above) and Joseph’s experience on the <a href="https://its-live.jpl.nasa.gov/">ITS_LIVE project</a> (which uses Zarr datacubes to power a time-series portal), ASF plans to provide both granule-level virtual data stores and frame-based virtual data stores.</p>
-<p>There are, however, some likely changes to how we approach this from how the OPERA displacement portal was developed. Primarily, since there are 6 Geocoded NISAR products at this time, we plan on creating a CMR collection for the NISAR frames – each frame granule would have spatial metadata describing the footprint of the NISAR frame and data links to a virtual zarr time-series stack for every virtualized product. This would allow users to do a fast spatial search for an area of interest, and easily load in the entire time-series for the product(s) they are interested in. We will also use icechunk as the virtualization method because it support appending – the aggregation step to append newly acquired data into the virtual zarr time-series stacks is resource intensive for the OPERA DISP-S1 kerchunks, requiring a full recreation of the virtual zarr time-series stacks every time new data is added.</p>
+<p>There are, however, some likely changes to how ASF approaches this from how the OPERA displacement portal was developed. Primarily, since there are 6 Geocoded NISAR products at this time, ASF plans on creating a CMR collection for the NISAR frames – each “frame granule” would have spatial metadata describing the footprint of the NISAR frame and its data links would point to the virtual zarr time-series stack for every virtualized product. This would allow users to do a fast spatial search for an area of interest and easily load in the entire time-series for the product(s) they are interested in.</p>
+<p>ASF will also use icechunk as the virtualization method because it support appending – the aggregation step to append newly acquired data into the virtual zarr time-series stacks is resource intensive for the OPERA DISP-S1 kerchunks, requiring a full recreation of the virtual zarr time-series stacks every time new data is added.</p>
 </section>
 <section id="example-3-generating-and-distributing-manifest-files-at-ges-disc" class="level3">
 <h3 class="anchored" data-anchor-id="example-3-generating-and-distributing-manifest-files-at-ges-disc">Example 3: Generating and Distributing Manifest Files at GES DISC</h3>
@@ -390,6 +398,16 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Owner:</strong> ASDC</li>
 </ul>
 <p>A Kerchunk proof of concept provides virtualized access to monthly-aggregated PREFIRE surface emissivity data. A <a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb">demo notebook</a> is available. Kerchunk was chosen for this proof of concept to explore and develop best practices for virtualizing, as Kerchunk allows for more straightforward inspection and debugging of the references in JSON. The next step is to build an Icechunk store in S3 for the same dataset and compare the user experience and performance of the two approaches.</p>
+</section>
+<section id="example-5-smap-l4-soil-moisture---nsidc" class="level3">
+<h3 class="anchored" data-anchor-id="example-5-smap-l4-soil-moisture---nsidc">Example 5: SMAP L4 soil moisture - NSIDC</h3>
+<ul>
+<li><strong>Data type:</strong> Soil moisture</li>
+<li><strong>Virtualization approach:</strong> Kerchunk Parquet in S3</li>
+<li><strong>Status:</strong> Proof of concept</li>
+<li><strong>Owner:</strong> NSIDC</li>
+</ul>
+<p>We assembled 10 years of SPL4SMGP a global Level-4 data from the SMAP mission totalling 40TB, 3-hour, 9km resolution. During this process, we corrected source file metadata issues within the virtual store by properly assigning coordinates and values to the time dimension. By integrating earthaccess and leveraging dmrpp files, we were able to accelerate the creation of this virtual store by an order of magnitude. This prototype is first of potentially many virtual data cubes at NSIDC DAAC.</p>
 </section>
 <section id="l2-collections-at-podaac" class="level3">
 <h3 class="anchored" data-anchor-id="l2-collections-at-podaac">L2 Collections at PODAAC</h3>
