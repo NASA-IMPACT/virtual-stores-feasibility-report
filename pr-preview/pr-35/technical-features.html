@@ -217,16 +217,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mature-support" id="toc-mature-support" class="nav-link active" data-scroll-target="#mature-support">Mature Support</a></li>
-  <li><a href="#developing-support" id="toc-developing-support" class="nav-link" data-scroll-target="#developing-support">Developing Support</a></li>
-  <li><a href="#non-uniform-grids" id="toc-non-uniform-grids" class="nav-link" data-scroll-target="#non-uniform-grids">Non-uniform grids</a></li>
-  <li><a href="#non-cubable-data" id="toc-non-cubable-data" class="nav-link" data-scroll-target="#non-cubable-data">Non-cubable data</a></li>
-  <li><a href="#no-plans-for-support" id="toc-no-plans-for-support" class="nav-link" data-scroll-target="#no-plans-for-support">No plans for support</a>
+  <li><a href="#mature-support" id="toc-mature-support" class="nav-link active" data-scroll-target="#mature-support">Mature Support</a>
   <ul class="collapse">
   <li><a href="#supported-data-formats" id="toc-supported-data-formats" class="nav-link" data-scroll-target="#supported-data-formats">Supported data formats</a></li>
   </ul></li>
+  <li><a href="#developing-support" id="toc-developing-support" class="nav-link" data-scroll-target="#developing-support">Developing Support</a>
+  <ul class="collapse">
+  <li><a href="#non-uniform-grids" id="toc-non-uniform-grids" class="nav-link" data-scroll-target="#non-uniform-grids">Non-uniform grids</a></li>
+  <li><a href="#non-cubable-data" id="toc-non-cubable-data" class="nav-link" data-scroll-target="#non-cubable-data">Non-cubable data</a></li>
+  </ul></li>
+  <li><a href="#no-plans-for-support" id="toc-no-plans-for-support" class="nav-link" data-scroll-target="#no-plans-for-support">No plans for support</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/technical-features.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -251,8 +253,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="mature-support" class="level2">
-<h2 class="anchored" data-anchor-id="mature-support">Mature Support</h2>
+<section id="mature-support" class="level1">
+<h1>Mature Support</h1>
 <p><strong>Current mature implementations share the following characteristics:</strong></p>
 <ul>
 <li>Virtual datasets are used to provide alternate views into data, with views ranging from the entire collection, to subsets of a collection, to subsets of a granule.</li>
@@ -260,25 +262,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Uniform chunk grid and compression scheme across each variable within a view</li>
 <li>Chunk manifest are generated for a particular view and may span many granules</li>
 </ul>
-</section>
-<section id="developing-support" class="level2">
-<h2 class="anchored" data-anchor-id="developing-support">Developing Support</h2>
-</section>
-<section id="non-uniform-grids" class="level2">
-<h2 class="anchored" data-anchor-id="non-uniform-grids">Non-uniform grids</h2>
-<p>Some NASA collections present additional complexity due having varying compression schemes and chunk grids across a logical array (usually across granules). At this point in time, Zarr assumes consistent chunk shape and compression across the entire array.</p>
-<p>However, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.</p>
-</section>
-<section id="non-cubable-data" class="level2">
-<h2 class="anchored" data-anchor-id="non-cubable-data">Non-cubable data</h2>
-<p>COMING SOON</p>
-</section>
-<section id="no-plans-for-support" class="level1">
-<h1>No plans for support</h1>
 <section id="supported-data-formats" class="level2">
 <h2 class="anchored" data-anchor-id="supported-data-formats">Supported data formats</h2>
-<p>Data format support is limited to formats with VirtualiZarr parser implementations.</p>
-<p>Parsers maintained by VirtualiZarr include:</p>
+<p>Data format support is limited to formats with VirtualiZarr parser implementations. Parsers maintained by VirtualiZarr include:</p>
 <ul>
 <li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/hdf/hdf.py">HDFParser</a></li>
 <li><a href="https://github.com/zarr-developers/VirtualiZarr/tree/main/virtualizarr/parsers/kerchunk">Kerchunk (Parquet or JSON)</a></li>
@@ -293,9 +279,27 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://github.com/virtual-zarr/hrrr-parser">hrrr-parser</a></li>
 </ul>
 <p>Custom parsers for additional formats can be implemented using the VirtualiZarr <a href="https://virtualizarr.readthedocs.io/en/stable/custom_parsers.html">CustomParsers</a> guide.</p>
-
-
 </section>
+</section>
+<section id="developing-support" class="level1">
+<h1>Developing Support</h1>
+<section id="non-uniform-grids" class="level2">
+<h2 class="anchored" data-anchor-id="non-uniform-grids">Non-uniform grids</h2>
+<p>Some NASA collections present additional complexity due to having varying compression schemes and chunk grids across a logical array (usually across granules). Currently, Zarr assumes a consistent chunk shape and compression across the entire array.</p>
+<p>However, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.</p>
+</section>
+<section id="non-cubable-data" class="level2">
+<h2 class="anchored" data-anchor-id="non-cubable-data">Non-cubable data</h2>
+<p>COMING SOON</p>
+</section>
+</section>
+<section id="no-plans-for-support" class="level1">
+<h1>No plans for support</h1>
+<ul>
+<li>There are no plans to support formats outside of the “Supported data formats” list above at this time.</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -716,4 +720,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/technical-features.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

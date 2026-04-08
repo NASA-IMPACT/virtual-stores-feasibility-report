@@ -228,10 +228,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#example-3-generating-and-distributing-manifest-files-at-ges-disc" id="toc-example-3-generating-and-distributing-manifest-files-at-ges-disc" class="nav-link" data-scroll-target="#example-3-generating-and-distributing-manifest-files-at-ges-disc">Example 3: Generating and Distributing Manifest Files at GES DISC</a></li>
   <li><a href="#example-4-air-quality-satellite-data-tempo-asdc" id="toc-example-4-air-quality-satellite-data-tempo-asdc" class="nav-link" data-scroll-target="#example-4-air-quality-satellite-data-tempo-asdc">Example 4: Air quality satellite data (TEMPO) — ASDC</a></li>
   <li><a href="#example-5-surface-emissivity-prefire-asdc" id="toc-example-5-surface-emissivity-prefire-asdc" class="nav-link" data-scroll-target="#example-5-surface-emissivity-prefire-asdc">Example 5: Surface emissivity (PREFIRE) — ASDC</a></li>
+  <li><a href="#example-5-smap-l4-soil-moisture---nsidc" id="toc-example-5-smap-l4-soil-moisture---nsidc" class="nav-link" data-scroll-target="#example-5-smap-l4-soil-moisture---nsidc">Example 5: SMAP L4 soil moisture - NSIDC</a></li>
   <li><a href="#l2-collections-at-podaac" id="toc-l2-collections-at-podaac" class="nav-link" data-scroll-target="#l2-collections-at-podaac">L2 Collections at PODAAC</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/nasa-applications.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -275,30 +276,36 @@ ul.task-list li input[type="checkbox"] {
 <td><a href="https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html">Virtual Data Set Starter Notebook</a></td>
 </tr>
 <tr class="even">
+<td>NSIDC</td>
+<td>SMAP L4</td>
+<td><a href="https://its-live-data.s3-us-west-2.amazonaws.com/test-space/vds/SPL4SMGP.parquet">10 years of SPL4SMGP</a> — more coming soon</td>
+<td><a href="https://github.com/nsidc/NSIDC-Data-Tutorials/blob/main/notebooks/SMAP/smap_virtual.ipynb">SPL4SMGP Notebook</a></td>
+</tr>
+<tr class="odd">
 <td>VEDA</td>
 <td>RASI</td>
 <td>s3://nasa-waterinsight/virtual-zarr-store/icechunk/RASI/</td>
 <td><a href="https://github.com/virtual-zarr/rasi-icechunk">Github Repo</a></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>VEDA</td>
 <td>NLDAS</td>
 <td>s3://nasa-waterinsight/virtual-zarr-store/NLDAS-3-icechunk/</td>
 <td><a href="https://github.com/virtual-zarr/nldas-icechunk">Github Repo</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>VEDA</td>
 <td>GEOS-CF</td>
 <td></td>
 <td></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>ASDC</td>
 <td>TEMPO</td>
 <td><code>s3://asdc-prod-public/virtual-reference-docs/TEMPO_L3_V04_icechunk_for_202601/</code></td>
 <td><a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb">Demo Notebook</a></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>ASDC</td>
 <td>PREFIRE</td>
 <td><code>s3://asdc-prod-public/virtual-reference-docs/PREFIRE_SAT2_3-SFC-SORTED-ALLSKY_R01/prefire-monthly-kerchunk_created20250819.json</code></td>
@@ -370,6 +377,16 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Owner:</strong> ASDC</li>
 </ul>
 <p>A Kerchunk proof of concept provides virtualized access to monthly-aggregated PREFIRE surface emissivity data. A <a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/PREFIRE/additional_drafts/read-references-for-PREFIRE-from-s3.ipynb">demo notebook</a> is available. Kerchunk was chosen for this proof of concept to explore and develop best practices for virtualizing, as Kerchunk allows for more straightforward inspection and debugging of the references in JSON. The next step is to build an Icechunk store in S3 for the same dataset and compare the user experience and performance of the two approaches.</p>
+</section>
+<section id="example-5-smap-l4-soil-moisture---nsidc" class="level3">
+<h3 class="anchored" data-anchor-id="example-5-smap-l4-soil-moisture---nsidc">Example 5: SMAP L4 soil moisture - NSIDC</h3>
+<ul>
+<li><strong>Data type:</strong> Soil moisture</li>
+<li><strong>Virtualization approach:</strong> Kerchunk Parquet in S3</li>
+<li><strong>Status:</strong> Proof of concept</li>
+<li><strong>Owner:</strong> NSIDC</li>
+</ul>
+<p>We assembled 10 years of SPL4SMGP a global Level-4 data from the SMAP mission totalling 40TB, 3-hour, 9km resolution. During this process, we corrected source file metadata issues within the virtual store by properly assigning coordinates and values to the time dimension. By integrating earthaccess and leveraging dmrpp files, we were able to accelerate the creation of this virtual store by an order of magnitude. This prototype is first of potentially many virtual data cubes at NSIDC DAAC.</p>
 </section>
 <section id="l2-collections-at-podaac" class="level3">
 <h3 class="anchored" data-anchor-id="l2-collections-at-podaac">L2 Collections at PODAAC</h3>
@@ -797,4 +814,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-</body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/nasa-applications.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
