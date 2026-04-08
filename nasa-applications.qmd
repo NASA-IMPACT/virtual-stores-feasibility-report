@@ -49,7 +49,7 @@ The ASF virtual Zarr store implementation model represents a mature approach and
 
 ## Developing implementations
 
-### Example 3: NISAR Geocoded Synthetic Aperture Radar products
+### Example 3: NISAR Geocoded Synthetic Aperture Radar products — ASF
 
 * **Data type:** Geocoded NISAR synthetic aperture radar products
 * **Virtualization approach:** Granule and frame aggregated chunk manifests (IceChunk)
@@ -135,6 +135,6 @@ During this process, we corrected source file metadata issues within the virtual
 By integrating earthaccess and leveraging dmrpp files, we were able to accelerate the creation of this virtual store by an order of magnitude.
 This prototype is first of potentially many virtual data cubes at NSIDC DAAC.
 
-### L2 Collections at PODAAC
+### Example 8: L2 Collections at PODAAC
 
 Virtualized L2 collections are currently under development at PO.DAAC.
