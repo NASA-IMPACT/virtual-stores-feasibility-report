@@ -7,9 +7,9 @@ subtitle: Additional information on technical features and their maturity levels
 
 **Current mature implementations share the following characteristics:**
 
-- Virtual datasets are used to provide alternate views into data, with views ranging from the entire collection, to subsets of a collection, to subsets of a granule.
-- Consistent spatial and temporal resolution across each variable within a view
-- Uniform chunk grid and compression scheme across each variable within a view
+- Virtual stores are used to provide alternate views into data. These views can range from an entire collection, to subsets of a collection, to subsets of a granule.
+- Consistent spatial and temporal resolution across each variable (i.e. array) within a virtual store
+- Uniform chunk grid and compression scheme across each variable within a virtual store
 - Chunk manifest are generated for a particular view and may span many granules
 
 ## Supported data formats
