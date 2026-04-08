@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-028c30cb1342a02cc1af3444e6f684b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -225,12 +225,12 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#developing-implementations" id="toc-developing-implementations" class="nav-link" data-scroll-target="#developing-implementations">Developing implementations</a>
   <ul class="collapse">
-  <li><a href="#example-3-nisar-geocoded-synthetic-aperture-radar-products" id="toc-example-3-nisar-geocoded-synthetic-aperture-radar-products" class="nav-link" data-scroll-target="#example-3-nisar-geocoded-synthetic-aperture-radar-products">Example 3: NISAR Geocoded Synthetic Aperture Radar products</a></li>
+  <li><a href="#example-3-nisar-geocoded-synthetic-aperture-radar-products-asf" id="toc-example-3-nisar-geocoded-synthetic-aperture-radar-products-asf" class="nav-link" data-scroll-target="#example-3-nisar-geocoded-synthetic-aperture-radar-products-asf">Example 3: NISAR Geocoded Synthetic Aperture Radar products — ASF</a></li>
   <li><a href="#example-4-generating-and-distributing-manifest-files-at-ges-disc" id="toc-example-4-generating-and-distributing-manifest-files-at-ges-disc" class="nav-link" data-scroll-target="#example-4-generating-and-distributing-manifest-files-at-ges-disc">Example 4: Generating and Distributing Manifest Files at GES DISC</a></li>
   <li><a href="#example-5-air-quality-satellite-data-tempo-asdc" id="toc-example-5-air-quality-satellite-data-tempo-asdc" class="nav-link" data-scroll-target="#example-5-air-quality-satellite-data-tempo-asdc">Example 5: Air quality satellite data (TEMPO) — ASDC</a></li>
   <li><a href="#example-6-surface-emissivity-prefire-asdc" id="toc-example-6-surface-emissivity-prefire-asdc" class="nav-link" data-scroll-target="#example-6-surface-emissivity-prefire-asdc">Example 6: Surface emissivity (PREFIRE) — ASDC</a></li>
   <li><a href="#example-7-smap-l4-soil-moisture---nsidc" id="toc-example-7-smap-l4-soil-moisture---nsidc" class="nav-link" data-scroll-target="#example-7-smap-l4-soil-moisture---nsidc">Example 7: SMAP L4 soil moisture - NSIDC</a></li>
-  <li><a href="#l2-collections-at-podaac" id="toc-l2-collections-at-podaac" class="nav-link" data-scroll-target="#l2-collections-at-podaac">L2 Collections at PODAAC</a></li>
+  <li><a href="#example-8-l2-collections-at-podaac" id="toc-example-8-l2-collections-at-podaac" class="nav-link" data-scroll-target="#example-8-l2-collections-at-podaac">Example 8: L2 Collections at PODAAC</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/nasa-applications.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -351,8 +351,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="developing-implementations" class="level2">
 <h2 class="anchored" data-anchor-id="developing-implementations">Developing implementations</h2>
-<section id="example-3-nisar-geocoded-synthetic-aperture-radar-products" class="level3">
-<h3 class="anchored" data-anchor-id="example-3-nisar-geocoded-synthetic-aperture-radar-products">Example 3: NISAR Geocoded Synthetic Aperture Radar products</h3>
+<section id="example-3-nisar-geocoded-synthetic-aperture-radar-products-asf" class="level3">
+<h3 class="anchored" data-anchor-id="example-3-nisar-geocoded-synthetic-aperture-radar-products-asf">Example 3: NISAR Geocoded Synthetic Aperture Radar products — ASF</h3>
 <ul>
 <li><strong>Data type:</strong> Geocoded NISAR synthetic aperture radar products</li>
 <li><strong>Virtualization approach:</strong> Granule and frame aggregated chunk manifests (IceChunk)</li>
@@ -409,8 +409,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>We assembled 10 years of SPL4SMGP a global Level-4 data from the SMAP mission totalling 40TB, 3-hour, 9km resolution. During this process, we corrected source file metadata issues within the virtual store by properly assigning coordinates and values to the time dimension. By integrating earthaccess and leveraging dmrpp files, we were able to accelerate the creation of this virtual store by an order of magnitude. This prototype is first of potentially many virtual data cubes at NSIDC DAAC.</p>
 </section>
-<section id="l2-collections-at-podaac" class="level3">
-<h3 class="anchored" data-anchor-id="l2-collections-at-podaac">L2 Collections at PODAAC</h3>
+<section id="example-8-l2-collections-at-podaac" class="level3">
+<h3 class="anchored" data-anchor-id="example-8-l2-collections-at-podaac">Example 8: L2 Collections at PODAAC</h3>
 <p>Virtualized L2 collections are currently under development at PO.DAAC.</p>
 
 
