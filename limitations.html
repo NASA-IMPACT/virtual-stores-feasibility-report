@@ -295,7 +295,8 @@ Note
 </section>
 <section id="authentication-and-credential-complexity" class="level2">
 <h2 class="anchored" data-anchor-id="authentication-and-credential-complexity">Authentication and credential complexity</h2>
-<p>Opening a virtual store backed by NASA data currently requires multiple steps beyond standard Earthdata Login — including S3 credential configuration, credential helper classes, and tool-specific API calls to open the store before any data is accessed. This friction exists because virtual stores sit at the intersection of several authentication boundaries: the store itself (which may be in a public or protected S3 bucket), the source data files the store references (which typically require Earthdata Login credentials), and the tools used to read the store (which have their own authentication interfaces). Until this is simplified to something comparable to the experience <code>earthaccess</code> provides for direct file access, credential complexity will remain a practical barrier to adoption — particularly for researchers who are not cloud-infrastructure specialists.</p>
+<p>Opening a virtual store backed by NASA data currently requires steps beyond standard Earthdata Login, specifically S3 credential configuration and tool-specific API calls to open the store before any data is accessed. Friction exists because virtual stores sit at the intersection of several authentication boundaries: the store itself (which may be in a public or protected S3 bucket), the source data files the store references (which typically require Earthdata Login credentials), and services (which may have their own authentication interfaces).</p>
+<p>Until this is simplified to something comparable to the experience <code>earthaccess</code> provides for direct file access, credential complexity will remain a practical barrier to adoption — particularly for researchers who are notcloud-infrastructure specialists.</p>
 
 
 </section>
