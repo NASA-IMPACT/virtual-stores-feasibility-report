@@ -4,7 +4,7 @@ title: "Technical Overview of Virtual Stores"
 
 ## Core concepts
 
-[ADD ME: DIAGRAM]
+![](graphics/virtualizarr_pipeline.svg)
 
 * [**Zarr**](https://zarr.dev/) is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.
 * **Chunk manifests** are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an "indirection layer". Icechunk, Kerchunk, and DMR++ are common implementations of chunk manifests.
