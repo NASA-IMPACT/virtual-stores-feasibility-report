@@ -10,10 +10,9 @@ subtitle: Additional information on technical features and their maturity levels
 - Virtual stores are used to provide alternate views (defined below) into the data. These views can range from an entire collection, to subsets of a collection, to a subset of a granule.
 - Consistent spatial and temporal resolution across each variable (i.e. array) within a virtual store
 - Uniform chunk grid and compression scheme across each variable within a virtual store
-- Chunk manifests are generated for a particular view and may span many granules
 
 ::: {.callout-note}
-We define the term "view" in a virtual store context to mean the different ways the same dataset can be represented. For example, a view of the same dataset could be representing the entire dataset as a cube or some a subset of the dataset, or a single variable array or a data tree of multiple groups of arrays. Different views will make sense given a datasets characteristics and the intended use cases.
+We define the term "view" in a virtual store context to mean the different ways the same dataset can be represented. A view of the same dataset could be representing the entire dataset as a cube or aggregating some a subset of the dataset. Different views will make sense for any particular dataset given its characteristics and the intended use cases; see [Virtual Stores at NASA](nasa-applications.qmd) for some real-world examples.
 :::
 
 ## Supported data formats
