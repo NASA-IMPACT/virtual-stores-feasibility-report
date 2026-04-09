@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -260,7 +260,6 @@ ul.task-list li input[type="checkbox"] {
 <li>Virtual stores are used to provide alternate views (defined below) into the data. These views can range from an entire collection, to subsets of a collection, to a subset of a granule.</li>
 <li>Consistent spatial and temporal resolution across each variable (i.e.&nbsp;array) within a virtual store</li>
 <li>Uniform chunk grid and compression scheme across each variable within a virtual store</li>
-<li>Chunk manifests are generated for a particular view and may span many granules</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -272,7 +271,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We define the term “view” in a virtual store context to mean the different ways the same dataset can be represented. For example, a view of the same dataset could be representing the entire dataset as a cube or some a subset of the dataset, or a single variable array or a data tree of multiple groups of arrays. Different views will make sense given a datasets characteristics and the intended use cases.</p>
+<p>We define the term “view” in a virtual store context to mean the different ways the same dataset can be represented. A view of the same dataset could be representing the entire dataset as a cube or aggregating some a subset of the dataset. Different views will make sense for any particular dataset given its characteristics and the intended use cases; see <a href="./nasa-applications.html">Virtual Stores at NASA</a> for some real-world examples.</p>
 </div>
 </div>
 <section id="supported-data-formats" class="level2">
