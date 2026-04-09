@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-028c30cb1342a02cc1af3444e6f684b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -339,10 +339,10 @@ ul.task-list li input[type="checkbox"] {
 <section id="example-2-opera-displacement-portal-asf" class="level3">
 <h3 class="anchored" data-anchor-id="example-2-opera-displacement-portal-asf">Example 2: OPERA displacement portal — ASF</h3>
 <ul>
-<li><strong>Data type:</strong> Frame-based, L3 radar line-of-site displacements</li>
-<li><strong>Virtualization approach:</strong> Granule chunk manifests (Kerchunk) and frame-aggregated chunk manifests (Kerchunk)</li>
+<li><strong>Data type:</strong> Framed L3 radar line-of-site displacements</li>
+<li><strong>Virtualization approach:</strong> Granule chunk manifests (Kerchunk) and frame-level chunk manifests (Kerchunk)</li>
 <li><strong>Status:</strong> Production</li>
-<li><strong>Owners:</strong> Kim Fairbanks (technical poc), Kathleen Kristenson (portal), Cassandra Wagner (kerchunk ingest)</li>
+<li><strong>Owners:</strong> Kim Fairbanks (technical poc), Kathleen Kristenson (portal), Cassandra Wagner (kerchunk ingest), Luca Cinquini (OPERA project)</li>
 </ul>
 <p>The <a href="https://www.jpl.nasa.gov/go/opera/products/disp-product-suite/">OPERA DISP-S1</a> products provide surface deformation time series data over much of North and Central America from 2016 onward. These products are Level-3 products derived from Sentinel-1 synthetic aperture radar (SAR) data, and are a powerful tool for identifying areas of subsidence and uplift. Many use cases for these products are time-series-based, where users want to understand the deformation pattern of that area through time. To meet this user need, the OPERA project and ASF DAAC developed the <a href="https://displacement.asf.alaska.edu/">Opera Displacement Portal</a>, which plots the short-wavelength displacement time series for any point location.</p>
 <p>OPERA DISP-S1 granules are provided in netCDF4 format and “framed” such that they have a consistent (geostationary) spatial extent over time. New granules are created following the same 12-day revisit cycle of the Sentinel-1 mission, so a single OPERA frame corresponds to a time-series “stack” of granules. That is, searching the DISP-S1 collection by frame number or by a frame’s spatial extent yields the same stack of granules. These granules are combined into a kerchunk-based, frame-level virtual Zarr store, with just the short-wavelength displacement variable from each granule, to enable rapid access to the displacement time-series.</p>
