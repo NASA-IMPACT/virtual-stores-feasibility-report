@@ -14,12 +14,12 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: executive_summary.qmd
+      - href: executive-summary.qmd
         text: Executive Summary
       - section: Guidance
         contents:
           - href: recommendations.qmd
-            text: Recommendations
+            text: Recommendationsq
           - href: limitations.qmd
             text: Known Limitations
           - href: governance.qmd
