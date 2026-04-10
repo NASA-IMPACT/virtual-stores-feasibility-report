@@ -5,7 +5,10 @@ authors: Aimee Barciauskas, Ed Armstrong, Amy Steiker, Owen Littlejohns, Daniel 
 title-block-style: plain
 ---
 
-⚠️ UNDER DEVELOPMENT ⚠️
+This report outlines the current state of virtual stores at NASA. It's intended primary audience is program leads at NASA looking to understand the current state and make informed decisions about how to drive enterprise-wide technical directions. It's secondary audience is technical folks looking for examples of virtual stores at NASA and how they integrate with the NASA ecosystem.
+
+**If you are a program lead,** it is suggested to start here with the main points about virtual stores. Then it is recommended to visit the [Executive Summary](./executive_summary.qmd) and [Recommendations](./recommendations.qmd). From there, you will likely want to also make note of the [Limitations](./limitations.qmd) and [Governance](./governance.qmd) sections.
+**If you are looking to understand virtual stores at NASA on a more technical level,**, please visit the Technical Aspects sections. The [Resources](./resources.qmd) may also be of interest.
 
 ## Vision: NASA datasets accessible through a single entrypoint
 
