@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-028c30cb1342a02cc1af3444e6f684b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -217,14 +217,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mature-support" id="toc-mature-support" class="nav-link active" data-scroll-target="#mature-support">Mature Support</a></li>
-  <li><a href="#developing-support" id="toc-developing-support" class="nav-link" data-scroll-target="#developing-support">Developing Support</a></li>
+  <li><a href="#mature-support" id="toc-mature-support" class="nav-link active" data-scroll-target="#mature-support">Mature Support</a>
+  <ul class="collapse">
+  <li><a href="#supported-data-formats" id="toc-supported-data-formats" class="nav-link" data-scroll-target="#supported-data-formats">Supported data formats</a></li>
+  </ul></li>
+  <li><a href="#developing-support" id="toc-developing-support" class="nav-link" data-scroll-target="#developing-support">Developing Support</a>
+  <ul class="collapse">
   <li><a href="#non-uniform-grids" id="toc-non-uniform-grids" class="nav-link" data-scroll-target="#non-uniform-grids">Non-uniform grids</a></li>
   <li><a href="#non-cubable-data" id="toc-non-cubable-data" class="nav-link" data-scroll-target="#non-cubable-data">Non-cubable data</a></li>
-  <li><a href="#no-plans-for-support" id="toc-no-plans-for-support" class="nav-link" data-scroll-target="#no-plans-for-support">No plans for support</a>
-  <ul class="collapse">
-  <li><a href="#unsupported-data-formats" id="toc-unsupported-data-formats" class="nav-link" data-scroll-target="#unsupported-data-formats">Unsupported data formats</a></li>
   </ul></li>
+  <li><a href="#no-plans-for-support" id="toc-no-plans-for-support" class="nav-link" data-scroll-target="#no-plans-for-support">No plans for support</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/technical-features.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -251,33 +253,30 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="mature-support" class="level2">
-<h2 class="anchored" data-anchor-id="mature-support">Mature Support</h2>
+<section id="mature-support" class="level1">
+<h1>Mature Support</h1>
 <p><strong>Current mature implementations share the following characteristics:</strong></p>
 <ul>
-<li>Consistent spatial and temporal resolution across each variable</li>
-<li>Uniform chunk grid and compression scheme across each variable</li>
-<li>Chunk manifest generated at collection level, spanning many granules</li>
+<li>Virtual stores are used to provide alternate views (defined below) into the data. These views can range from an entire collection, to subsets of a collection, to a subset of a granule.</li>
+<li>Consistent spatial and temporal resolution across each variable (i.e.&nbsp;array) within a virtual store</li>
+<li>Uniform chunk grid and compression scheme across each variable within a virtual store</li>
 </ul>
-</section>
-<section id="developing-support" class="level2">
-<h2 class="anchored" data-anchor-id="developing-support">Developing Support</h2>
-</section>
-<section id="non-uniform-grids" class="level2">
-<h2 class="anchored" data-anchor-id="non-uniform-grids">Non-uniform grids</h2>
-<p>Some NASA collections present additional complexity due having varying compression schemes and chunk grids across a logical array (usually across granules). At this point in time, Zarr assumes consistent chunk shape and compression across the entire array.</p>
-<p>However, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.</p>
-</section>
-<section id="non-cubable-data" class="level2">
-<h2 class="anchored" data-anchor-id="non-cubable-data">Non-cubable data</h2>
-<p>COMING SOON</p>
-</section>
-<section id="no-plans-for-support" class="level1">
-<h1>No plans for support</h1>
-<section id="unsupported-data-formats" class="level2">
-<h2 class="anchored" data-anchor-id="unsupported-data-formats">Unsupported data formats</h2>
-<p>Data format support is limited to formats with VirtualiZarr parser implementations.</p>
-<p>Parsers maintained by VirtualiZarr include:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We define the term “view” in a virtual store context to mean the different ways the same dataset can be represented. A view of the same dataset could be representing the entire dataset as a cube or aggregating some a subset of the dataset. Different views will make sense for any particular dataset given its characteristics and the intended use cases; see <a href="./nasa-applications.html">Virtual Stores at NASA</a> for some real-world examples.</p>
+</div>
+</div>
+<section id="supported-data-formats" class="level2">
+<h2 class="anchored" data-anchor-id="supported-data-formats">Supported data formats</h2>
+<p>Data format support is limited to formats with VirtualiZarr parser implementations. Parsers maintained by VirtualiZarr include:</p>
 <ul>
 <li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/hdf/hdf.py">HDFParser</a></li>
 <li><a href="https://github.com/zarr-developers/VirtualiZarr/tree/main/virtualizarr/parsers/kerchunk">Kerchunk (Parquet or JSON)</a></li>
@@ -292,9 +291,27 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://github.com/virtual-zarr/hrrr-parser">hrrr-parser</a></li>
 </ul>
 <p>Custom parsers for additional formats can be implemented using the VirtualiZarr <a href="https://virtualizarr.readthedocs.io/en/stable/custom_parsers.html">CustomParsers</a> guide.</p>
-
-
 </section>
+</section>
+<section id="developing-support" class="level1">
+<h1>Developing Support</h1>
+<section id="non-uniform-grids" class="level2">
+<h2 class="anchored" data-anchor-id="non-uniform-grids">Non-uniform grids</h2>
+<p>Some NASA collections present additional complexity due to having varying compression schemes and chunk grids across a logical array (usually across granules). Currently, Zarr assumes a consistent chunk shape and compression across the entire array.</p>
+<p>However, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.</p>
+</section>
+<section id="non-cubable-data" class="level2">
+<h2 class="anchored" data-anchor-id="non-cubable-data">Non-cubable data</h2>
+<p>COMING SOON</p>
+</section>
+</section>
+<section id="no-plans-for-support" class="level1">
+<h1>No plans for support</h1>
+<ul>
+<li>There are no plans to support formats outside of the “Supported data formats” list above at this time.</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -40,10 +75,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-028c30cb1342a02cc1af3444e6f684b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -224,6 +259,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#further-considerations" id="toc-further-considerations" class="nav-link" data-scroll-target="#further-considerations">Further considerations</a></li>
   </ul></li>
   <li><a href="#discovery-and-integration-with-cmr" id="toc-discovery-and-integration-with-cmr" class="nav-link" data-scroll-target="#discovery-and-integration-with-cmr">Discovery and integration with CMR</a></li>
+  <li><a href="#integration-with-earthaccess" id="toc-integration-with-earthaccess" class="nav-link" data-scroll-target="#integration-with-earthaccess">Integration with earthaccess</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/nasa-ecosystem.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -254,7 +290,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Virtual stores provide a uniform interface to archival data through the Zarr data model and specification. However, to access and visualize this data, the ecosystem needs to adapt to integrate the Zarr data model and specification. While xarray and zarr-python provide powerful tools for working with this data, a number of existing powerful tools at NASA need to be considered to support NASA users.</p>
 <section id="integration-with-egis" class="level2">
 <h2 class="anchored" data-anchor-id="integration-with-egis">Integration with EGIS</h2>
-<p><span class="citation" data-cites="abarciauskas-bgse">[ADDME: @abarciauskas-bgse]</span></p>
+<p>Access to NASA data through Geographic Information Systems (GIS) is essential for supporting the agency’s broad user community. <a href="https://gis.earthdata.nasa.gov/portal/home/index.html">Earthdata GIS (EGIS)</a> is NASA’s dedicated GIS platform. Integrating EGIS with virtual stores will ensure that both users and developers benefit from the foundational work to design and deliver virtual views into complex NASA data volumes.</p>
 </section>
 <section id="integration-with-harmony" class="level2">
 <h2 class="anchored" data-anchor-id="integration-with-harmony">Integration with Harmony</h2>
@@ -305,7 +341,41 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="discovery-and-integration-with-cmr" class="level2">
 <h2 class="anchored" data-anchor-id="discovery-and-integration-with-cmr">Discovery and integration with CMR</h2>
-<p>This section will describe how virtual stores integrate with CMR’s existing discovery infrastructure, including how stores could be represented within UMM metadata models and surfaced through Earthdata Search. For the related governance decisions on metadata placement standards, see <a href="./governance.html#metadata-placement-standards">Governance</a>.</p>
+<p>For the related governance decisions on metadata placement standards, see <a href="./governance.html#metadata-placement-standards">Governance</a>.</p>
+</section>
+<section id="integration-with-earthaccess" class="level2">
+<h2 class="anchored" data-anchor-id="integration-with-earthaccess">Integration with earthaccess</h2>
+<p><a href="https://earthaccess.readthedocs.io/en/latest/"><code>earthaccess</code></a> currently supports data virtualization (via VirtualiZarr) that can be used to streamline the creation and access of virtual stores. The current implementation allows end-users and data providers to generate a virtual store at scale with a <strong>single line of code</strong>. Scale is delivered using the parallel executors API from Virtualizarr which utilizes a Dask cluster or Lithops if configured.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> earthaccess <span class="im">as</span> ea</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>granules <span class="op">=</span> ea.search_data(<span class="op">**</span>params)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>vds <span class="op">=</span> ea.virtualize(granules, <span class="op">**</span>virtualizarr_options)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># then we can persist the vds into kerchunk or icechunk</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>vds.virtualize.to_kerchunk(<span class="op">*</span>args)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># or </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>vds.virtualize.to_icechunk(<span class="op">*</span>args)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This approach allows users to easily create virtual stores from their search results, and then persist those virtual stores without having to manually configure anything (I/O drivers and authentication). By using CMR search results earthaccess enables creation of tailored virtual stores. Virtual stores can be created “on the fly” using only the subset of files that meet certain criteria. Use cases include creating seasonal and regional datasets.</p>
+<p>Once a virtual store is created, updating it will also be streamlined with <code>earthaccess</code>. Once the store’s metadata is listed in a CMR collection level record or a new UMM association, then we will be able to use <code>earthaccess</code> to update the virtual store with new granules that get added to the collection, or even remove granules that get deleted from the collection. This would allow users to maintain up-to-date virtual stores without having to manually track changes to the underlying data.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>colection <span class="op">=</span> ea.search_datasets(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  short_name<span class="op">=</span><span class="st">"SPL4SMGP"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)[<span class="dv">0</span>]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>icechunk_store <span class="op">=</span> ea.open_virtual_store(colection, name<span class="op">=</span><span class="st">"yearly_store"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># then we can use a CMR search to look for new granules with created_at</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"created_at"</span>: <span class="op">&lt;</span>latest timestep of icechunk store <span class="op">+</span> <span class="dv">1</span> timestep<span class="op">&gt;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>new_granules <span class="op">=</span> ea.search_data(<span class="op">**</span>params)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>new_vds <span class="op">=</span> ea.virtualize(new_granules, <span class="op">**</span>vz_options)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># append the new to the current store</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>new_vds.virtualize.to_icechunk(icechunk_store, append_dim<span class="op">=</span><span class="st">"time"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The same way, we can use <code>icechunk_store</code> to open it using xarray and visualize it with tools like <code>hvplot</code> or <code>matplotlib</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ds <span class="op">=</span> xr.open_zarr(icechunk_store, consolidated<span class="op">=</span><span class="va">False</span>, zarr_format<span class="op">=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
