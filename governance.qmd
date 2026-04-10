@@ -8,15 +8,9 @@ Clear standards are needed for where metadata lives within the Common Metadata R
 
 ### Collection-level metadata
 
-Existing metadata curation approaches include the addition of a RelatedURL representing the collection-level virtual store in the CMR Unified Metadata Model - Collection (UMM-C) record. However, no ESDIS-level standards currently exist regarding this practice, which is needed in order to ensure that virtual stores are discoverable through common tools and geospatial workflows such as `earthaccess`. The ESDIS Metadata Stewardship Team ensures consistent and accurate metadata curation practices are applied across all ESDIS data holdings. We recommend this team provides virtual store metadata recommendations to be adopted by ESDIS metadata curators, in order to improve and expand virtual store discoverability for end-users. 
+A virtual store that spans an entire collection (e.g., a single Icechunk store aggregating all TEMPO L3 V04 granules) needs to be discoverable alongside the collection it virtualizes.  Existing metadata curation approaches include the addition of a RelatedURL representing the collection-level virtual store in the CMR Unified Metadata Model Collection (UMM-C) record. Another option would be registering the store as a UMM-S service entry. Each carries different implications for search behavior in Earthdata Search and for how downstream tools resolve data access. No ESDIS-level standards currently exist regarding metadata placement for virtual stores, which is needed in order to ensure that virtual stores are discoverable through common tools and geospatial workflows such as `earthaccess`.
 
-A virtual store that spans an entire collection (e.g., a single
-Icechunk store aggregating all TEMPO L3 V04 granules) needs to be
-discoverable alongside the collection it virtualizes. Possible
-approaches include adding a related URL to the existing UMM-C
-record or registering the store as a UMM-S service entry. Each
-carries different implications for search behavior in Earthdata
-Search and for how downstream tools resolve data access.
+The ESDIS Metadata Stewardship Team ensures consistent and accurate metadata curation practices are applied across all ESDIS data holdings. We recommend this team provides virtual store metadata recommendations to be adopted by ESDIS metadata curators, in order to improve and expand virtual store discoverability for end-users. 
 
 ### Granule-level metadata
 
@@ -24,13 +18,11 @@ For virtual stores that aggregate at the collection level, granule-level metadat
 
 ## Versioning and update policies for virtual layers
 
-Virtual stores are living artifacts, but "change" can originate from
-two independent sources, each requiring its own policy response.
+Virtual stores are living artifacts, but "change" can originate from two independent sources, each requiring its own policy response.
 
 ### Source data changes
 
-When a mission reprocesses its archive, the virtual store built against 
-the previous version becomes stale. There are several possible responses:
+When a mission reprocesses its archive, the virtual store built against the previous version becomes stale. There are several possible responses:
 
 - **Lockstep versioning:** Rebuild the virtual store from scratch
   with each reprocessing campaign. Simple and predictable, but
