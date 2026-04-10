@@ -42,7 +42,6 @@ If the GeoZarr community coalesce into a solution, it will need to be be impleme
 * Apply a query engine to Zarr metadata storing many 1-D arrays. This will streamline mosaicing as it avoids a secondary indexing system and potentially avoids fetching overlapping chunks. An early approach to this is [Zarr Data Fusion Search](https://github.com/developmentseed/zarr-datafusion-search).
 * For future missions, investigate the use of [discrete global grid systems](https://ecce.esri.ca/blog/2023/06/24/introduction-to-discrete-global-grid-system-dggs/) so lower level data products enable spatial and temporal alignment that will facilitate data processing and the generation of virtual data cubes.
 
-
 ## Authentication and credential complexity
 
 Opening a virtual store backed by NASA data currently requires steps beyond standard Earthdata Login, specifically S3 credential configuration and tool-specific API calls to open the store before any data is accessed. Friction exists because virtual stores sit at the intersection of several authentication boundaries: the store itself (which may be in a public or protected S3 bucket), the source data files the store references (which typically require Earthdata Login credentials), and services (which may have their own authentication interfaces).
