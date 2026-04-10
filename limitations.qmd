@@ -10,18 +10,22 @@ Icechunk is written in Rust with an API in Python. Users and data providers work
 
 File chunking and chunk manifests cannot simultaneously optimize for all use cases. Further, chunk manifests depend on the chunking already inherent to the files. You cannot create a chunk manifest to access a unit smaller than chunks in the underlying files. The implication is, for example, if a set of files is optimized for spatial access it cannot simultaneously be optimized for access across the time dimension (i.e. time series).
 
-[ADD ME: DIAGRAM OF PANCAKES AND CHURROS]
-
 ## Chunk sizes must be consistent across files
 
 Variable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in [this Zarr feature request](https://github.com/zarr-developers/zarr-specs/issues/138). This presents challenges for any dataset where the grid shape differs, even slightly, across granules. [The TEMPO collection, as described in this GitHub issue](https://github.com/zarr-developers/VirtualiZarr/issues/487), is an example where even a small different in grid shape can make the dataset incompatible with the current Zarr model.
 
 
-## Non-cubable/Tiled collections
+## Non-cubable/Swath/Tiled collections
 
-Virtualizing "non-cubable" (often labeled Level 2 (L2)), also known as "tiled", satellite collections exposes significant limitations when attempting to unify datasets. We term these "non-cubable" because they span multiple native Coordinate Reference Systems (CRSs) or complex overlapping grids.
+Virtualizing "non-cubable" satellite collections exposes significant limitations when attempting to unify datasets. The current challenges are outlined below.
 
-### Current challenge
+:::{.callout-note}
+"Non-cubable" datasets are ones that can't be neatly organized into a single, regular data cube. This usually happens because different parts of the data use different coordinate systems or have overlapping/irregular grids.
+
+Non-cubable datasets are often labeleed Level 2 (L2). They are often or swath-based data, where observations are collected in strips rather than on a consistent grid. These datasets are often organized into "tiles" (e.g. Sentinel) or "frames" (e.g. OPERA and NISAR).
+:::
+
+### Current challenges for non-cubable data
 
 As highlighted in a [GeoZarr specification thread](https://github.com/zarr-developers/geozarr-spec/issues/53) on mapping multi-CRS datasets, array-based formats like Zarr require a uniform multi-dimensional structure.
 Array-based formats like Zarr struggle to natively represent heterogeneous, multi-CRS tiles (such as global Sentinel-2 or Landsat grids) without forcing a permanent reprojection to a common global grid — a process that introduces data loss, edge artifacts, and spatial distortion.
