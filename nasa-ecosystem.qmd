@@ -9,7 +9,7 @@ Virtual stores provide a uniform interface to archival data through the Zarr dat
 
 ## Integration with EGIS
 
-[ADDME: @abarciauskas-bgse]
+Access to NASA data through Geographic Information Systems (GIS) is essential for supporting the agency’s broad user community. [Earthdata GIS (EGIS)](https://gis.earthdata.nasa.gov/portal/home/index.html) is NASA’s dedicated GIS platform. Integrating EGIS with virtual stores will ensure that both users and developers benefit from the foundational work to design and deliver virtual views into complex NASA data volumes.
 
 ## Integration with Harmony
 
@@ -58,8 +58,56 @@ For further discussion of metadata representations in CMR, see [Metadata Placeme
 
 ## Discovery and integration with CMR
 
-This section will describe how virtual stores integrate with CMR's
-existing discovery infrastructure, including how stores could be
-represented within UMM metadata models and surfaced through
-Earthdata Search. For the related governance decisions on metadata
-placement standards, see [Governance](governance.qmd#metadata-placement-standards).
+For the related governance decisions on metadata placement standards, see [Governance](governance.qmd#metadata-placement-standards).
+
+## Integration with earthaccess
+
+[`earthaccess`](https://earthaccess.readthedocs.io/en/latest/) currently supports data virtualization (via VirtualiZarr) that can be used to streamline the creation and access of virtual stores.
+The current implementation allows end-users and data providers to generate a virtual store at scale with a **single line of code**. Scale is delivered using the parallel executors API from Virtualizarr which utilizes a Dask cluster or Lithops if configured.
+
+```python
+import earthaccess as ea
+
+granules = ea.search_data(**params)
+
+vds = ea.virtualize(granules, **virtualizarr_options)
+
+# then we can persist the vds into kerchunk or icechunk
+vds.virtualize.to_kerchunk(*args)
+# or 
+vds.virtualize.to_icechunk(*args)
+
+```
+
+This approach allows users to easily create virtual stores from their search results, and then persist those virtual stores without having to manually configure anything (I/O drivers and authentication).
+By using CMR search results earthaccess enables creation of tailored virtual stores. Virtual stores can be created "on the fly" using only the subset of files that meet certain criteria. Use cases include creating seasonal and regional datasets.
+
+
+Once a virtual store is created, updating it will also be streamlined with `earthaccess`. Once the store's metadata is listed in a CMR collection level record or a new UMM association, 
+then we will be able to use `earthaccess` to update the virtual store with new granules that get added to the collection, or even remove granules that get deleted from the collection. 
+This would allow users to maintain up-to-date virtual stores without having to manually track changes to the underlying data.
+
+```python
+
+colection = ea.search_datasets(
+  short_name="SPL4SMGP"
+)[0]
+
+icechunk_store = ea.open_virtual_store(colection, name="yearly_store")
+
+# then we can use a CMR search to look for new granules with created_at
+params = {
+  "created_at": <latest timestep of icechunk store + 1 timestep>
+}
+new_granules = ea.search_data(**params)
+new_vds = ea.virtualize(new_granules, **vz_options)
+
+# append the new to the current store
+new_vds.virtualize.to_icechunk(icechunk_store, append_dim="time")
+```
+
+The same way, we can use `icechunk_store` to open it using xarray and visualize it with tools like `hvplot` or `matplotlib`.
+
+```python
+ds = xr.open_zarr(icechunk_store, consolidated=False, zarr_format=3)
+```

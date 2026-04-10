@@ -16,6 +16,27 @@ File chunking and chunk manifests cannot simultaneously optimize for all use cas
 
 Variable-length chunks are not yet supported, meaning that all files contributing to a virtual store must share the same chunking scheme, as described in [this Zarr feature request](https://github.com/zarr-developers/zarr-specs/issues/138). This presents challenges for any dataset where the grid shape differs, even slightly, across granules. [The TEMPO collection, as described in this GitHub issue](https://github.com/zarr-developers/VirtualiZarr/issues/487), is an example where even a small different in grid shape can make the dataset incompatible with the current Zarr model.
 
+
+## Non-cubable/Tiled collections
+
+Virtualizing "non-cubable" (often labeled Level 2 (L2)), also known as "tiled", satellite collections exposes significant limitations when attempting to unify datasets. We term these "non-cubable" because they span multiple native Coordinate Reference Systems (CRSs) or complex overlapping grids.
+
+### Current challenge
+
+As highlighted in a [GeoZarr specification thread](https://github.com/zarr-developers/geozarr-spec/issues/53) on mapping multi-CRS datasets, array-based formats like Zarr require a uniform multi-dimensional structure.
+Array-based formats like Zarr struggle to natively represent heterogeneous, multi-CRS tiles (such as global Sentinel-2 or Landsat grids) without forcing a permanent reprojection to a common global grid — a process that introduces data loss, edge artifacts, and spatial distortion.
+To preserve original data integrity, virtualization must instead rely on abstract, secondary indexing systems (like GDAL's Geospatial Tile Index or external STAC catalogs) to act as a "virtual mosaic," stitching together scenes and handling reprojection strictly on-the-fly.
+This "dynamic" approach shifts the bottleneck to the I/O layer. As contributors in the GeoZarr thread experienced, rapidly fetching and aligning thousands of localized, overlapping chunks can easily overwhelm cloud storage APIs with massive concurrent read requests, requiring manual tuning of client caching and concurrency.
+If the GeoZarr community coalesce into a solution, it will need to be be implemented in client libraries like GDAL and xarray as well. The benefit of supporting these kind of virtual data cubes will be big for the scientific community, but the technical challenges are not trivial.
+
+### Potential solutions
+
+* Compose a virtual data tree - this solves the issue of being non-cubable by not representing the data as a cube but still enabling a single entry point. The problem of mosaicing data still remains.
+* Apply a query engine to Zarr metadata storing many 1-D arrays. This will streamline mosaicing as it avoids a secondary indexing system and potentially avoids fetching overlapping chunks. An early approach to this is [Zarr Data Fusion Search](https://github.com/developmentseed/zarr-datafusion-search).
+* For future missions, investigate the use of [discrete global grid systems](https://ecce.esri.ca/blog/2023/06/24/introduction-to-discrete-global-grid-system-dggs/) so lower level data products enable spatial and temporal alignment that will facilitate data processing and the generation of virtual data cubes.
+
+
+
 ::: {.callout-note}
 Note work to support variable-length chunks is underway, see https://github.com/zarr-developers/zarr-python/pull/3802.
 :::
@@ -24,17 +45,7 @@ Note work to support variable-length chunks is underway, see https://github.com/
 
 ## Authentication and credential complexity
 
-Opening a virtual store backed by NASA data currently requires
-multiple steps beyond standard Earthdata Login — including S3
-credential configuration, credential helper classes, and
-tool-specific API calls to open the store before any data is
-accessed. This friction exists because virtual stores sit at the
-intersection of several authentication boundaries: the store itself
-(which may be in a public or protected S3 bucket), the source
-data files the store references (which typically require Earthdata
-Login credentials), and the tools used to read the store (which
-have their own authentication interfaces). Until this is simplified
-to something comparable to the experience earthaccess provides for
-direct file access, credential complexity will remain a practical
-barrier to adoption — particularly for researchers who are not
-cloud-infrastructure specialists.
+Opening a virtual store backed by NASA data currently requires steps beyond standard Earthdata Login, specifically S3 credential configuration and tool-specific API calls to open the store before any data is accessed. Friction exists because virtual stores sit at the intersection of several authentication boundaries: the store itself (which may be in a public or protected S3 bucket), the source data files the store references (which typically require Earthdata Login credentials), and services (which may have their own authentication interfaces).
+
+Until this is simplified to something comparable to the experience `earthaccess` provides for direct file access, credential complexity will remain a practical barrier to adoption — particularly for researchers who are notcloud-infrastructure specialists.
+

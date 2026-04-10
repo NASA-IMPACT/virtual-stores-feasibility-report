@@ -20,8 +20,6 @@ Search and for how downstream tools resolve data access.
 
 ### Granule-level metadata
 
-*(Expand on what metadata belongs at the granule level, whether granule-level virtual references are needed, how it relates to collection-level metadata.)*
-
 For virtual stores that aggregate at the collection level, granule-level metadata placement may not apply. DMR++ provides granule-level references for OPeNDAP.
 
 ## Versioning and update policies for virtual layers
@@ -69,8 +67,6 @@ Regardless of the trigger, policies are needed to govern:
 - Backward compatibility: Whether previous versions of a virtual store remain accessible during and after a version transition, and if so, for how long
 
 ## Ownership and stewardship of virtual store assets
-
-*(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)*
 
 Creating a virtual store requires upfront engineering and design
 decisions; maintaining it is an ongoing operational and engineering

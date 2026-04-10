@@ -26,6 +26,13 @@ Adoption of multiscales should be considered, especially for high resolution dat
 
 TBD: The chunk manifest protocol specification is speculative at this time.
 
+## Leverage existing tools, services and available chunk metadata.
+
+To build virtual data stores efficiently, leverage the existing open-source ecosystem (Icechunk, Kerchunk, etc.) rather than implementing solutions from scratch.
+When a collection is consistent and OPeNDAP-supported, we should try using DMRPP metadata instead of reading metadata from source files—it’s faster and can represent various archival formats.
+For collections lacking DMRPP, fall back to native metadata parser. However, DMRPP has caveats that OPeNDAP should address: standardizing DMRPP across all collections,
+adding checksum validation at generation time, and possibly adopting a lighter schema or Parquet serialization.
+
 ## Prioritize EGIS integration planning
 
 Integration with the Earthdata Geographic Information System (EGIS) has been identified as a future priority. Scoping should begin to ensure integration with EGIS is smooth.
