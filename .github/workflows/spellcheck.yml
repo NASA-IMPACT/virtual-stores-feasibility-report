@@ -12,5 +12,5 @@ jobs:
 
       - uses: codespell-project/actions-codespell@master
         with:
-          skip: graphics/*
+          skip: 'graphics/*'
           ignore_words_file: .codespellignore
