@@ -90,11 +90,11 @@ Once a virtual store is created, updating it will also be streamlined with `eart
 
 ```python
 
-colection = ea.search_datasets(
+collection = ea.search_datasets(
   short_name="SPL4SMGP"
 )[0]
 
-icechunk_store = ea.open_virtual_store(colection, name="yearly_store")
+icechunk_store = ea.open_virtual_store(collection, name="yearly_store")
 
 # then we can use a CMR search to look for new granules with created_at
 params = {
