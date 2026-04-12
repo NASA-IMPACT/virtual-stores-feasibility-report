@@ -5,7 +5,7 @@ subtitle: "How Virtual Stores integrate with the rest of the NASA Data System"
 
 There are a number of components to consider when envisioning virtual stores and their place in the broad NASA data ecosystem.
 
-Virtual stores provide a uniform interface to archival data through the Zarr data model and specification. However, to access and visualize this data, the ecosystem needs to adapt to integrate the Zarr data model and specification. While xarray and zarr-python provide powerful tools for working with this data, a number of existing powerful tools at NASA need to be considered to support NASA users.
+Virtual stores provide a uniform interface to archival data through the Zarr data model and specification. However, to access and visualize this data, the ecosystem needs to adapt to integrate the Zarr data model and specification. While `xarray` and `zarr-python` provide powerful tools for working with this data, a number of existing powerful tools at NASA need to be considered to support NASA users.
 
 ## Integration with EGIS
 
@@ -15,13 +15,13 @@ Access to NASA data through Geographic Information Systems (GIS) is essential fo
 
 [Harmony](https://harmony.earthdata.nasa.gov/docs) is an ESDIS Project enterprise system for managing transformation requests for NASA Earth science data. It offers users the capability to retrieve the data they need in a format that is appropriate for their use cases. Users can request spatial, temporal and variable subsets. Results can be reprojections and/or aggregations of data originally hosted in multiple archived files.
 
-Traditionally, Harmony has performed operations on the archival data files in the ESDIS Project archive that are represented via metadata hosted in the Common Metadata Repository (CMR). A virtual store representing an entire collection offers several potential benefits to a system such as Harmony:
+Traditionally, Harmony has performed operations on the archival data files in the ESDIS Project archive that are represented via metadata hosted in the Common Metadata Repository (CMR). A virtual store offers several potential benefits to a system such as Harmony:
 
 * Only retrieving relevant bytes of archival data files, which would limit the amount of data held in-memory and stored in compute environments, while potentially offering significant performance improvements.
 * Removing the need for services that stack data from multiple individual input files, as this aggregation will have already occurred.
 * Allowing for analyses of a data collections as a single entity (e.g., long duration time series).
 * Reducing complexity of code within services by utilizing common tools such as xarray.
-* Allowing the same services to work on different archival data formats, as they can interact with a virtual data store layer using the same client software,
+* Allowing the same services to work on different archival data formats, as they can interact with a virtual data store layer using the same client software.
 
 ### Harmony virtual data store architecture
 
@@ -35,20 +35,23 @@ Note: The aggregated chunk manifest does not have to be co-located with the arch
 
 ### Further considerations
 
+The following considerations are explained in detail below.
+
 * Data volume
 * Derived products
 * Consistent cataloguing in CMR
 
 #### Data Volume
 
-Harmony is designed to return a URL to a data object representing only what a user requested. With a virtual data store representing an entire data product, it is possible to request a large amount of data. Safeguards may be required to handle computationally intensive transformations.
+Harmony is designed to return a URL to the user pointing at a single output data object. With virtual data stores which represent a large number of files, safeguards may be required to handle computationally intensive transformations. To understand why, a basic introduction to Harmony is required:
 
-Currently, Harmony users can request transformation of any number of files in a data collection. For most use cases, this means parallelizing the processing of multiple inputs (usually files) in different Kubernetes pods. Aggregation may occur but, generally, a single pod only needs to download, process and output a single object with a comparable size to an archival data file. In other words, input size is roughly output size because inputs _and_ outputs are typically single files. Currently, with a whole-collection virtual data store, a single Harmony invocation would conduct processing and construction of an output in one Kubernetes pod. If a single file-like output object is requested, an output file object could become too large for traditional download-based workflows.
+Currently, Harmony users can request transformation of any number of files in a data collection. For most use cases, this means parallelizing the processing of multiple inputs (usually files) in different Kubernetes pods. Aggregation may occur but, generally, a single pod only needs to download, process and output a single object with a comparable size to an archival data file. In other words, input size is roughly output size because inputs _and_ outputs are typically single files. Currently, if a virtual data store is sent as the "input" to a single Harmony invocation, processing and construction of an output would all still happen in one Kubernetes pod, regardless of the number of files the virtual data store references. If a single file-like output object is requested, that output file object could become too large for traditional download-based workflows.
 
-Alternatives solutions for parallel processing exist, such as dask. 
+A potential solution to this could be identifying high-volume outputs and outputting a Zarr store or a virtual store with new files.
 
 #### Derived products
-Virtual data stores are particularly useful for operations that only seek to perform partial access to the store. For example, spatial, temporal or variable subsetting. Indeed, for subsetting of this nature, open-source software like Harmony can be used to educate end-users how to independently use packages such as xarray to directly interrogate a virtual data store. However, some transformations create an output where the archival data are changed, such as to a new map projection. In these latter instances, an output object would be derived, which aligns with the traditional model of Harmony providing output files for ad hoc transformation requests. Virtual data stores remain useful in such as case, as they still reduce the number of accessed bytes, and allow requests to easily combine data from multiple archival data files.
+
+Virtual data stores are particularly useful for operations that only seek to perform partial access to the store. For example, spatial, temporal or variable subsetting. Indeed, for subsetting of this nature, open-source software like Harmony can be used to educate end-users how to independently use packages such as `xarray` to directly interrogate a virtual data store. However, some transformations create an output where the archival data are changed, such as to a new map projection. In these latter instances, an output object would be derived, which aligns with the traditional model of Harmony providing output files for ad hoc transformation requests. Virtual data stores remain useful in such as case, as they still reduce the number of accessed bytes, and allow requests to easily combine data from multiple archival data files.
 
 #### Consistent cataloguing in CMR
 
@@ -80,12 +83,10 @@ vds.virtualize.to_icechunk(*args)
 ```
 
 This approach allows users to easily create virtual stores from their search results, and then persist those virtual stores without having to manually configure anything (I/O drivers and authentication).
+
 By using CMR search results earthaccess enables creation of tailored virtual stores. Virtual stores can be created "on the fly" using only the subset of files that meet certain criteria. Use cases include creating seasonal and regional datasets.
 
-
-Once a virtual store is created, updating it will also be streamlined with `earthaccess`. Once the store's metadata is listed in a CMR collection level record or a new UMM association, 
-then we will be able to use `earthaccess` to update the virtual store with new granules that get added to the collection, or even remove granules that get deleted from the collection. 
-This would allow users to maintain up-to-date virtual stores without having to manually track changes to the underlying data.
+Once a virtual store is created, updating it will also be streamlined with `earthaccess`. Once the store's metadata is listed in a CMR collection-level record or a new UMM association,  then we will be able to use `earthaccess` to update the virtual store with new granules that get added to the collection, or even remove granules that get deleted from the collection. This would allow users to maintain up-to-date virtual stores without having to manually track changes to the underlying data.
 
 ```python
 
