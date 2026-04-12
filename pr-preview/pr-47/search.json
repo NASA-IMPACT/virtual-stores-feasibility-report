@@ -245,7 +245,7 @@
     "href": "recommendations.html#adopt-icechunk",
     "title": "Recommendations",
     "section": "Adopt icechunk",
-    "text": "Adopt icechunk\nIcechunk should be adopted but with risk mitigation measures. While open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance, and even more specifically, funding the feature to parse chunk manifests back out of icechunk. This will enable chunk manifests to be read back out of icechunk stores and stored in another format.",
+    "text": "Adopt icechunk\nIcechunk should be adopted but with risk mitigation measures. While open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance and development.\nMore specifically, NASA should fund:\n\nDevelopment of parsing chunk manifests back out of Icechunk. This will enable chunk manifests to be read back out of icechunk stores and stored in another format\nIcechunk maintainers (external to the existing development team)\nIcechunk readers in other languages (C/C++, Julia, R, etc.)",
     "crumbs": [
       "Guidance",
       "Recommendationsq"
