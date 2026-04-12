@@ -10,7 +10,13 @@ For example, time series analysis is a common use case. However, many datasets a
 
 ## Adopt icechunk
 
-[Icechunk](icechunk.io) should be adopted but with risk mitigation measures. While open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance, and even more specifically, funding the feature to parse chunk manifests back out of icechunk. This will enable chunk manifests to be read back out of icechunk stores and stored in another format.
+[Icechunk](icechunk.io) should be adopted but with risk mitigation measures. While open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance and development. 
+
+More specifically, NASA should fund:
+
+* Development of parsing chunk manifests back out of Icechunk. This will enable chunk manifests to be read back out of icechunk stores and stored in another format
+* Icechunk maintainers (external to the existing development team)
+* Icechunk readers in other languages (C/C++, Julia, R, etc.)
 
 ## Adopt GeoZarr standards
 
