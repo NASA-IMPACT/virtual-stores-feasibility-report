@@ -25,7 +25,7 @@ Virtualizing "non-cubable" satellite collections exposes significant limitations
 :::{.callout-note}
 "Non-cubable" datasets are ones that can't be neatly organized into a single, regular data cube. This usually happens because different parts of the data use different coordinate systems or have overlapping/irregular grids.
 
-Non-cubable datasets are often labeleed Level 2 (L2). They are often or swath-based data, where observations are collected in strips rather than on a consistent grid. These datasets are often organized into "tiles" (e.g. Sentinel) or "frames" (e.g. OPERA and NISAR).
+Non-cubable datasets are often labelled Level 2 (L2). They are often swath-based data, where observations are collected in strips rather than on a consistent grid. These datasets are often organized into "tiles" (e.g. Sentinel) or "frames" (e.g. OPERA and NISAR).
 :::
 
 ### Current challenges for non-cubable data
