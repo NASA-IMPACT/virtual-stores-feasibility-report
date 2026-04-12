@@ -223,7 +223,7 @@
     "href": "recommendations.html",
     "title": "Recommendations",
     "section": "",
-    "text": "The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.\nFor example, time series analysis is the primary use case for NISAR. A frame-oriented chunk manifest design ensures efficient per-frame loading. This decision should be made deliberately, with awareness of the trade-offs for other access patterns (see Known Limitations).",
+    "text": "The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.\nFor example, time series analysis is a common use case. However, many datasets are collected into one file per timestep. This makes sense, since data is collected over time: generating one file at a time makes data processing straight-forward since there is no appending to an existing file. However, this means time series will never be optimized since data for one timeseries is scattered across n-timesteps number of chunks. Designing how files are chunked is a decision that should made deliberately, with awareness of the trade-offs for other access patterns.",
     "crumbs": [
       "Guidance",
       "Recommendationsq"
@@ -234,7 +234,7 @@
     "href": "recommendations.html#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns",
     "title": "Recommendations",
     "section": "",
-    "text": "The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.\nFor example, time series analysis is the primary use case for NISAR. A frame-oriented chunk manifest design ensures efficient per-frame loading. This decision should be made deliberately, with awareness of the trade-offs for other access patterns (see Known Limitations).",
+    "text": "The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.\nFor example, time series analysis is a common use case. However, many datasets are collected into one file per timestep. This makes sense, since data is collected over time: generating one file at a time makes data processing straight-forward since there is no appending to an existing file. However, this means time series will never be optimized since data for one timeseries is scattered across n-timesteps number of chunks. Designing how files are chunked is a decision that should made deliberately, with awareness of the trade-offs for other access patterns.",
     "crumbs": [
       "Guidance",
       "Recommendationsq"
