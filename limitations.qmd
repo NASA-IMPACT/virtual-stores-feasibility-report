@@ -18,27 +18,24 @@ Variable-length chunks are not yet supported, meaning that all files contributin
 Note work to support variable-length chunks is underway, see https://github.com/zarr-developers/zarr-python/pull/3802.
 :::
 
-## Non-cubable/Swath/Tiled collections
+## Collections with multiple grid systems
 
-Virtualizing "non-cubable" satellite collections exposes significant limitations when attempting to unify datasets. The current challenges are outlined below.
+There is significant variation across—and even within—datasets when it comes to grid systems, and this remains an area of active work. For example, there is growing interest in discrete global grid systems (DGGS), which could enable alignment across heterogeneous datasets while maintaining spatial integrity.
 
-:::{.callout-note}
-"Non-cubable" datasets are ones that can't be neatly organized into a single, regular data cube. This usually happens because different parts of the data use different coordinate systems or have overlapping/irregular grids.
+Data from Earth-observing satellites is commonly collected in swaths, which do not natively form a single, regular data cube. Most global, uniformly gridded datasets are higher-level products (Level 3 or Level 4) that have undergone interpolation or resampling to form a consistent grid.
 
-Non-cubable datasets are often labelled Level 2 (L2). They are often swath-based data, where observations are collected in strips rather than on a consistent grid. These datasets are often organized into "tiles" (e.g. Sentinel) or "frames" (e.g. OPERA and NISAR).
-:::
+However, many data products preserve their native spatial structure, resulting in different coordinate systems, as well as overlapping or irregular grids. These datasets are typically organized into tiles, scenes, or frames (e.g., Sentinel tiles; OPERA and NISAR frames). Virtualizing these datasets requires additional design considerations to account for their varying geometries and coordinate systems.
 
-### Current challenges for non-cubable data
+As highlighted in a [GeoZarr specification thread](https://github.com/zarr-developers/geozarr-spec/issues/53) on mapping multi-CRS datasets, array-based formats like Zarr typically require a uniform multi-dimensional structure. Array-based formats like Zarr struggle to natively represent heterogeneous, multi-CRS tiles (such as global Sentinel-2 or Landsat grids) without forcing a permanent reprojection to a common global grid — a process that introduces data loss, edge artifacts, and spatial distortion.
 
-As highlighted in a [GeoZarr specification thread](https://github.com/zarr-developers/geozarr-spec/issues/53) on mapping multi-CRS datasets, array-based formats like Zarr require a uniform multi-dimensional structure.
-Array-based formats like Zarr struggle to natively represent heterogeneous, multi-CRS tiles (such as global Sentinel-2 or Landsat grids) without forcing a permanent reprojection to a common global grid — a process that introduces data loss, edge artifacts, and spatial distortion.
-To preserve original data integrity, virtualization must instead rely on abstract, secondary indexing systems (like GDAL's Geospatial Tile Index or external STAC catalogs) to act as a "virtual mosaic," stitching together scenes and handling reprojection strictly on-the-fly.
-This "dynamic" approach shifts the bottleneck to the I/O layer. As contributors in the GeoZarr thread experienced, rapidly fetching and aligning thousands of localized, overlapping chunks can easily overwhelm cloud storage APIs with massive concurrent read requests, requiring manual tuning of client caching and concurrency.
+To preserve original data integrity, virtualization must instead rely on abstract, secondary indexing systems (like GDAL's Geospatial Tile Index or external STAC catalogs) to act as a "virtual mosaic," stitching together scenes and handling reprojection strictly on-the-fly. This "dynamic" approach shifts the bottleneck to the I/O layer. As contributors in the GeoZarr thread experienced, rapidly fetching and aligning thousands of localized, overlapping chunks can easily overwhelm cloud storage APIs with massive concurrent read requests, requiring manual tuning of client caching and concurrency.
+
 If the GeoZarr community coalesce into a solution, it will need to be be implemented in client libraries like GDAL and xarray as well. The benefit of supporting these kind of virtual data cubes will be big for the scientific community, but the technical challenges are not trivial.
 
-### Potential solutions
+**Potential solutions**
 
-* Compose a virtual data tree - this solves the issue of being non-cubable by not representing the data as a cube but still enabling a single entry point. The problem of mosaicing data still remains.
+* Some datasets may lend themselves to being cubable per-frame, such as NISAR.
+* Compose a virtual data tree: this solves the issue of variable grid systems by not representing the data as a cube but still enabling a single entry point. The problem of mosaicing data still remains.
 * Apply a query engine to Zarr metadata storing many 1-D arrays. This will streamline mosaicing as it avoids a secondary indexing system and potentially avoids fetching overlapping chunks. An early approach to this is [Zarr Data Fusion Search](https://github.com/developmentseed/zarr-datafusion-search).
 * For future missions, investigate the use of [discrete global grid systems](https://ecce.esri.ca/blog/2023/06/24/introduction-to-discrete-global-grid-system-dggs/) so lower level data products enable spatial and temporal alignment that will facilitate data processing and the generation of virtual data cubes.
 
