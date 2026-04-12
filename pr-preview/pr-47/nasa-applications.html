@@ -224,7 +224,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#example-5-air-quality-satellite-data-tempo-asdc" id="toc-example-5-air-quality-satellite-data-tempo-asdc" class="nav-link" data-scroll-target="#example-5-air-quality-satellite-data-tempo-asdc">Example 5: Air quality satellite data (TEMPO) — ASDC</a></li>
   <li><a href="#example-6-surface-emissivity-prefire-asdc" id="toc-example-6-surface-emissivity-prefire-asdc" class="nav-link" data-scroll-target="#example-6-surface-emissivity-prefire-asdc">Example 6: Surface emissivity (PREFIRE) — ASDC</a></li>
   <li><a href="#example-7-smap-l4-soil-moisture---nsidc" id="toc-example-7-smap-l4-soil-moisture---nsidc" class="nav-link" data-scroll-target="#example-7-smap-l4-soil-moisture---nsidc">Example 7: SMAP L4 soil moisture - NSIDC</a></li>
-  <li><a href="#example-8-l2-collections-at-podaac" id="toc-example-8-l2-collections-at-podaac" class="nav-link" data-scroll-target="#example-8-l2-collections-at-podaac">Example 8: L2 Collections at PODAAC</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/nasa-applications.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -355,7 +354,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Owner:</strong> Joseph H. Kennedy (Prototype)</li>
 </ul>
 <p>ASF is looking to develop virtual Zarr stores for time-series analyses of all the <a href="https://nisar-docs.asf.alaska.edu/products-overview/">L2+ Geocoded NISAR products</a>. Building off of ASF’s experience with the OPERA Displacement portal (described above) and Joseph’s experience on the <a href="https://its-live.jpl.nasa.gov/">ITS_LIVE project</a> (which uses Zarr datacubes to power a time-series portal), ASF plans to provide both granule-level virtual Zarr stores and frame-level virtual Zarr stores.</p>
-<p>There are, however, some likely changes to how ASF approaches this compared to how the OPERA displacement portal was developed. primarily, ASF plans to use icechunk as the virtualization method because it supports appending – kerchunk does not support appending, so for OPERA DISP-S1, the frame-level virtual zarr store needs to be recreated each time new a new granule’s data is added to the store. This is a resource-intensive operation that increases in cost as the archive grows.</p>
+<p>There are, however, some likely changes to how ASF approaches this compared to how the OPERA displacement portal was developed. primarily, ASF plans to use icechunk as the virtualization method because it supports appending. Kerchunk does not support appending. For OPERA DISP-S1, the frame-level virtual zarr store needs to be recreated each time new a new granule’s data is added to the store. This is a resource-intensive operation that increases in cost as the archive grows.</p>
 <p>Like OPERA DISP-S1, NISAR data products are framed such that they have a consistent (geostationary) spatial extent over time. The map of all the NISAR frames is static; the frame geometries do not shift over time. Instead of providing links to the frame-level virtual stores in every NISAR granule’s CMR metadata, which would require substantial updates to the mission processing and DAAC ingest systems, ASF plans on providing a single, static NISAR frame collection in CMR. Each “granule” in this collection would describe a single NISAR frame; it would include spatial metadata describing the NISAR frame’s footprint, and its data links would point to the virtual zarr stores created from time-series stacks of NISAR products. This would allow users to do a fast spatial search for an area of interest and easily load the entire time-series for the product(s) they are interested in.</p>
 <p>There are a few benefits of a secondary collection instead of integrating it into the product granule metadata, as was done for OPERA DISP-S1:</p>
 <ul>
@@ -383,7 +382,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Status:</strong> Proof of concept</li>
 <li><strong>Owner:</strong> ASDC</li>
 </ul>
-<p>A month of TEMPO L3 V04 NO₂ granules (January 2026, ~30 GB) was consolidated into a single Icechunk store (~6 MB reference layer). The store was built locally in four incremental append-and-commit steps, then manually uploaded to S3 (<code>asdc-prod-public</code> bucket). The <a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb">demo notebook</a> authenticates via earthaccess, opens the store read-only, and loads the full month as a single xarray Dataset — producing cartopy map visualizations of tropospheric NO₂ columns using both index slicing and coordinate-based selection.</p>
+<p>A month of TEMPO L3 V04 NO₂ granules (January 2026, ~30 GB) was consolidated into a single Icechunk store (~6 MB reference layer). The store was built locally in four incremental append-and-commit steps, then manually uploaded to S3 (<code>asdc-prod-public</code> bucket).</p>
+<p>The <a href="https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb">demo notebook</a> authenticates via earthaccess, opens the store read-only, and loads the full month as a single xarray Dataset — producing cartopy map visualizations of tropospheric NO₂ columns using both index slicing and coordinate-based selection.</p>
 <p><strong>Next steps:</strong></p>
 <ol type="1">
 <li><strong>Direct-to-S3 appending.</strong> The store is currently built locally and uploaded as a static snapshot. The next step is appending directly to a store in S3 so new granules can be committed incrementally without a local intermediate — enabling a continuously growing, cloud-hosted datacube.</li>
@@ -410,10 +410,6 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Owner:</strong> NSIDC</li>
 </ul>
 <p>We assembled 10 years of SPL4SMGP a global Level-4 data from the SMAP mission totalling 40TB, 3-hour, 9km resolution. During this process, we corrected source file metadata issues within the virtual store by properly assigning coordinates and values to the time dimension. By integrating earthaccess and leveraging dmrpp files, we were able to accelerate the creation of this virtual store by an order of magnitude. This prototype is first of potentially many virtual data cubes at NSIDC DAAC.</p>
-</section>
-<section id="example-8-l2-collections-at-podaac" class="level3">
-<h3 class="anchored" data-anchor-id="example-8-l2-collections-at-podaac">Example 8: L2 Collections at PODAAC</h3>
-<p>Virtualized L2 collections are currently under development at PO.DAAC.</p>
 
 
 </section>
