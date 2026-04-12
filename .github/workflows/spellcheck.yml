@@ -12,6 +12,6 @@ jobs:
 
       - uses: codespell-project/actions-codespell@master
         with:
-          path: .
-          file_glob: "**/*.qmd"          
+          skip: '*.svg'
+          path: . 
           ignore_words_file: .codespellignore
