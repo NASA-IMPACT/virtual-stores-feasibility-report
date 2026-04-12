@@ -355,11 +355,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>By using CMR search results earthaccess enables creation of tailored virtual stores. Virtual stores can be created “on the fly” using only the subset of files that meet certain criteria. Use cases include creating seasonal and regional datasets.</p>
 <p>Once a virtual store is created, updating it will also be streamlined with <code>earthaccess</code>. Once the store’s metadata is listed in a CMR collection-level record or a new UMM association, then we will be able to use <code>earthaccess</code> to update the virtual store with new granules that get added to the collection, or even remove granules that get deleted from the collection. This would allow users to maintain up-to-date virtual stores without having to manually track changes to the underlying data.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>colection <span class="op">=</span> ea.search_datasets(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>collection <span class="op">=</span> ea.search_datasets(</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  short_name<span class="op">=</span><span class="st">"SPL4SMGP"</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)[<span class="dv">0</span>]</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>icechunk_store <span class="op">=</span> ea.open_virtual_store(colection, name<span class="op">=</span><span class="st">"yearly_store"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>icechunk_store <span class="op">=</span> ea.open_virtual_store(collection, name<span class="op">=</span><span class="st">"yearly_store"</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># then we can use a CMR search to look for new granules with created_at</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
