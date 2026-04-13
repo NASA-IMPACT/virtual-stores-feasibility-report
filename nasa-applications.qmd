@@ -36,7 +36,7 @@ Collection-level aggregated chunk manifests have been successfully implemented a
 Level 3 and 4 datasets. To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter 
 "Using Virtual Datasets" in the PO.DAAC online cookbook (https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
 
-One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users’ Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.
+One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users' Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.
 
 Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains >15,000 daily files from a 41 year times series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and timeranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.
 
