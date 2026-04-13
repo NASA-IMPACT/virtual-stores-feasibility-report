@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-028c30cb1342a02cc1af3444e6f684b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -259,12 +259,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Clear standards are needed for where metadata lives within the Common Metadata Repository (CMR) metadata models.</p>
 <section id="collection-level-metadata" class="level3">
 <h3 class="anchored" data-anchor-id="collection-level-metadata">Collection-level metadata</h3>
-<p><em>(Define what metadata belongs at the collection level and how it should be structured.)</em></p>
+<p>Existing metadata curation approaches include the addition of a RelatedURL representing the collection-level virtual store in the CMR Unified Metadata Model - Collection (UMM-C) record. However, no ESDIS-level standards currently exist regarding this practice, which is needed in order to ensure that virtual stores are discoverable through common tools and geospatial workflows such as <code>earthaccess</code>. The ESDIS Metadata Stewardship Team ensures consistent and accurate metadata curation practices are applied across all ESDIS data holdings. We recommend this team provides virtual store metadata recommendations to be adopted by ESDIS metadata curators, in order to improve and expand virtual store discoverability for end-users.</p>
 <p>A virtual store that spans an entire collection (e.g., a single Icechunk store aggregating all TEMPO L3 V04 granules) needs to be discoverable alongside the collection it virtualizes. Possible approaches include adding a related URL to the existing UMM-C record or registering the store as a UMM-S service entry. Each carries different implications for search behavior in Earthdata Search and for how downstream tools resolve data access.</p>
 </section>
 <section id="granule-level-metadata" class="level3">
 <h3 class="anchored" data-anchor-id="granule-level-metadata">Granule-level metadata</h3>
-<p><em>(Expand on what metadata belongs at the granule level, whether granule-level virtual references are needed, how it relates to collection-level metadata.)</em></p>
 <p>For virtual stores that aggregate at the collection level, granule-level metadata placement may not apply. DMR++ provides granule-level references for OPeNDAP.</p>
 </section>
 </section>
@@ -297,7 +296,6 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="ownership-and-stewardship-of-virtual-store-assets" class="level2">
 <h2 class="anchored" data-anchor-id="ownership-and-stewardship-of-virtual-store-assets">Ownership and stewardship of virtual store assets</h2>
-<p><em>(Define which teams or DAACs are responsible for creating, maintaining, and deprecating virtual store assets for each dataset type.)</em></p>
 <p>Creating a virtual store requires upfront engineering and design decisions; maintaining it is an ongoing operational and engineering commitment. The maintenance burden depends significantly on decisions made at the outset — versioning strategy, automation of rebuild pipelines, monitoring for drift — and investing in these foundations early will reduce the long-term effort. But as source data grows, is reprocessed, or is deprecated, the virtual store must be updated or retired accordingly, and that work needs clear ownership.</p>
 <p>A virtual store touches multiple teams: the science team that defines the data, the DAAC archive team that manages source files, and the mission POCs that coordinate releases and user communication. Which team is responsible for rebuilding the virtual store after a reprocessing campaign? Who monitors for drift between the store and the archive? Who decides when a virtual store has reached end of life?</p>
 

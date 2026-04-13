@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-8c1342631c4836e9f26ec0d083f0a125.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-028c30cb1342a02cc1af3444e6f684b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -245,14 +245,15 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="core-concepts" class="level2">
 <h2 class="anchored" data-anchor-id="core-concepts">Core concepts</h2>
-<p>[ADD ME: DIAGRAM]</p>
+<p><img src="graphics/virtualizarr_pipeline.svg" class="img-fluid"></p>
 <ul>
 <li><a href="https://zarr.dev/"><strong>Zarr</strong></a> is a chunked, compressed multi-dimensional array specification. Zarr is designed for cloud-native (network-addressable chunks in object storage) access. Zarr is the proposed specification for virtual stores at NASA.</li>
-<li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk and Kerchunk are 2 common implementations of chunk manifests.</li>
+<li><strong>Chunk manifests</strong> are lightweight metadata structures that describe a mapping from logical data space to where that data is stored. Another term for chunk manifests is an “indirection layer”. Icechunk, Kerchunk, and DMR++ are common implementations of chunk manifests.</li>
 <li><a href="https://icechunk.io/"><strong>Icechunk</strong></a> is a transactional storage engine for Zarr arrays. Icechunk stores chunk manifests which it calls <a href="https://icechunk.io/en/stable/virtual/">virtual datasets</a>.</li>
 <li><a href="https://fsspec.github.io/kerchunk/"><strong>Kerchunk</strong></a> is an early approach to creating chunk manifests (what it calls reference files) which maps virtual Zarr array coordinates to byte ranges in existing files using the JSON or Parquet file formats for persistence.</li>
+<li><a href="https://opendap.github.io/DMRpp-wiki/DMRpp.html"><strong>DMRPP</strong></a> is a chunk manifest format from <a href="https://opendap.github.io/DMRpp-wiki/DMRpp.html">OPeNDAP</a>, semantically equivalent to Kerchunk or Zarr chunk manifest is mostly used internally on datasets supported by OPeNDAP. This format is however not stackable (consolidating many chunk manifests into one) like Kerchunk or Icechunk. When available it can speed up the creation of virtual stores.</li>
 <li><a href="https://virtualizarr.readthedocs.io/"><strong>VirtualiZarr</strong></a> is a library for generating chunk manifests. Format-specific parsers are used to read chunk information and generate in-memory chunk manifests. VirtualiZarr can then write those chunk manifests to icechunk or kerchunk.</li>
-<li><a href="https://geozarr.org/"><strong>GeoZarr</strong></a> extends Zarr with geospatial conventions. including coordinate reference systems and spatial metadata.</li>
+<li><a href="https://geozarr.org/"><strong>GeoZarr</strong></a> extends Zarr with geospatial conventions, including coordinate reference systems and spatial metadata.</li>
 </ul>
 
 
