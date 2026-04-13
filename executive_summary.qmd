@@ -8,6 +8,7 @@ This report assesses the current state and future direction of virtual store tec
 
 ## Summary of recommendations and current state
 
-Virtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types. Key recommendations include adopting Icechunk, GeoZarr and multiscales standards, engaging with any evolving chunk manifest protocol, planning for EGIS integration, and addressing governance gaps.
+Virtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types. Key recommendations include adopting Icechunk, GeoZarr and multiscales standards, engaging with any evolving chunk manifest protocol, planning for Earthdata GIS (EGIS) integration, standardizing CMR collection-level metadata, and addressing governance gaps.
 
 See the [Recommendations](recommendations.qmd) section for the full summary.
+

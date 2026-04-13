@@ -4,6 +4,8 @@ title: "Contributing"
 
 **We welcome PRs to this repo from anyone. If you open a PR with new or revised content, please add yourself to the authors list in `index.qmd`.**
 
+Once a PR is approved, the PR author should merge it.
+
 This site uses [Quarto](https://quarto.org/) to generate website pages using markdown and jupyter notebooks.
 
 ## Adding pages

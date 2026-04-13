@@ -1,7 +1,8 @@
 ---
 title: "Virtual Stores at NASA"
 subtitle: "Unifying access to NASA datasets"
-authors: Aimee Barciauskas, Ed Armstrong, Daniel Kaufman, Chris Battisto, Hailiang Zhang, Christine Smit, Jack McNelis
+authors: Aimee Barciauskas, Ed Armstrong, Amy Steiker, Owen Littlejohns, Daniel Kaufman, Chris Battisto, Hailiang Zhang, Christine Smit, Jack McNelis, Luis Lopez, Joseph H. Kennedy, Kim Fairbanks
+title-block-style: plain
 ---
 
 ⚠️ UNDER DEVELOPMENT ⚠️
@@ -14,15 +15,15 @@ Virtual stores deliver a single entrypoint to a dataset comprised of many files.
 
 * Less pre-processing to be "analysis-ready".
 * Users do not have to know about the underlying data format or storage location.
-* Greater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets. 
+* Greater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.
 
 ## What are virtual stores and what do they enable?
 
-Core to virtual store technology is lightweight metadata pointing to data byte ranges in existing files. Virtual store technology enables data users to access subsets of large scientific datasets without downloading, scanning and pre-processing any files. 
+Core to virtual store technology is lightweight metadata pointing to data byte ranges in existing files. Virtual store technology enables data users to access subsets of large scientific datasets without downloading, scanning, or pre-processing any files.
 
 ## Benefits for data users
 
-- Logical dataset access access large number of files, without downloading any data
+- Logical dataset access across a large number of files, without downloading any data, and regardless of local or in-region compute location
 - Consistent access patterns across diverse data types
 
 ## Benefits for data providers and NASA
