@@ -19,7 +19,7 @@ website:
       - section: Guidance
         contents:
           - href: recommendations.qmd
-            text: Recommendationsq
+            text: Recommendations
           - href: limitations.qmd
             text: Known Limitations
           - href: governance.qmd
