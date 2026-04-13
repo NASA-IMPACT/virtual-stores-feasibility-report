@@ -16,6 +16,7 @@ Virtual stores deliver a single entrypoint to a dataset comprised of many files.
 * Less pre-processing to be "analysis-ready".
 * Users do not have to know about the underlying data format or storage location.
 * Greater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.
+* Better performance and reduced costs as less data -- only the data the user needs -- is sent over the internet.
 
 ## What are virtual stores and what do they enable?
 
