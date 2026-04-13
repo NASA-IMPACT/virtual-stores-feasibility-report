@@ -114,7 +114,7 @@
     "href": "index.html#vision-nasa-datasets-accessible-through-a-single-entrypoint",
     "title": "Virtual Stores at NASA",
     "section": "Vision: NASA datasets accessible through a single entrypoint",
-    "text": "Vision: NASA datasets accessible through a single entrypoint\n\nVirtual stores deliver a single entrypoint to a dataset comprised of many files. For NASA datasets this enables:\n\nLess pre-processing to be “analysis-ready”.\nUsers do not have to know about the underlying data format or storage location.\nGreater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.",
+    "text": "Vision: NASA datasets accessible through a single entrypoint\n\nVirtual stores deliver a single entrypoint to a dataset comprised of many files. For NASA datasets this enables:\n\nLess pre-processing to be “analysis-ready”.\nUsers do not have to know about the underlying data format or storage location.\nGreater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.\nBetter performance and reduced costs as less data – only the data the user needs – is sent over the internet.",
     "crumbs": [
       "Home"
     ]
