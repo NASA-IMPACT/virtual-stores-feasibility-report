@@ -33,7 +33,7 @@ This page collects worked examples of virtual store implementations, serving as 
 * **Owners:** Ed Armstrong and Dean Henze
 
 Collection-level aggregated chunk manifests have been successfully implemented at PODAAC for consistently gridded 
-Level 3 and 4 datasets.  To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter 
+Level 3 and 4 datasets. To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter 
 "Using Virtual Datasets" in the PO.DAAC online cookbook (https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
 
 One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users’ Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.
