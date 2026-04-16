@@ -19,6 +19,24 @@ To add a new page:
 
 To preview changes, you can run this site locally (see instructions to setup quarto locally below) or use the automated preview generation when opening a PR (see [the PR preview workflow](./.github/workflows/pr-preview.yml)).
 
+## Release Process
+
+Releases mark citable snapshots of the report. Not every merged PR needs a release — cut one when there is a meaningful body of new or revised content.
+
+### Steps to create a release
+
+1. **Decide on a version number.** Use `vMAJOR.MINOR` (e.g., `v1.0`, `v1.1`, `v2.0`). Increment the major version for significant restructuring or scope changes; increment the minor version for new sections or substantial updates.
+
+2. **Update `releases.md`.** Add an entry at the top of the list with the version, date, and a short summary of what changed.
+
+3. **Open and merge a PR** with the `releases.md` update. The site will be published automatically on merge to `main`.
+
+4. **Create a GitHub Release.** Go to [Releases → Draft a new release](https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/releases/new):
+   - Set the tag to match the version (e.g., `v1.1`), targeting the `main` branch.
+   - Use the version as the title (e.g., `v1.1`).
+   - Copy the summary from `releases.md` into the release notes.
+   - Publish the release.
+
 ## Local Development
 
 ### Install Quarto
