@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8e135ade0516dc3b8effb38c0398a273.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -268,7 +268,7 @@ Note
 </section>
 <section id="collections-with-multiple-grid-systems" class="level2">
 <h2 class="anchored" data-anchor-id="collections-with-multiple-grid-systems">Collections with multiple grid systems</h2>
-<p>There is significant variation across—and even within—datasets when it comes to grid systems. Data from Earth-observing satellites is commonly collected in swaths, which do not natively form a single, regular data cube. Most global, uniformly gridded datasets are higher-level products (Level 3 or Level 4) that have undergone interpolation or resampling to form a consistent grid.</p>
+<p>There is significant variation across—and even within—datasets when it comes to grid systems. Data from Earth-observing satellites is commonly collected in swaths, which do not natively form a single, regular data cube. Most global, uniformly gridded datasets are higher-level products (Level 3 or Level 4) that have undergone additional processing to form a consistent grid.</p>
 <p>However, many data products preserve their native spatial structure, resulting in different coordinate systems, as well as overlapping or irregular grids. These datasets are typically organized into tiles, scenes, or frames (e.g., Sentinel tiles; OPERA and NISAR frames). Virtualizing these datasets requires additional design considerations to account for their varying geometries and coordinate systems.</p>
 <p>As highlighted in a <a href="https://github.com/zarr-developers/geozarr-spec/issues/53">GeoZarr specification thread</a> on mapping multi-CRS datasets, array-based formats like Zarr typically require a uniform multi-dimensional structure. Array-based formats like Zarr struggle to natively represent heterogeneous, multi-CRS tiles (such as global Sentinel-2 or Landsat grids) without forcing a permanent reprojection to a common global grid — a process that introduces data loss, edge artifacts, and spatial distortion.</p>
 <p>To preserve original data integrity, virtualization must instead rely on abstract, secondary indexing systems (like GDAL’s Geospatial Tile Index or external STAC catalogs) to act as a “virtual mosaic,” stitching together scenes and handling reprojection strictly on-the-fly. This “dynamic” approach shifts the bottleneck to the I/O layer. As contributors in the GeoZarr thread experienced, rapidly fetching and aligning thousands of localized, overlapping chunks can easily overwhelm cloud storage APIs with massive concurrent read requests, requiring manual tuning of client caching and concurrency.</p>
