@@ -76,7 +76,7 @@ There are a few benefits of a secondary collection instead of integrating it int
 * **Data type:** Level 3/4 Products
 * **Virtualization approach:** Kerchunk Manifest Files
 * **Status:** In development
-* **Owner:** Hailiang Zhang, Christine Smit, Chris Battisto
+* **Owner:** Hailiang Zhang, Christine Smit, Chris Battisto, Jack McNelis
 
 GES DISC is working to provide users with virtual Zarr services as part of its on-prem aggregation service deprecation efforts. The current plan is to enable virtual Zarr support for the 10 most popular collections previously served through on-prem aggregation services.
 GES DISC conducted benchmarking for manifest generation using a representative MERRA-2 dataset (M2T1NXAER), which contains approximately 4.3 TB of data. Running the manifest generation in a cloud-based dask cluster resulted in a total processing time of about 5 hours.
