@@ -39,7 +39,7 @@ More specifically, NASA should work on:
 
 ## Adopt GeoZarr standards
 
-Adoption of [GeoZarr](https://geozarr.org/) is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling.
+Adoption of [GeoZarr](https://geozarr.org/) is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is a specification for standardizing geospatial metadata in Zarr stores. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.
 
 ## Leverage existing tools, services and available chunk metadata.
 
