@@ -4,9 +4,21 @@ title: "Recommendations"
 
 ## Design files, chunks, and aggregated chunk manifests around typical use case patterns
 
-The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.
+The most important design input for a new data product is understanding how the data will most commonly be accessed.
+With virtual data stores (VDS), you cannot change the chunks of the underlying files. This matters because more chunks along a dimension means slower access across that dimension.
 
-For example, time series analysis is a common use case. However, many datasets are collected into one file per timestep. This makes sense, since data is collected over time: generating one file at a time makes data processing straight-forward since there is no appending to an existing file. However, this means time series will never be optimized since data for one timeseries is scattered across n-timesteps number of chunks. Designing how files are chunked is a decision that should made deliberately, with awareness of the trade-offs for other access patterns.
+A useful analogy: pancakes vs. churros.
+
+* A pancake chunk holds the full spatial extent at one timestep. Loading a global snapshot is fast because it's all in one chunk. Time series are slow because each timestep is stored in a separate chunk.
+* A churro chunk holds many timesteps for a small spatial location. Time series are fast for a spatial subset, but global views are slow.
+
+![pancakes and churros](./graphics/pancake_vs_churro_chunking_v2.svg)
+
+This is a real problem in practice: many datasets store one file per timestep, which makes data collection straight-forward but is not optimized for time series access.
+
+Chunk shape should be a deliberate design decision, made with awareness of the tradeoffs.
+
+VDSs are often built after data product decisions have already been made. What you can still control is the manifest, where you can make changes to what variables are represented and in what composition. For examples, see [Virtual Stores at NASA](./nasa-applications.qmd).
 
 ## Adopt icechunk
 
