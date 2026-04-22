@@ -22,7 +22,14 @@ VDSs are often built after data product decisions have already been made. What y
 
 ## Adopt icechunk
 
-[Icechunk](icechunk.io) should be adopted but with risk mitigation measures. While open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance and development. 
+[Icechunk](icechunk.io) should be adopted but with risk mitigation measures. Icechunk is a transactional storage engine for Zarr. In other words, it is a way to manage Zarr stores the same way you would with many traditional databases. Icechunk technology supports the following operational needs of many NASA datasets:
+
+* Safety: Changes to a store can be made safely through ACID transactions which ensure all dependent updates are either committed together or rolled back together. Corrupted data can easily be fixed by rolling back to a previous snapshot.
+* Stability: Some production workflows may depend on Icechunk stores and pointing to a specific version ensures stability.
+
+Reference: [https://icechunk.io/en/stable/overview/](https://icechunk.io/en/stable/overview/).
+
+While Icechunk is open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance and development. 
 
 More specifically, NASA should work on:
 
