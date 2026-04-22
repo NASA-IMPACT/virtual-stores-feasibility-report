@@ -69,7 +69,7 @@ earthaccess already provides for direct file access.
 
 ## Documentation and onboarding
 
-Virtual store documentation is already underway — PO.DAAC's cookbook chapter, ASDC's demo notebooks and [Resources](./resources.qmd) all represent ongoing efforts. The next step is consolidating and improving these materials to serve two distinct audiences: data providers virtualizing datasets, and data users accessing virtual stores.
+Virtual store documentation is already underway — [PO.DAAC's cookbook chapter](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html), [ASDC's demo notebook](https://earthaccess.readthedocs.io/en/stable/user/tutorials/virtual_dataset_tutorial_with_TEMPO_Level3/) and [Resources](./resources.qmd) all represent ongoing efforts. The next step is consolidating and improving these materials to serve two distinct audiences: data providers virtualizing datasets, and data users accessing virtual stores.
 
 * Provider-facing documentation should develop the existing worked examples into reusable templates covering format-specific considerations, chunking decisions, and validation.
 * User-facing documentation should lower the barrier to working with virtual stores — particularly around authentication setup, available access patterns, and how virtual store access differs from traditional file-based workflows
