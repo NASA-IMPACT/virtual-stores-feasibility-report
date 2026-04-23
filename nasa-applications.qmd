@@ -19,6 +19,12 @@ This page collects worked examples of virtual store implementations, serving as 
 
 ## Mature implementations
 
+**Characteristics:**
+
+- Consistent spatial and temporal resolution across each variable
+- Uniform chunk grid and compression scheme across each variable
+- Chunk manifest generated at collection level, spanning many granules
+
 ### Example 1: Consistently gridded data — PODAAC
 
 * **Data type:** Gridded ocean/atmosphere fields
@@ -26,7 +32,9 @@ This page collects worked examples of virtual store implementations, serving as 
 * **Status:** Production
 * **Owners:** Ed Armstrong and Dean Henze
 
-Collection-level aggregated chunk manifests have been successfully implemented at PO.DAAC for consistently gridded Level 3 and 4 datasets. To date a total of 10 PO.DAAC datasets have been virtualized as detailed in a chapter "Using Virtual Datasets" in the [PO.DAAC online cookbook](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html).
+Collection-level aggregated chunk manifests have been successfully implemented at PODAAC for consistently gridded 
+Level 3 and 4 datasets. To date a total of ten PO.DAAC datasets have been virtualized as detailed in a chapter 
+"Using Virtual Datasets" in the PO.DAAC online cookbook (https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html). 
 
 One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users' Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.
 
@@ -167,7 +175,6 @@ of the two approaches.
 * **Status:** Proof of concept
 * **Owner:** NSIDC
 
-
 We assembled 10 years of SPL4SMGP a global Level-4 data from the SMAP mission totalling 40TB, 3-hour, 9km resolution.
 During this process, we corrected source file metadata issues within the virtual store by properly assigning coordinates and values to the time dimension.
 By integrating earthaccess and leveraging dmrpp files, we were able to accelerate the creation of this virtual store by an order of magnitude.
@@ -175,4 +182,10 @@ This prototype is first of potentially many virtual data cubes at NSIDC DAAC.
 
 ### Example 11: L2 Collections at PODAAC
 
-Virtualized L2 collections are currently under development at PO.DAAC.
+Recently, PO.DAAC has developed a novel approach to virtualizing non-gridded Level 2 datasets that have well behaved repeat orbits. 
+The implementation requires a new dimension and coordinate to be added to the original dataset in the virtual dataset creation process. 
+Often this new dimension is the orbit start time, or a simple sequential granule index number. For example, for the VDS for the 
+SWOT_L2_LR_SSH_Basic_D dataset, the new dimension is a sequential numeric list called 'granule', with new additional coordinate variables 
+of cycle, pass, orbit start time, and filename. A user can then query for unique cycle/pass combinations from the VDS or use a space/time CMR
+query to find regional intersecting orbits, and determine the exact filenames for subsetted data.
+
