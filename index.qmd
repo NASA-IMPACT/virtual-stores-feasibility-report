@@ -1,7 +1,7 @@
 ---
 title: "Virtual Stores at NASA"
 subtitle: "Unifying access to NASA datasets"
-authors: Aimee Barciauskas, Ed Armstrong, Amy Steiker, Owen Littlejohns, Daniel Kaufman, Chris Battisto, Hailiang Zhang, Christine Smit, Jack McNelis, Luis Lopez, Joseph H. Kennedy, Kim Fairbanks
+authors: Aimee Barciauskas, Ed Armstrong, Amy Steiker, Owen Littlejohns, Daniel Kaufman, Chris Battisto, Hailiang Zhang, Christine Smit, Jack McNelis, Luis Lopez, Siddharth Chaudhary, Joseph H. Kennedy, Kim Fairbanks
 title-block-style: plain
 ---
 
@@ -19,6 +19,7 @@ Virtual stores deliver a single entrypoint to a dataset comprised of many files.
 * Less pre-processing to be "analysis-ready".
 * Users do not have to know about the underlying data format or storage location.
 * Greater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.
+* Better performance and reduced costs as less data -- only the data the user needs -- is sent over the internet.
 
 ## What are virtual stores and what do they enable?
 
