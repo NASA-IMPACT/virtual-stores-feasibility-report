@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Technical Features – Virtual Store Feasibility Report</title>
+<title>Executive Summary – Virtual Store Feasibility Report</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -32,8 +32,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./nasa-applications.html" rel="next">
-<link href="./technical-overview.html" rel="prev">
+<link href="./recommendations.html" rel="next">
+<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-features.html">Technical Features</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./executive-summary.html">Executive Summary</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./executive-summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./executive-summary.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Executive Summary</span></a>
   </div>
 </li>
@@ -171,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./technical-features.html" class="sidebar-item-text sidebar-link active">
+  <a href="./technical-features.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Technical Features</span></a>
   </div>
 </li>
@@ -211,25 +211,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mature-support" id="toc-mature-support" class="nav-link active" data-scroll-target="#mature-support">Mature Support</a>
-  <ul class="collapse">
-  <li><a href="#supported-data-formats" id="toc-supported-data-formats" class="nav-link" data-scroll-target="#supported-data-formats">Supported data formats</a></li>
-  </ul></li>
-  <li><a href="#developing-support" id="toc-developing-support" class="nav-link" data-scroll-target="#developing-support">Developing Support</a>
-  <ul class="collapse">
-  <li><a href="#non-uniform-grids" id="toc-non-uniform-grids" class="nav-link" data-scroll-target="#non-uniform-grids">Non-uniform grids</a></li>
-  </ul></li>
-  <li><a href="#no-plans-for-support" id="toc-no-plans-for-support" class="nav-link" data-scroll-target="#no-plans-for-support">No plans for support</a></li>
+  <li><a href="#purpose-of-this-report" id="toc-purpose-of-this-report" class="nav-link active" data-scroll-target="#purpose-of-this-report">Purpose of this report</a></li>
+  <li><a href="#summary-of-recommendations-and-current-state" id="toc-summary-of-recommendations-and-current-state" class="nav-link" data-scroll-target="#summary-of-recommendations-and-current-state">Summary of recommendations and current state</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/technical-features.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/executive-summary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./technical-overview.html">Technical Aspects</a></li><li class="breadcrumb-item"><a href="./technical-features.html">Technical Features</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Technical Features</h1>
-<p class="subtitle lead">Additional information on technical features and their maturity levels</p>
+<h1 class="title">Executive Summary</h1>
 </div>
 
 
@@ -246,71 +238,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="mature-support" class="level1">
-<h1>Mature Support</h1>
-<p><strong>Current mature implementations of virtual stores share the following characteristics:</strong></p>
-<ul>
-<li>Virtual stores are used to provide alternate views (defined below) into the data. These views can range from an entire collection, to subsets of a collection, to a subset of a granule.</li>
-<li>Consistent spatial and temporal resolution across each variable (i.e.&nbsp;array) within a virtual store</li>
-<li>Uniform chunk grid shape and compression scheme across each variable within a virtual store</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>We define the term “view” in a virtual store context to mean the different ways the same dataset can be represented. A view of the same dataset could be representing the entire dataset as a cube or aggregating some a subset of the dataset. Different views will make sense for any particular dataset given its characteristics and the intended use cases; see <a href="./nasa-applications.html">Virtual Stores at NASA</a> for some real-world examples.</p>
-</div>
-</div>
-<section id="supported-data-formats" class="level2">
-<h2 class="anchored" data-anchor-id="supported-data-formats">Supported data formats</h2>
-<p>Data format support is limited to formats with VirtualiZarr parser implementations. Parsers maintained by VirtualiZarr include:</p>
-<ul>
-<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/hdf/hdf.py">HDFParser</a></li>
-<li><a href="https://github.com/zarr-developers/VirtualiZarr/tree/main/virtualizarr/parsers/kerchunk">Kerchunk (Parquet or JSON)</a></li>
-<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/dmrpp.py">DMRPPParser</a></li>
-<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/fits.py">FITSParser</a></li>
-<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/netcdf3.py">NetCDF3Parser</a></li>
-<li><a href="https://github.com/zarr-developers/VirtualiZarr/blob/main/virtualizarr/parsers/zarr.py">ZarrParser</a></li>
-</ul>
-<p>Parsers maintained outside of VirtualiZarr include:</p>
-<ul>
-<li><a href="https://virtual-tiff.readthedocs.io/en/latest/">virtual-tiff</a></li>
-<li><a href="https://github.com/virtual-zarr/hrrr-parser">hrrr-parser</a></li>
-</ul>
-<p>Custom parsers for additional formats can be implemented using the VirtualiZarr <a href="https://virtualizarr.readthedocs.io/en/stable/custom_parsers.html">CustomParsers</a> guide.</p>
+<section id="purpose-of-this-report" class="level2">
+<h2 class="anchored" data-anchor-id="purpose-of-this-report">Purpose of this report</h2>
+<p>This report assesses the current state and future direction of virtual store technology for NASA data. It documents mature implementations, developing approaches, known limitations, governance gaps, and recommended next steps.</p>
 </section>
-</section>
-<section id="developing-support" class="level1">
-<h1>Developing Support</h1>
-<section id="non-uniform-grids" class="level2">
-<h2 class="anchored" data-anchor-id="non-uniform-grids">Non-uniform grids</h2>
-<p>Some NASA collections present additional complexity due to having varying compression schemes and chunk grids across a logical array (usually across granules). Currently, Zarr assumes a consistent chunk shape and compression across the entire array.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026. For variable-length grids, see https://github.com/zarr-developers/zarr-python/pull/3802.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="no-plans-for-support" class="level1">
-<h1>No plans for support</h1>
-<ul>
-<li>There are no plans to support formats outside of the “Supported data formats” list above at this time.</li>
-</ul>
+<section id="summary-of-recommendations-and-current-state" class="level2">
+<h2 class="anchored" data-anchor-id="summary-of-recommendations-and-current-state">Summary of recommendations and current state</h2>
+<p>Virtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types.</p>
+<p>Key recommendations include: * adopting Icechunk (see <a href="./technical-overview.html">Technical Overview</a>) * adopting the GeoZarr standard (see <a href="./technical-overview.html">Technical Overview</a>) * planning for integration with other NASA services, such as EGIS and Harmony (see <a href="./nasa-ecosystem.html">NASA Ecosystem</a>), and, * addressing governance gaps, specifically standardizing CMR metadata approaches (see <a href="./governance.html">Governance</a>)</p>
+<p>See the <a href="./recommendations.html">Recommendations</a> section for the full summary.</p>
 
 
 </section>
@@ -718,13 +654,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./technical-overview.html" class="pagination-link" aria-label="Technical Overview of Virtual Stores">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Technical Overview of Virtual Stores</span>
+      <a href="./index.html" class="pagination-link" aria-label="Home">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Home</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./nasa-applications.html" class="pagination-link" aria-label="Virtual Stores at NASA">
-        <span class="nav-page-text">Virtual Stores at NASA</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./recommendations.html" class="pagination-link" aria-label="Recommendations">
+        <span class="nav-page-text">Recommendations</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -733,4 +669,4 @@ Note
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/technical-features.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/edit/main/executive-summary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
