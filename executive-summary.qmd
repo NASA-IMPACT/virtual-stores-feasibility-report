@@ -1,0 +1,20 @@
+---
+title: "Executive Summary"
+---
+
+## Purpose of this report
+
+This report assesses the current state and future direction of virtual store technology for NASA data. It documents mature implementations, developing approaches, known limitations, governance gaps, and recommended next steps.
+
+## Summary of recommendations and current state
+
+Virtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types.
+
+Key recommendations include:
+* adopting Icechunk (see [Technical Overview](./technical-overview.qmd))
+* adopting the GeoZarr standard (see [Technical Overview](./technical-overview.qmd))
+* planning for integration with other NASA services, such as EGIS and Harmony (see [NASA Ecosystem](./nasa-ecosystem.qmd)), and,
+* addressing governance gaps, specifically standardizing CMR metadata approaches (see [Governance](./governance.qmd))
+
+See the [Recommendations](recommendations.qmd) section for the full summary.
+

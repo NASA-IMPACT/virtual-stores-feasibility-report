@@ -14,8 +14,16 @@ website:
     contents:
       - href: index.qmd
         text: Home
-      - href: executive_summary.qmd
+      - href: executive-summary.qmd
         text: Executive Summary
+      - section: Guidance
+        contents:
+          - href: recommendations.qmd
+            text: Recommendations
+          - href: limitations.qmd
+            text: Known Limitations
+          - href: governance.qmd
+            text: Governance
       - section: Technical Aspects
         contents:
           - href: technical-overview.qmd
@@ -26,16 +34,6 @@ website:
             text: Virtual Stores at NASA
           - href: nasa-ecosystem.qmd
             text: Virtual Stores within the NASA Ecosystem
-      - section: Guidance
-        contents:
-          - href: limitations.qmd
-            text: Known Limitations
-          - href: governance.qmd
-            text: Governance
-      - href: recommendations.qmd
-        text: Best Practices + Recommendations
-      - href: onboarding.qmd
-        text: Onboarding Guide
       - href: resources.qmd
         text: Resources, References and Presentations
       - href: contributing.qmd

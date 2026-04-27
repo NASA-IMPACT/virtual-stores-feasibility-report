@@ -38,7 +38,7 @@ Level 3 and 4 datasets. To date a total of ten PO.DAAC datasets have been virtua
 
 One of the primary advantages of using virtual data stores (VDS) is users can interact with entire logical datasets without any preprocessing. Users' Jupyter notebooks and Python scripts can bypass the task of downloading, wrangling and merging data from many individual files.
 
-Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains >15,000 daily files from a 41 year times series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and timeranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.
+Take for example one of PO.DAAC’s gridded sea surface temperature (SST) dataset called OSTIA from the GHRSST project. It contains >15,000 daily files from a 41 year time series and is over 11 TBs. Ideally, a single line of code would access all the variables in the dataset in neatly organized multidimensional arrays. In the OSTIA example, SST, SST uncertainty, and mask variables are 3 dimensional, with dimensions latitude, longitude, and time. In a nutshell, the PO.DAAC VDSs provide seamless access to subsetting of desired regions and time ranges across the entire collection of files. The VDSs improve access and computation without requiring users to download massive datasets and operate on them in a file-by-file method as traditional science workflows often do.
 
 The PO.DAAC VDS implementation model represents a mature approach and is recommended as a baseline implementation for similar data types across other DAACs.
 
@@ -51,9 +51,9 @@ The PO.DAAC VDS implementation model represents a mature approach and is recomme
 
 The [OPERA DISP-S1](https://www.jpl.nasa.gov/go/opera/products/disp-product-suite/) products provide surface deformation time series data over much of North and Central America from 2016 onward. These products are Level-3 products derived from Sentinel-1 synthetic aperture radar (SAR) data, and are a powerful tool for identifying areas of subsidence and uplift. Many use cases for these products are time-series-based, where users want to understand the deformation pattern of that area through time. To meet this user need, the OPERA project and ASF DAAC developed the [Opera Displacement Portal](https://displacement.asf.alaska.edu/), which plots the short-wavelength displacement time series for any point location.
 
- OPERA DISP-S1 granules are provided in netCDF4 format and  "framed" such that they have a consistent (geostationary) spatial extent over time. New granules are created following the same 12-day revisit cycle of the Sentinel-1 mission, so a single OPERA frame corresponds to a time-series "stack" of granules. That is, searching the DISP-S1 collection by frame number or by a frame's spatial extent yields the same stack of granules. These granules are combined into a kerchunk-based, frame-level virtual Zarr store, with just the short-wavelength displacement variable from each granule, to enable rapid access to the displacement time-series.
+OPERA DISP-S1 granules are provided in netCDF4 format and "framed" such that they have a consistent (geostationary) spatial extent over time. New granules are created following the same 12-day revisit cycle of the Sentinel-1 mission, so a single OPERA frame corresponds to a time-series "stack" of granules. That is, searching the DISP-S1 collection by frame number or by a frame's spatial extent yields the same stack of granules. These granules are combined into a kerchunk-based, frame-level virtual Zarr store, with just the short-wavelength displacement variable from each granule, to enable rapid access to the displacement time-series.
 
- During ingest, ASF DAAC creates a Kerchunk-based virtual Zarr store for each granule. The frame-level virtual Zarr store is also recreated from the entire stack of granules, adding the new granule's displacement data to the store. Links to both the per-granule and frame-level Zarr stores are included in the granule's UMM metadata as related URLs, making them discoverable through standard NASA Earthdata discovery and access tools.
+During ingest, ASF DAAC creates a Kerchunk-based virtual Zarr store for each granule. The frame-level virtual Zarr store is also recreated from the entire stack of granules, adding the new granule's displacement data to the store. Links to both the per-granule and frame-level Zarr stores are included in the granule's UMM metadata as related URLs, making them discoverable through standard NASA Earthdata discovery and access tools.
 
 The ASF virtual Zarr store implementation model represents a mature approach and is recommended as a baseline implementation for similar dataset types across other DAACs. This model is easily adapted to any framed dataset where users would benefit from a time-series view of the data.
 
@@ -68,7 +68,7 @@ The ASF virtual Zarr store implementation model represents a mature approach and
 
 ASF is looking to develop virtual Zarr stores for time-series analyses of all the [L2+ Geocoded NISAR products](https://nisar-docs.asf.alaska.edu/products-overview/). Building off of ASF's experience with the OPERA Displacement portal (described above) and Joseph's experience on the [ITS_LIVE project](https://its-live.jpl.nasa.gov/) (which uses Zarr datacubes to power a time-series portal), ASF plans to provide both granule-level virtual Zarr stores and frame-level virtual Zarr stores.
 
-There are, however, some likely changes to how ASF approaches this compared to how the OPERA displacement portal was developed. primarily, ASF plans to use icechunk as the virtualization method because it supports appending -- kerchunk does not support appending, so for OPERA DISP-S1, the frame-level virtual zarr store needs to be recreated each time new a new granule's data is added to the store. This is a resource-intensive operation that increases in cost as the archive grows.
+There are, however, some likely changes to how ASF approaches this compared to how the OPERA displacement portal was developed. primarily, ASF plans to use icechunk as the virtualization method because it supports appending. Kerchunk does not support appending. For OPERA DISP-S1, the frame-level virtual zarr store needs to be recreated each time new a new granule's data is added to the store. This is a resource-intensive operation that increases in cost as the archive grows.
 
 Like OPERA DISP-S1, NISAR data products are framed such that they have a consistent (geostationary) spatial extent over time. The map of all the NISAR frames is static; the frame geometries do not shift over time. Instead of providing links to the frame-level virtual stores in every NISAR granule's CMR metadata, which would require substantial updates to the mission processing and DAAC ingest systems, ASF plans on providing a single, static NISAR frame collection in CMR. Each "granule" in this collection would describe a single NISAR frame; it would include spatial metadata describing the  NISAR frame's footprint, and its data links would point to the virtual zarr stores created from time-series stacks of NISAR products. This would allow users to do a fast spatial search for an area of interest and easily load the entire time-series for the product(s) they are interested in.
 
@@ -84,7 +84,7 @@ There are a few benefits of a secondary collection instead of integrating it int
 * **Data type:** Level 3/4 Products
 * **Virtualization approach:** Kerchunk Manifest Files
 * **Status:** In development
-* **Owner:** Hailiang Zhang, Christine Smit, Chris Battisto
+* **Owner:** Hailiang Zhang, Christine Smit, Chris Battisto, Jack McNelis
 
 GES DISC is working to provide users with virtual Zarr services as part of its on-prem aggregation service deprecation efforts. The current plan is to enable virtual Zarr support for the 10 most popular collections previously served through on-prem aggregation services.
 GES DISC conducted benchmarking for manifest generation using a representative MERRA-2 dataset (M2T1NXAER), which contains approximately 4.3 TB of data. Running the manifest generation in a cloud-based dask cluster resulted in a total processing time of about 5 hours.
@@ -126,15 +126,9 @@ The Icechunk stores were built using VEDA JupyterHub (`hub.openveda.cloud`) and 
 * **Status:** Proof of concept
 * **Owner:** ASDC
 
-A month of TEMPO L3 V04 NO₂ granules (January 2026, ~30 GB) was
-consolidated into a single Icechunk store (~6 MB reference layer).
-The store was built locally in four incremental append-and-commit
-steps, then manually uploaded to S3 (`asdc-prod-public` bucket).
-The [demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb)
-authenticates via earthaccess, opens the store read-only, and loads
-the full month as a single xarray Dataset — producing cartopy map
-visualizations of tropospheric NO₂ columns using both index slicing
-and coordinate-based selection.
+A month of TEMPO L3 V04 NO₂ granules (January 2026, ~30 GB) was consolidated into a single Icechunk store (~6 MB reference layer). The store was built locally in four incremental append-and-commit steps, then manually uploaded to S3 (`asdc-prod-public` bucket).
+
+The [demo notebook](https://github.com/nasa/ASDC_Data_and_User_Services/blob/main/TEMPO/additional_drafts/read-references-for-TEMPO-from-s3-icechunk.ipynb) authenticates via earthaccess, opens the store read-only, and loads the full month as a single xarray Dataset — producing cartopy map visualizations of tropospheric NO₂ columns using both index slicing and coordinate-based selection.
 
 **Next steps:**
 
@@ -188,4 +182,3 @@ Often this new dimension is the orbit start time, or a simple sequential granule
 SWOT_L2_LR_SSH_Basic_D dataset, the new dimension is a sequential numeric list called 'granule', with new additional coordinate variables 
 of cycle, pass, orbit start time, and filename. A user can then query for unique cycle/pass combinations from the VDS or use a space/time CMR
 query to find regional intersecting orbits, and determine the exact filenames for subsetted data.
-

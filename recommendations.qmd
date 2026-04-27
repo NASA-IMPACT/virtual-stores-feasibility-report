@@ -1,35 +1,51 @@
 ---
-title: "Recommendations Summary"
+title: "Recommendations"
 ---
 
 ## Design files, chunks, and aggregated chunk manifests around typical use case patterns
 
-The most important design input for a virtual store is a clear understanding of how the data will actually be accessed. Chunk layout and manifest structure should be optimized for the dominant access pattern of the intended user community.
+The most important design input for a new data product is understanding how the data will most commonly be accessed.
+With virtual data stores (VDS), you cannot change the chunks of the underlying files. This matters because more chunks along a dimension means slower access across that dimension.
 
-### Example: NISAR time series analysis
+A useful analogy: pancakes vs. churros.
 
-For NISAR data where time series analysis is the primary use case, a frame-oriented chunk manifest design ensures efficient per-frame loading. This decision should be made deliberately, with awareness of the trade-offs for other access patterns (see [Known Limitations](limitations.qmd)).
+* A pancake chunk holds the full spatial extent at one timestep. Loading a global snapshot is fast because it's all in one chunk. Time series are slow because each timestep is stored in a separate chunk.
+* A churro chunk holds many timesteps for a small spatial location. Time series are fast for a spatial subset, but global views are slow.
+
+![pancakes and churros](./graphics/pancake_vs_churro_chunking_v2.svg)
+
+This is a real problem in practice: many datasets store one file per timestep, which makes data collection straight-forward but is not optimized for time series access.
+
+Chunk shape should be a deliberate design decision, made with awareness of the tradeoffs.
+
+VDSs are often built after data product decisions have already been made. What you can still control is the manifest, where you can make changes to what variables are represented and in what composition. For examples, see [Virtual Stores at NASA](./nasa-applications.qmd).
 
 ## Adopt icechunk
 
-Icechunk should be adopted but with risk mitigation measures. Specifically, the ability to parse chunk manifests out of icechunk will enable chunk manifests to be read back out of icechunk stores and stored in another format. 
+[Icechunk](icechunk.io) should be adopted but with risk mitigation measures. Icechunk is a transactional storage engine for Zarr. In other words, it is a way to manage Zarr stores the same way you would with many traditional databases. Icechunk technology supports the following operational needs of many NASA datasets:
+
+* Safety: Changes to a store can be made safely through ACID transactions which ensure all dependent updates are either committed together or rolled back together. Corrupted data can easily be fixed by rolling back to a previous snapshot.
+* Stability: Some production workflows may depend on Icechunk stores and pointing to a specific version ensures stability.
+
+Reference: [https://icechunk.io/en/stable/overview/](https://icechunk.io/en/stable/overview/).
+
+While Icechunk is open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance and development. 
+
+More specifically, NASA should work on:
+
+* development of parsing chunk manifests back out of Icechunk; this will enable chunk manifests to be read back out of icechunk stores and stored in another format;
+* Icechunk maintenance; and,
+* Icechunk readers in other languages (C/C++, Julia, R, etc.).
 
 ## Adopt GeoZarr standards
 
-**Adoption of GeoZarr is recommended** for future virtual store implementations to ensure interoperability and long-term maintainability.
-
-## Adoption of multiscales
-
-Adoption of multiscales should be considered, especially for high resolution data.
-
-## Engage with the evolving chunk manifest protocol
-
-TBD: The chunk manifest protocol specification is speculative at this time.
+Adoption of [GeoZarr](https://geozarr.org/) is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is a specification for standardizing geospatial metadata in Zarr stores. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.
 
 ## Leverage existing tools, services and available chunk metadata.
 
-To build virtual data stores efficiently, leverage the existing open-source ecosystem (Icechunk, Kerchunk, etc.) rather than implementing solutions from scratch.
-When a collection is consistent and OPeNDAP-supported, we should try using DMRPP metadata instead of reading metadata from source files—it’s faster and can represent various archival formats.
+To build virtual data stores efficiently, existing open-source tooling (Icechunk, Kerchunk, etc.) should be leveraged, rather than implementing solutions from scratch.
+When a collection is consistent and OPeNDAP-supported, [DMRPP](https://opendap.github.io/DMRpp-wiki/DMRpp.html) metadata can be used instead of reading metadata from source files. DMRPP reading is faster and can represent various archival formats.
+
 For collections lacking DMRPP, fall back to native metadata parser. However, DMRPP has caveats that OPeNDAP should address: standardizing DMRPP across all collections,
 adding checksum validation at generation time, and possibly adopting a lighter schema or Parquet serialization.
 
@@ -53,17 +69,9 @@ earthaccess already provides for direct file access.
 
 ## Documentation and onboarding
 
-Virtual store documentation is already underway — PO.DAAC's cookbook
-chapter, ASDC's demo notebooks, and the [Onboarding Guide](
-onboarding.qmd) in this report all represent ongoing efforts. The
-next step is consolidating and improving these materials to serve
-two distinct audiences: data providers virtualizing datasets, and
-data users accessing virtual stores. Provider-facing documentation
-should develop the existing worked examples into reusable templates
-covering format-specific considerations, chunking decisions, and
-validation. User-facing documentation should lower the barrier to
-working with virtual stores — particularly around authentication
-setup, available access patterns, and how virtual store access
-differs from traditional file-based workflows. Coordinating these
-efforts across DAACs will reduce duplication and help establish
-consistent guidance as adoption grows.
+Virtual store documentation is already underway — [PO.DAAC's cookbook chapter](https://podaac.github.io/tutorials/quarto_text/UsingVirtualDatasets.html), [ASDC's demo notebook](https://earthaccess.readthedocs.io/en/stable/user/tutorials/virtual_dataset_tutorial_with_TEMPO_Level3/) and [Resources](./resources.qmd) all represent ongoing efforts. The next step is consolidating and improving these materials to serve two distinct audiences: data providers virtualizing datasets, and data users accessing virtual stores.
+
+* Provider-facing documentation should develop the existing worked examples into reusable templates covering format-specific considerations, chunking decisions, and validation.
+* User-facing documentation should lower the barrier to working with virtual stores — particularly around authentication setup, available access patterns, and how virtual store access differs from traditional file-based workflows
+
+Coordinating these efforts across DAACs will reduce duplication and help establish consistent guidance as adoption grows.
