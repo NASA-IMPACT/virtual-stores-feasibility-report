@@ -37,7 +37,9 @@ website:
       - href: resources.qmd
         text: Resources, References and Presentations
       - href: contributing.qmd
-        text: Contributing        
+        text: Contributing
+      - href: Version history
+        text: releases.md
 
 format:
   html:
