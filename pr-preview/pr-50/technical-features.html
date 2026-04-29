@@ -121,19 +121,48 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./executive_summary.html" class="sidebar-item-text sidebar-link">
+  <a href="./executive-summary.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Executive Summary</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Technical Aspects</span></a>
+ <span class="menu-text">Guidance</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./recommendations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recommendations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./limitations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Known Limitations</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./governance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Governance</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Technical Aspects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./technical-overview.html" class="sidebar-item-text sidebar-link">
@@ -160,41 +189,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Guidance</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./limitations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Known Limitations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./governance.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Governance</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./recommendations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Best Practices + Recommendations</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./onboarding.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Onboarding Guide</span></a>
-  </div>
-</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./resources.html" class="sidebar-item-text sidebar-link">
@@ -205,6 +199,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./contributing.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Contributing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Version history" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">releases.md</span></a>
   </div>
 </li>
     </ul>
@@ -224,7 +224,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#developing-support" id="toc-developing-support" class="nav-link" data-scroll-target="#developing-support">Developing Support</a>
   <ul class="collapse">
   <li><a href="#non-uniform-grids" id="toc-non-uniform-grids" class="nav-link" data-scroll-target="#non-uniform-grids">Non-uniform grids</a></li>
-  <li><a href="#non-cubable-data" id="toc-non-cubable-data" class="nav-link" data-scroll-target="#non-cubable-data">Non-cubable data</a></li>
   </ul></li>
   <li><a href="#no-plans-for-support" id="toc-no-plans-for-support" class="nav-link" data-scroll-target="#no-plans-for-support">No plans for support</a></li>
   </ul>
@@ -255,11 +254,11 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="mature-support" class="level1">
 <h1>Mature Support</h1>
-<p><strong>Current mature implementations share the following characteristics:</strong></p>
+<p><strong>Current mature implementations of virtual stores share the following characteristics:</strong></p>
 <ul>
 <li>Virtual stores are used to provide alternate views (defined below) into the data. These views can range from an entire collection, to subsets of a collection, to a subset of a granule.</li>
 <li>Consistent spatial and temporal resolution across each variable (i.e.&nbsp;array) within a virtual store</li>
-<li>Uniform chunk grid and compression scheme across each variable within a virtual store</li>
+<li>Uniform chunk grid shape and compression scheme across each variable within a virtual store</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -298,11 +297,19 @@ Note
 <section id="non-uniform-grids" class="level2">
 <h2 class="anchored" data-anchor-id="non-uniform-grids">Non-uniform grids</h2>
 <p>Some NASA collections present additional complexity due to having varying compression schemes and chunk grids across a logical array (usually across granules). Currently, Zarr assumes a consistent chunk shape and compression across the entire array.</p>
-<p>However, support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026.</p>
-</section>
-<section id="non-cubable-data" class="level2">
-<h2 class="anchored" data-anchor-id="non-cubable-data">Non-cubable data</h2>
-<p>COMING SOON</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Support for both varying chunk shapes and compression schemes is in active development and should be available by summer 2026. For variable-length grids, see https://github.com/zarr-developers/zarr-python/pull/3802.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="no-plans-for-support" class="level1">
