@@ -4,11 +4,32 @@ title: "Known Limitations"
 
 ## Language and ecosystem constraints
 
-Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores.
+Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores. Rust presents an organizational risk similar to what NASA has experienced with niche languages in other systems: supporting and extending Icechunk long-term would require NASA staff or contractors with Rust expertise, which is not yet widely available in the earth science community. Rust is seeing broader general adoption than some past niche languages, which reduces but does not eliminate this risk.
 
 ## Early structural decisions have lasting performance consequences
 
-File chunking and chunk manifests cannot simultaneously optimize for all use cases. Further, chunk manifests depend on the chunking already inherent to the files. You cannot create a chunk manifest to access a unit smaller than chunks in the underlying files. The implication is, for example, if a set of files is optimized for spatial access it cannot simultaneously be optimized for access across the time dimension (i.e. time series).
+Virtual data stores (VDS) depend upon the chunks of the underlying files. Files' internal chunk structure, and consequently chunk manifests, cannot be optimized simultaneously for all use cases. Chunk shape and size directly determines which access patterns are fast and which are slow. Early structural decisions will benefit some access patterns and disadvantage others. There is no universally optimal chunking, only a least-worst one for the most common use case.
+
+### Chunk size 
+
+Chunks that are too small cause excessive HTTP requests and computational overhead to decompress. Chunks that are too large transfer more data than needed.
+
+For a more thorough explanation, see [Datacube Guide: Tiny data chunks](https://developmentseed.org/datacube-guide/worst-practices/tiny-chunks.html) and [Datacube Guide: Massive data chunks](https://developmentseed.org/datacube-guide/worst-practices/massive-chunks.html).
+
+### Chunk shape
+
+If a set of files has a chunk shape to optimize for spatial access it cannot simultaneously be optimized for access across the time dimension (i.e. time series).
+
+A useful analogy: pancakes vs. churros.
+
+* A pancake chunk holds the full spatial extent at one timestep. Loading a global snapshot is fast because it's all in one chunk. Time series are slow because each timestep is stored in a separate chunk.
+* A churro chunk holds many timesteps for a small spatial location. Time series are fast for a spatial subset, but global views are slow.
+
+![pancakes and churros](./graphics/pancake_vs_churro_chunking_v2.svg)
+
+This is a real problem in practice: many datasets store one file per timestep, which makes data collection straight-forward but is not optimized for time series access.
+
+VDSs are often built after data product decisions have already been made. What you can still control is the manifest, where you can make changes to what variables are represented and in what composition. For examples, see [Virtual Stores at NASA](./nasa-applications.qmd).
 
 ## Chunk sizes must be consistent across files
 
