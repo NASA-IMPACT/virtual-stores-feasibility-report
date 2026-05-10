@@ -267,7 +267,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="adopt-geozarr-standards" class="level2">
 <h2 class="anchored" data-anchor-id="adopt-geozarr-standards">Adopt GeoZarr standards</h2>
-<p>Adoption of <a href="https://geozarr.org/">GeoZarr</a> is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is to Zarr what GeoTIFF is to TIFF: Zarr has no built-in concept of coordinate reference systems, spatial extent, or axis ordering. GeoZarr defines conventions for these so that geospatial tools can work with Zarr stores without each tool implementing its own custom metadata interpretation. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.</p>
+<p>Adoption of <a href="https://geozarr.org/">GeoZarr</a> is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is to Zarr what GeoTIFF is to TIFF: Zarr has no built-in concept of coordinate reference systems or multi-resolution data for use in tiling and overviews. GeoZarr defines conventions for these so that geospatial tools can work with Zarr stores without each tool implementing its own custom metadata interpretation. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.</p>
+<p>Without standards, tooling must be customized per-dataset. GeoZarr enabled development of the <a href="https://github.com/developmentseed/deck.gl-raster/tree/main/packages/deck.gl-zarr">deck.gl-zarr</a> library, which renders any GeoZarr-compliant dataset in the browser.</p>
 <p>The main alternatives are CF conventions (used by NetCDF/HDF5) and STAC (for discovery-level metadata). GeoZarr draws from CF conventions but is designed specifically for Zarr, making it the natural choice for Zarr-based virtual stores.</p>
 </section>
 <section id="leverage-existing-tools-services-and-available-chunk-metadata." class="level2">
