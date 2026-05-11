@@ -342,7 +342,7 @@
     "href": "executive-summary.html#summary-of-recommendations-and-current-state",
     "title": "Executive Summary",
     "section": "Summary of recommendations and current state",
-    "text": "Summary of recommendations and current state\nVirtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types.\nKey recommendations include: * adopting Icechunk (see Technical Overview) * adopting the GeoZarr standard (see Technical Overview) * planning for integration with other NASA services, such as EGIS and Harmony (see NASA Ecosystem), and, * addressing governance gaps, specifically standardizing CMR metadata approaches (see Governance)\nSee the Recommendations section for the full summary.",
+    "text": "Summary of recommendations and current state\nVirtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types.\nKey recommendations include:\n\nadopting Icechunk (see Technical Overview)\nadopting the GeoZarr standard (see Technical Overview)\nplanning for integration with other NASA services, such as EGIS and Harmony (see NASA Ecosystem), and,\naddressing governance gaps, specifically standardizing CMR metadata approaches (see Governance)\n\nSee the Recommendations section for the full summary.",
     "crumbs": [
       "Executive Summary"
     ]
