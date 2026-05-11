@@ -211,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns" id="toc-design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns" class="nav-link active" data-scroll-target="#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns">Design files, chunks, and aggregated chunk manifests around typical use case patterns</a></li>
+  <li><a href="#design-file-chunk-structure-around-typical-access-patterns" id="toc-design-file-chunk-structure-around-typical-access-patterns" class="nav-link active" data-scroll-target="#design-file-chunk-structure-around-typical-access-patterns">Design file chunk structure around typical access patterns</a></li>
   <li><a href="#adopt-icechunk" id="toc-adopt-icechunk" class="nav-link" data-scroll-target="#adopt-icechunk">Adopt icechunk</a></li>
   <li><a href="#adopt-geozarr-standards" id="toc-adopt-geozarr-standards" class="nav-link" data-scroll-target="#adopt-geozarr-standards">Adopt GeoZarr standards</a></li>
   <li><a href="#leverage-existing-tools-services-and-available-chunk-metadata." id="toc-leverage-existing-tools-services-and-available-chunk-metadata." class="nav-link" data-scroll-target="#leverage-existing-tools-services-and-available-chunk-metadata.">Leverage existing tools, services and available chunk metadata.</a></li>
@@ -244,9 +244,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns">Design files, chunks, and aggregated chunk manifests around typical use case patterns</h2>
-<p>While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the <a href="./limitations.html#early-structural-decisions-have-lasting-performance-consequences">Limitations section</a>, virtual data stores depend on the chunk structure of the underlying file. The most important design input for a new data product is understanding how the data will most commonly be accessed. That information should be used to design the chunk structure of data products.</p>
+<section id="design-file-chunk-structure-around-typical-access-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="design-file-chunk-structure-around-typical-access-patterns">Design file chunk structure around typical access patterns</h2>
+<p>While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the <a href="./limitations.html#early-structural-decisions-have-lasting-performance-consequences">Limitations section</a>, virtual data stores depend on the chunk structure of the underlying files. That’s why it is recommended to design files with target access patterns in mind (chunk for access, not storage).</p>
 </section>
 <section id="adopt-icechunk" class="level2">
 <h2 class="anchored" data-anchor-id="adopt-icechunk">Adopt icechunk</h2>

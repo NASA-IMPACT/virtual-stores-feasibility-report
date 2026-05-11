@@ -223,18 +223,18 @@
     "href": "recommendations.html",
     "title": "Recommendations",
     "section": "",
-    "text": "While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the Limitations section, virtual data stores depend on the chunk structure of the underlying file. The most important design input for a new data product is understanding how the data will most commonly be accessed. That information should be used to design the chunk structure of data products.",
+    "text": "While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the Limitations section, virtual data stores depend on the chunk structure of the underlying files. That’s why it is recommended to design files with target access patterns in mind (chunk for access, not storage).",
     "crumbs": [
       "Guidance",
       "Recommendations"
     ]
   },
   {
-    "objectID": "recommendations.html#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns",
-    "href": "recommendations.html#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns",
+    "objectID": "recommendations.html#design-file-chunk-structure-around-typical-access-patterns",
+    "href": "recommendations.html#design-file-chunk-structure-around-typical-access-patterns",
     "title": "Recommendations",
     "section": "",
-    "text": "While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the Limitations section, virtual data stores depend on the chunk structure of the underlying file. The most important design input for a new data product is understanding how the data will most commonly be accessed. That information should be used to design the chunk structure of data products.",
+    "text": "While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the Limitations section, virtual data stores depend on the chunk structure of the underlying files. That’s why it is recommended to design files with target access patterns in mind (chunk for access, not storage).",
     "crumbs": [
       "Guidance",
       "Recommendations"
@@ -342,7 +342,7 @@
     "href": "executive-summary.html#summary-of-recommendations-and-current-state",
     "title": "Executive Summary",
     "section": "Summary of recommendations and current state",
-    "text": "Summary of recommendations and current state\nThe performance of legacy scientific data formats is poor in a cloud environment, yet reprocessing or copying the full NASA archive is not feasible. Virtual stores address both problems: they provide cloud-optimized access via Zarr to existing data, without duplication.\nVirtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types.\nKey recommendations include: * adopting Icechunk (see Technical Overview) * adopting the GeoZarr standard (see Technical Overview) * planning for integration with other NASA services, such as EGIS and Harmony (see NASA Ecosystem), and, * addressing governance gaps, specifically standardizing CMR metadata approaches (see Governance)\nSee the Recommendations section for the full summary.",
+    "text": "Summary of recommendations and current state\nThe performance of legacy scientific data formats is poor in a cloud environment, yet reprocessing or copying the full NASA archive is not feasible. Virtual stores address both problems: they provide cloud-optimized access via Zarr to existing data, without duplication.\nVirtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types.\nKey recommendations include:\n\nadopting Icechunk (see Technical Overview)\nadopting the GeoZarr standard (see Technical Overview)\nplanning for integration with other NASA services, such as EGIS and Harmony (see NASA Ecosystem), and,\naddressing governance gaps, specifically standardizing CMR metadata approaches (see Governance)\n\nSee the Recommendations section for the full summary.",
     "crumbs": [
       "Executive Summary"
     ]
