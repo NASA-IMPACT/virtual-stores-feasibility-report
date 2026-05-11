@@ -2,9 +2,9 @@
 title: "Recommendations"
 ---
 
-## Design files, chunks, and aggregated chunk manifests around typical use case patterns
+## Design file chunk structure around typical access patterns
 
-While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the [Limitations section](limitations.qmd#early-structural-decisions-have-lasting-performance-consequences), virtual data stores depend on the chunk structure of the underlying file. The most important design input for a new data product is understanding how the data will most commonly be accessed. That information should be used to design the chunk structure of data products.
+While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the [Limitations section](limitations.qmd#early-structural-decisions-have-lasting-performance-consequences), virtual data stores depend on the chunk structure of the underlying files. That's why it is recommended to design files with target access patterns in mind (chunk for access, not storage).
 
 ## Adopt icechunk
 
