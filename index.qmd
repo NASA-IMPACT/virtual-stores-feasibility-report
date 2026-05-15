@@ -22,6 +22,7 @@ A key benefit is that virtual stores also deliver a **single entrypoint** to dat
 * Less pre-processing to be "analysis-ready".
 * Users do not have to know about the underlying data format or storage location.
 * Greater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.
+* Virtual stores are the efficient starting point for new products, as pre-identified chunk indices simplify any rechunking or regridding.
 
 ## What are virtual stores and what do they enable?
 
