@@ -40,8 +40,6 @@ website:
         text: Resources, References and Presentations
       - href: contributing.qmd
         text: Contributing
-      - href: Version history
-        text: releases.md
 
 format:
   html:
