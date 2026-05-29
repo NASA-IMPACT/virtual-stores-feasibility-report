@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,7 +67,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Version history" rel="next">
 <link href="./resources.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -75,10 +74,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-75fb7993c845239f3a79c8799b369f66.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0eae760d36f4870c51ebca3abc7e9d93.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -236,12 +235,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Contributing</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Version history" class="sidebar-item-text sidebar-link">
- <span class="menu-text">releases.md</span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -257,6 +250,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#release-process" id="toc-release-process" class="nav-link" data-scroll-target="#release-process">Release Process</a>
   <ul class="collapse">
   <li><a href="#steps-to-create-a-release" id="toc-steps-to-create-a-release" class="nav-link" data-scroll-target="#steps-to-create-a-release">Steps to create a release</a></li>
+  </ul></li>
+  <li><a href="#citing-this-report" id="toc-citing-this-report" class="nav-link" data-scroll-target="#citing-this-report">Citing this report</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-zenodo-archiving-one-time" id="toc-setting-up-zenodo-archiving-one-time" class="nav-link" data-scroll-target="#setting-up-zenodo-archiving-one-time">Setting up Zenodo archiving (one-time)</a></li>
   </ul></li>
   <li><a href="#local-development" id="toc-local-development" class="nav-link" data-scroll-target="#local-development">Local Development</a>
   <ul class="collapse">
@@ -306,20 +303,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="release-process" class="level2">
 <h2 class="anchored" data-anchor-id="release-process">Release Process</h2>
 <p>Releases mark citable snapshots of the report. Not every merged PR needs a release — cut one when there is a meaningful body of new or revised content.</p>
+<p>We use <a href="https://calver.org/">calendar versioning (CalVer)</a> in the form <code>YYYY.MM.MICRO</code> — the year and month the release is published, plus a micro segment that increments within a month, starting at <code>0</code> (e.g., <code>2026.04.0</code>). The first release in a given month is <code>.0</code>; a second release that same month is <code>.1</code>, and so on. Keeping all three segments makes every version the same shape, which sorts and parses predictably.</p>
 <section id="steps-to-create-a-release" class="level3">
 <h3 class="anchored" data-anchor-id="steps-to-create-a-release">Steps to create a release</h3>
 <ol type="1">
-<li><p><strong>Decide on a version number.</strong> Use <code>vMAJOR.MINOR</code> (e.g., <code>v1.0</code>, <code>v1.1</code>, <code>v2.0</code>). Increment the major version for significant restructuring or scope changes; increment the minor version for new sections or substantial updates.</p></li>
+<li><p><strong>Decide on a version number.</strong> Use <code>YYYY.MM.MICRO</code> for the current year and month. Set <code>MICRO</code> to <code>0</code> for the first release of the month, or the next number up if that month already has a release (e.g., <code>2026.06.0</code>, then <code>2026.06.1</code>).</p></li>
 <li><p><strong>Update <code>releases.md</code>.</strong> Add an entry at the top of the list with the version, date, and a short summary of what changed.</p></li>
-<li><p><strong>Open and merge a PR</strong> with the <code>releases.md</code> update. The site will be published automatically on merge to <code>main</code>.</p></li>
+<li><p><strong>Update <code>CITATION.cff</code>.</strong> Set <code>version</code> to the new version and <code>date-released</code> to the publication date (<code>YYYY-MM-DD</code>). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.</p></li>
+<li><p><strong>Open and merge a PR</strong> with the <code>releases.md</code> and <code>CITATION.cff</code> updates. The site will be published automatically on merge to <code>main</code>.</p></li>
 <li><p><strong>Create a GitHub Release.</strong> Go to <a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/releases/new">Releases → Draft a new release</a>:</p>
 <ul>
-<li>Set the tag to match the version (e.g., <code>v1.1</code>), targeting the <code>main</code> branch.</li>
-<li>Use the version as the title (e.g., <code>v1.1</code>).</li>
+<li>Set the tag to match the version (e.g., <code>2026.06.0</code>), targeting the <code>main</code> branch.</li>
+<li>Use the version as the title (e.g., <code>2026.06.0</code>).</li>
 <li>Copy the summary from <code>releases.md</code> into the release notes.</li>
 <li>Publish the release.</li>
 </ul></li>
+<li><p><strong>Archive on Zenodo.</strong> If the Zenodo integration is enabled (see <a href="#citing-this-report">Citing this report</a>), publishing the GitHub Release automatically creates a new Zenodo version and mints a DOI.</p></li>
 </ol>
+</section>
+</section>
+<section id="citing-this-report" class="level2">
+<h2 class="anchored" data-anchor-id="citing-this-report">Citing this report</h2>
+<p>This repository includes a <a href="https://citation-file-format.github.io/"><code>CITATION.cff</code></a> file describing how to cite the report. GitHub renders a “Cite this repository” button from it, and tools like Zenodo read it when archiving.</p>
+<section id="setting-up-zenodo-archiving-one-time" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-zenodo-archiving-one-time">Setting up Zenodo archiving (one-time)</h3>
+<p>Archiving on <a href="https://zenodo.org/">Zenodo</a> gives the report a permanent, citable DOI. Do this once, then every GitHub Release is archived automatically.</p>
+<ol type="1">
+<li>Sign in to <a href="https://zenodo.org/">Zenodo</a> with GitHub (the account must have admin access to the repository, or ask an org admin to do this).</li>
+<li>Go to your Zenodo profile → <strong>GitHub</strong> (<a href="https://zenodo.org/account/settings/github/" class="uri">https://zenodo.org/account/settings/github/</a>).</li>
+<li>Find <code>NASA-IMPACT/virtual-stores-feasibility-report</code> in the repository list and flip the toggle <strong>On</strong>. (If it isn’t listed, click <strong>Sync</strong> to refresh from GitHub.)</li>
+<li>Create a GitHub Release (or re-publish the existing one). Zenodo will detect it, archive the tagged snapshot, and mint a DOI.</li>
+</ol>
+<p>Zenodo issues two DOIs:</p>
+<ul>
+<li>A <strong>concept DOI</strong> that always points to the latest version — use this one in <code>CITATION.cff</code> and for general citation.</li>
+<li>A <strong>version DOI</strong> unique to each release.</li>
+</ul>
+<p>After the first archive, copy the concept DOI into the <code>identifiers</code> section of <code>CITATION.cff</code> and add a DOI badge to the <code>README.md</code>. Zenodo’s <a href="https://help.zenodo.org/docs/profile/linking-accounts/#github">GitHub integration guide</a> has full details.</p>
 </section>
 </section>
 <section id="local-development" class="level2">
@@ -752,9 +772,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Version history" class="pagination-link" aria-label="releases.md">
-        <span class="nav-page-text">releases.md</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->
