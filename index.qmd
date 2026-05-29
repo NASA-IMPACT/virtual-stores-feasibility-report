@@ -1,6 +1,6 @@
 ---
 title: "Virtual Stores at NASA"
-subtitle: "Unifying access to NASA datasets"
+subtitle: "Cloud-native access to archival formats"
 authors: Aimee Barciauskas, Ed Armstrong, Amy Steiker, Owen Littlejohns, Daniel Kaufman, Chris Battisto, Hailiang Zhang, Christine Smit, Jack McNelis, Luis Lopez, Siddharth Chaudhary, Joseph H. Kennedy, Kim Fairbanks
 title-block-style: plain
 ---
@@ -10,16 +10,19 @@ This report outlines the current state of virtual stores at NASA. It's intended 
 **If you are a program lead,** it is suggested to start here with the main points about virtual stores. Then it is recommended to visit the [Executive Summary](./executive_summary.qmd) and [Recommendations](./recommendations.qmd). From there, you will likely want to also make note of the [Limitations](./limitations.qmd) and [Governance](./governance.qmd) sections.
 **If you are looking to understand virtual stores at NASA on a more technical level,**, please visit the Technical Aspects sections. The [Resources](./resources.qmd) may also be of interest.
 
-## Vision: NASA datasets accessible through a single entrypoint
+## Vision: Unlocking cloud-native access to archival formats
 
 <img style="height: 150px; margin: 0px auto; display: block" alt="Simple Virtual Zarr Graphic" src="./graphics/simple-virtual-zarr.svg" />
 
-Virtual stores deliver a single entrypoint to a dataset comprised of many files. For NASA datasets this enables:
+Legacy scientific collections perform poorly in cloud environments because they were designed for local disk access rather than network-based access. Cloud-optimized formats like Zarr, COG, and cloud-optimized HDF5 address network-access-optimization, but reprocessing or duplicating NASA’s archives into new formats is not on NASA's roadmap due to the scale of historical data and the continued need to preserve self-describing, standalone archival files. Virtual stores bridge this gap by enabling efficient cloud-based access to existing archives without duplicating the underlying data.
 
+A key benefit is that virtual stores also deliver a **single entrypoint** to datasets comprised of many files. Together, this enables:
+
+* Better performance and reduced costs as less data — only the data the user needs — is sent over the internet.
 * Less pre-processing to be "analysis-ready".
 * Users do not have to know about the underlying data format or storage location.
 * Greater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.
-* Better performance and reduced costs as less data -- only the data the user needs -- is sent over the internet.
+* Virtual stores are the efficient starting point for new products, as pre-identified chunk indices simplify any rechunking or regridding.
 
 ## What are virtual stores and what do they enable?
 

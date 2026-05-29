@@ -8,6 +8,8 @@ This report assesses the current state and future direction of virtual store tec
 
 ## Summary of recommendations and current state
 
+The performance of legacy scientific data formats is poor in a cloud environment, yet reprocessing or copying the full NASA archive is not feasible. Virtual stores address both problems: they provide cloud-optimized access via Zarr to existing data, without duplication.
+
 Virtual store technology is ready for production use with consistently gridded data and is actively being developed for more complex data types.
 
 Key recommendations include:

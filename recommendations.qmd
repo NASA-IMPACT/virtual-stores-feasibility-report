@@ -2,30 +2,17 @@
 title: "Recommendations"
 ---
 
-## Design files, chunks, and aggregated chunk manifests around typical use case patterns
+## Design file chunk structure around typical access patterns
 
-The most important design input for a new data product is understanding how the data will most commonly be accessed.
-With virtual data stores (VDS), you cannot change the chunks of the underlying files. This matters because more chunks along a dimension means slower access across that dimension.
-
-A useful analogy: pancakes vs. churros.
-
-* A pancake chunk holds the full spatial extent at one timestep. Loading a global snapshot is fast because it's all in one chunk. Time series are slow because each timestep is stored in a separate chunk.
-* A churro chunk holds many timesteps for a small spatial location. Time series are fast for a spatial subset, but global views are slow.
-
-![pancakes and churros](./graphics/pancake_vs_churro_chunking_v2.svg)
-
-This is a real problem in practice: many datasets store one file per timestep, which makes data collection straight-forward but is not optimized for time series access.
-
-Chunk shape should be a deliberate design decision, made with awareness of the tradeoffs.
-
-VDSs are often built after data product decisions have already been made. What you can still control is the manifest, where you can make changes to what variables are represented and in what composition. For examples, see [Virtual Stores at NASA](./nasa-applications.qmd).
+While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the [Limitations section](limitations.qmd#early-structural-decisions-have-lasting-performance-consequences), virtual data stores depend on the chunk structure of the underlying files. That's why it is recommended to design files with target access patterns in mind (chunk for access, not storage).
 
 ## Adopt icechunk
 
 [Icechunk](icechunk.io) should be adopted but with risk mitigation measures. Icechunk is a transactional storage engine for Zarr. In other words, it is a way to manage Zarr stores the same way you would with many traditional databases. Icechunk technology supports the following operational needs of many NASA datasets:
 
-* Safety: Changes to a store can be made safely through ACID transactions which ensure all dependent updates are either committed together or rolled back together. Corrupted data can easily be fixed by rolling back to a previous snapshot.
-* Stability: Some production workflows may depend on Icechunk stores and pointing to a specific version ensures stability.
+* **Incremental updating**: Icechunk is the only technology that supports safely appending new data to an existing virtual store — critical for active missions that continuously produce new granules. Without it, the alternatives are rebuilding the entire store on each update or accepting the risk of metadata falling out of sync with the data it describes.
+* **Safety**: Changes to a store are made through ACID transactions, which ensure that all dependent updates (data and metadata) are committed together or rolled back together. This means a store will never be in a partially-updated state — corrupted data can be fixed by rolling back to a previous snapshot.
+* **Reproducibility**: An Icechunk store can be pinned to a specific snapshot, so science workflows that depend on a particular version of the data are not broken by subsequent updates. Snapshots can be tagged for long-term reference.
 
 Reference: [https://icechunk.io/en/stable/overview/](https://icechunk.io/en/stable/overview/).
 
@@ -39,7 +26,11 @@ More specifically, NASA should work on:
 
 ## Adopt GeoZarr standards
 
-Adoption of [GeoZarr](https://geozarr.org/) is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is a specification for standardizing geospatial metadata in Zarr stores. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.
+Adoption of [GeoZarr](https://geozarr.org/) is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is to Zarr what GeoTIFF is to TIFF: Zarr has no built-in concept of coordinate reference systems or multi-resolution data for use in tiling and overviews. GeoZarr defines conventions for these so that geospatial tools can work with Zarr stores without each tool implementing its own custom metadata interpretation. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.
+
+Without standards, tooling must be customized per-dataset. GeoZarr enabled development of the [deck.gl-zarr](https://github.com/developmentseed/deck.gl-raster/tree/main/packages/deck.gl-zarr) library, which renders any GeoZarr-compliant dataset in the browser.
+
+The main alternatives are CF conventions (used by NetCDF/HDF5) and STAC (for discovery-level metadata). GeoZarr draws from CF conventions but is designed specifically for Zarr, making it the natural choice for Zarr-based virtual stores.
 
 ## Leverage existing tools, services and available chunk metadata.
 
