@@ -14,7 +14,7 @@ This report outlines the current state of virtual stores at NASA. It's intended 
 
 <img style="height: 150px; margin: 0px auto; display: block" alt="Simple Virtual Zarr Graphic" src="./graphics/simple-virtual-zarr.svg" />
 
-Legacy scientific collections perform poorly in cloud environments because they were designed for local disk access rather than network-based access. Cloud-optimized formats like Zarr, COG, and cloud-optimized HDF5 address network-access-optimization, but reprocessing or duplicating NASA’s archives into new formats is not on NASA's roadmap due to the scale of historical data and the continued need to preserve self-describing, standalone archival files. Virtual stores bridge this gap by enabling efficient cloud-based access to existing archives without reprocessing the underlying data.
+Legacy scientific collections perform poorly in cloud environments because they were designed for local disk access rather than network-based access. Cloud-optimized formats like Zarr, COG, and cloud-optimized HDF5 address network-access-optimization, but reprocessing or duplicating NASA’s archives into new formats is not on NASA's roadmap due to the scale of historical data and the continued need to preserve self-describing, standalone archival files. Virtual stores bridge this gap by enabling efficient cloud-based access to existing archives without duplicating the underlying data.
 
 A key benefit is that virtual stores also deliver a **single entrypoint** to datasets comprised of many files. Together, this enables:
 
