@@ -2,10 +2,6 @@
 title: "Known Limitations"
 ---
 
-## Language and ecosystem constraints
-
-Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores. Rust presents an organizational risk similar to what NASA has experienced with niche languages in other systems: supporting and extending Icechunk long-term would require NASA staff or contractors with Rust expertise, which is not yet widely available in the earth science community. Rust is seeing broader general adoption than some past niche languages, which reduces but does not eliminate this risk.
-
 ## Early structural decisions have lasting performance consequences
 
 Virtual data stores (VDS) depend upon the chunks of the underlying files. Files' internal chunk structure, and consequently chunk manifests, cannot be optimized simultaneously for all use cases. Chunk shape and size directly determines which access patterns are fast and which are slow. Early structural decisions will benefit some access patterns and disadvantage others. There is no universally optimal chunking, only a least-worst one for the most common use case.
@@ -61,6 +57,11 @@ If the GeoZarr community coalesce into a solution, it will need to be be impleme
 ## Authentication and credential complexity
 
 Opening a virtual store backed by NASA data currently requires steps beyond standard Earthdata Login, specifically S3 credential configuration and tool-specific API calls to open the store before any data is accessed. Friction exists because virtual stores sit at the intersection of several authentication boundaries: the store itself (which may be in a public or protected S3 bucket), the source data files the store references (which typically require Earthdata Login credentials), and services (which may have their own authentication interfaces).
+
+## Language and ecosystem constraints
+
+Icechunk is written in Rust with an API in Python. Users and data providers working in other languages (Julia, R, Java, etc.) may face limited or no support for reading and writing Icechunk stores. Rust presents an organizational risk similar to what NASA has experienced with niche languages in other systems: supporting and extending Icechunk long-term would require NASA staff or contractors with Rust expertise, which is not yet widely available in the earth science community. Rust is seeing broader general adoption than some past niche languages, which reduces but does not eliminate this risk.
+
 
 Until this is simplified to something comparable to the experience `earthaccess` provides for direct file access, credential complexity will remain a practical barrier to adoption — particularly for researchers who are not cloud-infrastructure specialists.
 
