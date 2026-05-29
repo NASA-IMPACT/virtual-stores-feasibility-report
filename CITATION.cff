@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+title: Virtual Stores Feasibility Report
+message: >-
+  If you use or reference this report, please cite it using the
+  metadata in this file.
+type: report
+authors:
+  - given-names: Aimee
+    family-names: Barciauskas
+  - given-names: Ed
+    family-names: Armstrong
+  - given-names: Amy
+    family-names: Steiker
+  - given-names: Owen
+    family-names: Littlejohns
+  - given-names: Daniel
+    family-names: Kaufman
+  - given-names: Chris
+    family-names: Battisto
+  - given-names: Hailiang
+    family-names: Zhang
+  - given-names: Christine
+    family-names: Smit
+  - given-names: Jack
+    family-names: McNelis
+  - given-names: Luis
+    family-names: Lopez
+  - given-names: Joseph H.
+    family-names: Kennedy
+  - given-names: Kim
+    family-names: Fairbanks
+repository-code: >-
+  https://github.com/NASA-IMPACT/virtual-stores-feasibility-report
+url: https://github.com/NASA-IMPACT/virtual-stores-feasibility-report
+abstract: >-
+  A feasibility report on virtual stores at NASA: lightweight
+  metadata that provides a single entrypoint to datasets comprised
+  of many files, enabling analysis-ready access without downloading,
+  scanning, or pre-processing.
+keywords:
+  - NASA
+  - virtual stores
+  - virtual zarr
+  - cloud-optimized data
+  - analysis-ready data
+license: CC-BY-4.0
+version: 2026.04.0
+date-released: '2026-04-15'
+# After the first Zenodo archive, add the concept DOI here:
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.XXXXXXX
+    description: Concept DOI (always resolves to the latest version)
