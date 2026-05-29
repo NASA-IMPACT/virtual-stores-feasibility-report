@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -40,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-59599e3cde3eb5042b54db6b08ac35a3.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-75fb7993c845239f3a79c8799b369f66.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70c34b2b3679db6853de6928ca138f27.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0eae760d36f4870c51ebca3abc7e9d93.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -211,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns" id="toc-design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns" class="nav-link active" data-scroll-target="#design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns">Design files, chunks, and aggregated chunk manifests around typical use case patterns</a></li>
+  <li><a href="#design-file-chunk-structure-around-typical-access-patterns" id="toc-design-file-chunk-structure-around-typical-access-patterns" class="nav-link active" data-scroll-target="#design-file-chunk-structure-around-typical-access-patterns">Design file chunk structure around typical access patterns</a></li>
   <li><a href="#adopt-icechunk" id="toc-adopt-icechunk" class="nav-link" data-scroll-target="#adopt-icechunk">Adopt icechunk</a></li>
   <li><a href="#adopt-geozarr-standards" id="toc-adopt-geozarr-standards" class="nav-link" data-scroll-target="#adopt-geozarr-standards">Adopt GeoZarr standards</a></li>
   <li><a href="#leverage-existing-tools-services-and-available-chunk-metadata." id="toc-leverage-existing-tools-services-and-available-chunk-metadata." class="nav-link" data-scroll-target="#leverage-existing-tools-services-and-available-chunk-metadata.">Leverage existing tools, services and available chunk metadata.</a></li>
@@ -244,30 +244,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns" class="level2">
-<h2 class="anchored" data-anchor-id="design-files-chunks-and-aggregated-chunk-manifests-around-typical-use-case-patterns">Design files, chunks, and aggregated chunk manifests around typical use case patterns</h2>
-<p>The most important design input for a new data product is understanding how the data will most commonly be accessed. With virtual data stores (VDS), you cannot change the chunks of the underlying files. This matters because more chunks along a dimension means slower access across that dimension.</p>
-<p>A useful analogy: pancakes vs.&nbsp;churros.</p>
-<ul>
-<li>A pancake chunk holds the full spatial extent at one timestep. Loading a global snapshot is fast because it’s all in one chunk. Time series are slow because each timestep is stored in a separate chunk.</li>
-<li>A churro chunk holds many timesteps for a small spatial location. Time series are fast for a spatial subset, but global views are slow.</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./graphics/pancake_vs_churro_chunking_v2.svg" class="img-fluid figure-img"></p>
-<figcaption>pancakes and churros</figcaption>
-</figure>
-</div>
-<p>This is a real problem in practice: many datasets store one file per timestep, which makes data collection straight-forward but is not optimized for time series access.</p>
-<p>Chunk shape should be a deliberate design decision, made with awareness of the tradeoffs.</p>
-<p>VDSs are often built after data product decisions have already been made. What you can still control is the manifest, where you can make changes to what variables are represented and in what composition. For examples, see <a href="./nasa-applications.html">Virtual Stores at NASA</a>.</p>
+<section id="design-file-chunk-structure-around-typical-access-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="design-file-chunk-structure-around-typical-access-patterns">Design file chunk structure around typical access patterns</h2>
+<p>While the focus of this document is virtual data stores, it is worth mentioning data product design decisions, since those decisions impact VDS performance. As noted in the <a href="./limitations.html#early-structural-decisions-have-lasting-performance-consequences">Limitations section</a>, virtual data stores depend on the chunk structure of the underlying files. That’s why it is recommended to design files with target access patterns in mind (chunk for access, not storage).</p>
 </section>
 <section id="adopt-icechunk" class="level2">
 <h2 class="anchored" data-anchor-id="adopt-icechunk">Adopt icechunk</h2>
 <p><a href="icechunk.io">Icechunk</a> should be adopted but with risk mitigation measures. Icechunk is a transactional storage engine for Zarr. In other words, it is a way to manage Zarr stores the same way you would with many traditional databases. Icechunk technology supports the following operational needs of many NASA datasets:</p>
 <ul>
-<li>Safety: Changes to a store can be made safely through ACID transactions which ensure all dependent updates are either committed together or rolled back together. Corrupted data can easily be fixed by rolling back to a previous snapshot.</li>
-<li>Stability: Some production workflows may depend on Icechunk stores and pointing to a specific version ensures stability.</li>
+<li><strong>Incremental updating</strong>: Icechunk is the only technology that supports safely appending new data to an existing virtual store — critical for active missions that continuously produce new granules. Without it, the alternatives are rebuilding the entire store on each update or accepting the risk of metadata falling out of sync with the data it describes.</li>
+<li><strong>Safety</strong>: Changes to a store are made through ACID transactions, which ensure that all dependent updates (data and metadata) are committed together or rolled back together. This means a store will never be in a partially-updated state — corrupted data can be fixed by rolling back to a previous snapshot.</li>
+<li><strong>Reproducibility</strong>: An Icechunk store can be pinned to a specific snapshot, so science workflows that depend on a particular version of the data are not broken by subsequent updates. Snapshots can be tagged for long-term reference.</li>
 </ul>
 <p>Reference: <a href="https://icechunk.io/en/stable/overview/">https://icechunk.io/en/stable/overview/</a>.</p>
 <p>While Icechunk is open source, this technology is maintained by a small and external development team. This introduces a risk which is a dependency on that external development team. NASA should mitigate this risk by funding icechunk maintenance and development.</p>
@@ -280,7 +267,9 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="adopt-geozarr-standards" class="level2">
 <h2 class="anchored" data-anchor-id="adopt-geozarr-standards">Adopt GeoZarr standards</h2>
-<p>Adoption of <a href="https://geozarr.org/">GeoZarr</a> is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is a specification for standardizing geospatial metadata in Zarr stores. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.</p>
+<p>Adoption of <a href="https://geozarr.org/">GeoZarr</a> is recommended to ensure interoperability with the developing GeoZarr ecosystem of tooling. GeoZarr is to Zarr what GeoTIFF is to TIFF: Zarr has no built-in concept of coordinate reference systems or multi-resolution data for use in tiling and overviews. GeoZarr defines conventions for these so that geospatial tools can work with Zarr stores without each tool implementing its own custom metadata interpretation. Adopting these standards in VDSs is straight-forward as they already implement Zarr metadata.</p>
+<p>Without standards, tooling must be customized per-dataset. GeoZarr enabled development of the <a href="https://github.com/developmentseed/deck.gl-raster/tree/main/packages/deck.gl-zarr">deck.gl-zarr</a> library, which renders any GeoZarr-compliant dataset in the browser.</p>
+<p>The main alternatives are CF conventions (used by NetCDF/HDF5) and STAC (for discovery-level metadata). GeoZarr draws from CF conventions but is designed specifically for Zarr, making it the natural choice for Zarr-based virtual stores.</p>
 </section>
 <section id="leverage-existing-tools-services-and-available-chunk-metadata." class="level2">
 <h2 class="anchored" data-anchor-id="leverage-existing-tools-services-and-available-chunk-metadata.">Leverage existing tools, services and available chunk metadata.</h2>
