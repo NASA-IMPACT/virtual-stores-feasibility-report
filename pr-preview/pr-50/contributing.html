@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-75fb7993c845239f3a79c8799b369f66.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0eae760d36f4870c51ebca3abc7e9d93.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-506afe979c81742c4197e1bbb0123f5d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -308,7 +308,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="steps-to-create-a-release">Steps to create a release</h3>
 <ol type="1">
 <li><p><strong>Decide on a version number.</strong> Use <code>YYYY.MM.MICRO</code> for the current year and month. Set <code>MICRO</code> to <code>0</code> for the first release of the month, or the next number up if that month already has a release (e.g., <code>2026.06.0</code>, then <code>2026.06.1</code>).</p></li>
-<li><p><strong>Update <code>releases.md</code>.</strong> Add an entry at the top of the list with the version, date, and a short summary of what changed.</p></li>
 <li><p><strong>Update <code>CITATION.cff</code>.</strong> Set <code>version</code> to the new version and <code>date-released</code> to the publication date (<code>YYYY-MM-DD</code>). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.</p></li>
 <li><p><strong>Open and merge a PR</strong> with the <code>releases.md</code> and <code>CITATION.cff</code> updates. The site will be published automatically on merge to <code>main</code>.</p></li>
 <li><p><strong>Create a GitHub Release.</strong> Go to <a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/releases/new">Releases → Draft a new release</a>:</p>

@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-75fb7993c845239f3a79c8799b369f66.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5161661c99fdc886e93ffc82ed0e2ba6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-12a77b308d93706d0dc85824055cf4c1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -210,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vision-nasa-datasets-accessible-through-a-single-entrypoint" id="toc-vision-nasa-datasets-accessible-through-a-single-entrypoint" class="nav-link active" data-scroll-target="#vision-nasa-datasets-accessible-through-a-single-entrypoint">Vision: NASA datasets accessible through a single entrypoint</a></li>
+  <li><a href="#vision-unlocking-cloud-native-access-to-archival-formats" id="toc-vision-unlocking-cloud-native-access-to-archival-formats" class="nav-link active" data-scroll-target="#vision-unlocking-cloud-native-access-to-archival-formats">Vision: Unlocking cloud-native access to archival formats</a></li>
   <li><a href="#what-are-virtual-stores-and-what-do-they-enable" id="toc-what-are-virtual-stores-and-what-do-they-enable" class="nav-link" data-scroll-target="#what-are-virtual-stores-and-what-do-they-enable">What are virtual stores and what do they enable?</a></li>
   <li><a href="#benefits-for-data-users" id="toc-benefits-for-data-users" class="nav-link" data-scroll-target="#benefits-for-data-users">Benefits for data users</a></li>
   <li><a href="#benefits-for-data-providers-and-nasa" id="toc-benefits-for-data-providers-and-nasa" class="nav-link" data-scroll-target="#benefits-for-data-providers-and-nasa">Benefits for data providers and NASA</a></li>
@@ -223,7 +223,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Virtual Stores at NASA</h1>
-<p class="subtitle lead">Unifying access to NASA datasets</p>
+<p class="subtitle lead">Cloud-native access to archival formats</p>
 </div>
 
 
@@ -248,15 +248,17 @@ ul.task-list li input[type="checkbox"] {
 
 <p>This report outlines the current state of virtual stores at NASA. It’s intended primary audience is program leads at NASA looking to understand the current state and make informed decisions about how to drive enterprise-wide technical directions. It’s secondary audience is technical folks looking for examples of virtual stores at NASA and how they integrate with the NASA ecosystem.</p>
 <p><strong>If you are a program lead,</strong> it is suggested to start here with the main points about virtual stores. Then it is recommended to visit the <a href="./executive_summary.qmd">Executive Summary</a> and <a href="./recommendations.html">Recommendations</a>. From there, you will likely want to also make note of the <a href="./limitations.html">Limitations</a> and <a href="./governance.html">Governance</a> sections. <strong>If you are looking to understand virtual stores at NASA on a more technical level,</strong>, please visit the Technical Aspects sections. The <a href="./resources.html">Resources</a> may also be of interest.</p>
-<section id="vision-nasa-datasets-accessible-through-a-single-entrypoint" class="level2">
-<h2 class="anchored" data-anchor-id="vision-nasa-datasets-accessible-through-a-single-entrypoint">Vision: NASA datasets accessible through a single entrypoint</h2>
+<section id="vision-unlocking-cloud-native-access-to-archival-formats" class="level2">
+<h2 class="anchored" data-anchor-id="vision-unlocking-cloud-native-access-to-archival-formats">Vision: Unlocking cloud-native access to archival formats</h2>
 <p><img style="height: 150px; margin: 0px auto; display: block" alt="Simple Virtual Zarr Graphic" src="./graphics/simple-virtual-zarr.svg"></p>
-<p>Virtual stores deliver a single entrypoint to a dataset comprised of many files. For NASA datasets this enables:</p>
+<p>Legacy scientific collections perform poorly in cloud environments because they were designed for local disk access rather than network-based access. Cloud-optimized formats like Zarr, COG, and cloud-optimized HDF5 address network-access-optimization, but reprocessing or duplicating NASA’s archives into new formats is not on NASA’s roadmap due to the scale of historical data and the continued need to preserve self-describing, standalone archival files. Virtual stores bridge this gap by enabling efficient cloud-based access to existing archives without duplicating the underlying data.</p>
+<p>A key benefit is that virtual stores also deliver a <strong>single entrypoint</strong> to datasets comprised of many files. Together, this enables:</p>
 <ul>
+<li>Better performance and reduced costs as less data — only the data the user needs — is sent over the internet.</li>
 <li>Less pre-processing to be “analysis-ready”.</li>
 <li>Users do not have to know about the underlying data format or storage location.</li>
 <li>Greater interoperability through a common API for reading, writing and analyzing complex and heterogeneous NASA datasets.</li>
-<li>Better performance and reduced costs as less data – only the data the user needs – is sent over the internet.</li>
+<li>Virtual stores are the efficient starting point for new products, as pre-identified chunk indices simplify any rechunking or regridding.</li>
 </ul>
 </section>
 <section id="what-are-virtual-stores-and-what-do-they-enable" class="level2">
