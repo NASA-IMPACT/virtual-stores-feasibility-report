@@ -45,7 +45,7 @@ keywords:
   - analysis-ready data
 license: CC-BY-4.0
 version: 2026.06.0
-date-released: '2026-04-15'
+date-released: '2026-06-15'
 # After the first Zenodo archive, add the concept DOI here:
 identifiers:
   - type: doi
