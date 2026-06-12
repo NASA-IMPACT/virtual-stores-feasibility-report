@@ -29,7 +29,6 @@ We use [calendar versioning (CalVer)](https://calver.org/) in the form `YYYY.MM.
 
 1. **Decide on a version number.** Use `YYYY.MM.MICRO` for the current year and month. Set `MICRO` to `0` for the first release of the month, or the next number up if that month already has a release (e.g., `2026.06.0`, then `2026.06.1`).
 
-2. **Update `releases.md`.** Add an entry at the top of the list with the version, date, and a short summary of what changed.
 
 3. **Update `CITATION.cff`.** Set `version` to the new version and `date-released` to the publication date (`YYYY-MM-DD`). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.
 
