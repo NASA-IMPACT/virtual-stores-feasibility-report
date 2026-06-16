@@ -12,6 +12,10 @@ Presentation Video Recordings:
 
 * [Kerchunk and the Zarr v2 model](https://www.youtube.com/watch?v=l9WGHg8oOHw), Miguel A. Jimenez Urias, session of the Cloud Computing Cluster, ESIP February 2026
 
+Presentations:
+
+* Jimenez-Urias, M. A., & Gallagher, J. (2026, March 20). It's all about DMR++. Zenodo. https://doi.org/10.5281/zenodo.19139934
+
 Articles and blog posts:
 
 * ["Working With Non-Cloud Optimized Data Just Got Easier"](https://www.earthdata.nasa.gov/news/feature-articles/working-non-cloud-optimized-data-just-got-easier), NASA Earthdata feature article, Jan 2026
