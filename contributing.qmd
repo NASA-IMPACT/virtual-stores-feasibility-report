@@ -36,7 +36,7 @@ We use [calendar versioning (CalVer)](https://calver.org/) in the form `YYYY.MM.
 4. **Create a GitHub Release.** Go to [Releases → Draft a new release](https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/releases/new):
    - Set the tag to match the version (e.g., `2026.06.0`), targeting the `main` branch.
    - Use the version as the title (e.g., `2026.06.0`).
-   - Copy the summary from `releases.md` into the release notes.
+   - Use Github to auto-generate release notes.
    - Publish the release.
 
 5. **Archive on Zenodo.** If the Zenodo integration is enabled (see [Citing this report](#citing-this-report)), publishing the GitHub Release automatically creates a new Zenodo version and mints a DOI.
