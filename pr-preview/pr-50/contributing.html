@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p><strong>Decide on a version number.</strong> Use <code>YYYY.MM.MICRO</code> for the current year and month. Set <code>MICRO</code> to <code>0</code> for the first release of the month, or the next number up if that month already has a release (e.g., <code>2026.06.0</code>, then <code>2026.06.1</code>).</p></li>
 <li><p><strong>Update <code>CITATION.cff</code>.</strong> Set <code>version</code> to the new version and <code>date-released</code> to the publication date (<code>YYYY-MM-DD</code>). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.</p></li>
-<li><p><strong>Open and merge a PR</strong> with the <code>releases.md</code> and <code>CITATION.cff</code> updates. The site will be published automatically on merge to <code>main</code>.</p></li>
+<li><p><strong>Open and merge a PR</strong> with the <code>CITATION.cff</code> updates. The site will be published automatically on merge to <code>main</code>.</p></li>
 <li><p><strong>Create a GitHub Release.</strong> Go to <a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/releases/new">Releases → Draft a new release</a>:</p>
 <ul>
 <li>Set the tag to match the version (e.g., <code>2026.06.0</code>), targeting the <code>main</code> branch.</li>
