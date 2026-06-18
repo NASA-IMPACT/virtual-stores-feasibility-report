@@ -21,7 +21,7 @@ To preview changes, you can run this site locally (see instructions to setup qua
 
 ## Release Process
 
-Releases mark citable snapshots of the report. Most PRs will not generate new releases. Releases will be created when there is a meaningful body of new or revised content.
+Releases mark citable snapshots of the report. The site will be released when there is a meaningful body of new or revised content.
 
 We use [calendar versioning (CalVer)](https://calver.org/) in the form `YYYY.MM.MICRO` — the year and month the release is published, plus a micro segment that increments within a month, starting at `0` (e.g., `2026.04.0`). The first release in a given month is `.0`; a second release that same month is `.1`, and so on. Keeping all three segments makes every version the same shape, which sorts and parses predictably.
 
@@ -39,7 +39,7 @@ We use [calendar versioning (CalVer)](https://calver.org/) in the form `YYYY.MM.
    - Use Github to auto-generate release notes.
    - Publish the release.
 
-Publishing the GitHub Release automatically creates a new Zenodo version and mints a DOI.
+Publishing the GitHub Release automatically creates a new Zenodo version and mints a version-specific DOI.
 
 ## Citing this report
 
