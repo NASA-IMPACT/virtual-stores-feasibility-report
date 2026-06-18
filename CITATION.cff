@@ -49,5 +49,5 @@ date-released: '2026-06-15'
 # After the first Zenodo archive, add the concept DOI here:
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.XXXXXXX
+    value: 10.5281/zenodo.20748316
     description: Concept DOI (always resolves to the latest version)
