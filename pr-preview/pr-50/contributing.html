@@ -299,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="release-process" class="level2">
 <h2 class="anchored" data-anchor-id="release-process">Release Process</h2>
-<p>Releases mark citable snapshots of the report. Most PRs will not generate new releases. Releases will be created when there is a meaningful body of new or revised content.</p>
+<p>Releases mark citable snapshots of the report. The site will be released when there is a meaningful body of new or revised content.</p>
 <p>We use <a href="https://calver.org/">calendar versioning (CalVer)</a> in the form <code>YYYY.MM.MICRO</code> — the year and month the release is published, plus a micro segment that increments within a month, starting at <code>0</code> (e.g., <code>2026.04.0</code>). The first release in a given month is <code>.0</code>; a second release that same month is <code>.1</code>, and so on. Keeping all three segments makes every version the same shape, which sorts and parses predictably.</p>
 <section id="steps-to-create-a-release" class="level3">
 <h3 class="anchored" data-anchor-id="steps-to-create-a-release">Steps to create a release</h3>
@@ -315,7 +315,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Publish the release.</li>
 </ul></li>
 </ol>
-<p>Publishing the GitHub Release automatically creates a new Zenodo version and mints a DOI.</p>
+<p>Publishing the GitHub Release automatically creates a new Zenodo version and mints a version-specific DOI.</p>
 </section>
 </section>
 <section id="citing-this-report" class="level2">
