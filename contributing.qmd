@@ -21,15 +21,15 @@ To preview changes, you can run this site locally (see instructions to setup qua
 
 ## Release Process
 
-Releases mark citable snapshots of the report. Not every merged PR needs a release — cut one when there is a meaningful body of new or revised content.
+Releases mark citable snapshots of the report. Most PRs will not generate new releases. Releases will be created when there is a meaningful body of new or revised content.
 
 We use [calendar versioning (CalVer)](https://calver.org/) in the form `YYYY.MM.MICRO` — the year and month the release is published, plus a micro segment that increments within a month, starting at `0` (e.g., `2026.04.0`). The first release in a given month is `.0`; a second release that same month is `.1`, and so on. Keeping all three segments makes every version the same shape, which sorts and parses predictably.
 
 ### Steps to create a release
 
-1. **Decide on a version number.** Use `YYYY.MM.MICRO` for the current year and month. Set `MICRO` to `0` for the first release of the month, or the next number up if that month already has a release (e.g., `2026.06.0`, then `2026.06.1`).
+1. **Decide on a version number:** Use `YYYY.MM.MICRO` for the current year and month. Set `MICRO` to `0` for the first release of the month, or the next number up if that month already has a release (e.g., `2026.06.0`, then `2026.06.1`).
 
-2. **Update `CITATION.cff`.** Set `version` to the new version and `date-released` to the publication date (`YYYY-MM-DD`). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.
+2. **Update `CITATION.cff`:** Set `version` to the new version and `date-released` to the publication date (`YYYY-MM-DD`). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.
 
 3. **Open and merge a PR** with the `CITATION.cff` updates. The site will be published automatically on merge to `main`.
 
@@ -39,27 +39,16 @@ We use [calendar versioning (CalVer)](https://calver.org/) in the form `YYYY.MM.
    - Use Github to auto-generate release notes.
    - Publish the release.
 
-5. **Archive on Zenodo.** If the Zenodo integration is enabled (see [Citing this report](#citing-this-report)), publishing the GitHub Release automatically creates a new Zenodo version and mints a DOI.
+Publishing the GitHub Release automatically creates a new Zenodo version and mints a DOI.
 
 ## Citing this report
 
 This repository includes a [`CITATION.cff`](https://citation-file-format.github.io/) file describing how to cite the report. GitHub renders a "Cite this repository" button from it, and tools like Zenodo read it when archiving.
 
-### Setting up Zenodo archiving (one-time)
-
-Archiving on [Zenodo](https://zenodo.org/) gives the report a permanent, citable DOI. Do this once, then every GitHub Release is archived automatically.
-
-1. Sign in to [Zenodo](https://zenodo.org/) with GitHub (the account must have admin access to the repository, or ask an org admin to do this).
-2. Go to your Zenodo profile → **GitHub** (<https://zenodo.org/account/settings/github/>).
-3. Find `NASA-IMPACT/virtual-stores-feasibility-report` in the repository list and flip the toggle **On**. (If it isn't listed, click **Sync** to refresh from GitHub.)
-4. Create a GitHub Release (or re-publish the existing one). Zenodo will detect it, archive the tagged snapshot, and mint a DOI.
-
 Zenodo issues two DOIs:
 
 - A **concept DOI** that always points to the latest version — use this one in `CITATION.cff` and for general citation.
 - A **version DOI** unique to each release.
-
-After the first archive, copy the concept DOI into the `identifiers` section of `CITATION.cff` and add a DOI badge to the `README.md`. Zenodo's [GitHub integration guide](https://github.com/NASA-IMPACT/virtual-stores-feasibility-report) has full details.
 
 ## Local Development
 
