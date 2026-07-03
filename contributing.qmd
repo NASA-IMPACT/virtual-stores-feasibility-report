@@ -19,6 +19,37 @@ To add a new page:
 
 To preview changes, you can run this site locally (see instructions to setup quarto locally below) or use the automated preview generation when opening a PR (see [the PR preview workflow](./.github/workflows/pr-preview.yml)).
 
+## Release Process
+
+Releases mark citable snapshots of the report. The site will be released when there is a meaningful body of new or revised content.
+
+We use [calendar versioning (CalVer)](https://calver.org/) in the form `YYYY.MM.MICRO` — the year and month the release is published, plus a micro segment that increments within a month, starting at `0` (e.g., `2026.04.0`). The first release in a given month is `.0`; a second release that same month is `.1`, and so on. Keeping all three segments makes every version the same shape, which sorts and parses predictably.
+
+### Steps to create a release
+
+1. **Decide on a version number:** Use `YYYY.MM.MICRO` for the current year and month. Set `MICRO` to `0` for the first release of the month, or the next number up if that month already has a release (e.g., `2026.06.0`, then `2026.06.1`).
+
+2. **Update `CITATION.cff`:** Set `version` to the new version and `date-released` to the publication date (`YYYY-MM-DD`). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.
+
+3. **Open and merge a PR** with the `CITATION.cff` updates. The site will be published automatically on merge to `main`.
+
+4. **Create a GitHub Release.** Go to [Releases → Draft a new release](https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/releases/new):
+   - Set the tag to match the version (e.g., `2026.06.0`), targeting the `main` branch.
+   - Use the version as the title (e.g., `2026.06.0`).
+   - Use Github to auto-generate release notes.
+   - Publish the release.
+
+Publishing the GitHub Release automatically creates a new Zenodo version and mints a version-specific DOI.
+
+## Citing this report
+
+This repository includes a [`CITATION.cff`](https://citation-file-format.github.io/) file describing how to cite the report. GitHub renders a "Cite this repository" button from it, and tools like Zenodo read it when archiving.
+
+Zenodo issues two DOIs:
+
+- A **concept DOI** that always points to the latest version — use this one in `CITATION.cff` and for general citation.
+- A **version DOI** unique to each release.
+
 ## Local Development
 
 ### Install Quarto
