@@ -1,6 +1,6 @@
 # virtual-stores-feasibility-report
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21170858.svg)](https://doi.org/10.5281/zenodo.21170858)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20748316.svg)](https://doi.org/10.5281/zenodo.20748316)
 
 This is a documentation site to support adoption of virtual store technologies at NASA.
 
