@@ -247,6 +247,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#adding-pages" id="toc-adding-pages" class="nav-link active" data-scroll-target="#adding-pages">Adding pages</a></li>
   <li><a href="#previews" id="toc-previews" class="nav-link" data-scroll-target="#previews">Previews</a></li>
+  <li><a href="#release-process" id="toc-release-process" class="nav-link" data-scroll-target="#release-process">Release Process</a>
+  <ul class="collapse">
+  <li><a href="#steps-to-create-a-release" id="toc-steps-to-create-a-release" class="nav-link" data-scroll-target="#steps-to-create-a-release">Steps to create a release</a></li>
+  </ul></li>
+  <li><a href="#citing-this-report" id="toc-citing-this-report" class="nav-link" data-scroll-target="#citing-this-report">Citing this report</a></li>
   <li><a href="#local-development" id="toc-local-development" class="nav-link" data-scroll-target="#local-development">Local Development</a>
   <ul class="collapse">
   <li><a href="#install-quarto" id="toc-install-quarto" class="nav-link" data-scroll-target="#install-quarto">Install Quarto</a></li>
@@ -291,6 +296,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="previews" class="level2">
 <h2 class="anchored" data-anchor-id="previews">Previews</h2>
 <p>To preview changes, you can run this site locally (see instructions to setup quarto locally below) or use the automated preview generation when opening a PR (see <a href="./.github/workflows/pr-preview.yml">the PR preview workflow</a>).</p>
+</section>
+<section id="release-process" class="level2">
+<h2 class="anchored" data-anchor-id="release-process">Release Process</h2>
+<p>Releases mark citable snapshots of the report. The site will be released when there is a meaningful body of new or revised content.</p>
+<p>We use <a href="https://calver.org/">calendar versioning (CalVer)</a> in the form <code>YYYY.MM.MICRO</code> — the year and month the release is published, plus a micro segment that increments within a month, starting at <code>0</code> (e.g., <code>2026.04.0</code>). The first release in a given month is <code>.0</code>; a second release that same month is <code>.1</code>, and so on. Keeping all three segments makes every version the same shape, which sorts and parses predictably.</p>
+<section id="steps-to-create-a-release" class="level3">
+<h3 class="anchored" data-anchor-id="steps-to-create-a-release">Steps to create a release</h3>
+<ol type="1">
+<li><p><strong>Decide on a version number:</strong> Use <code>YYYY.MM.MICRO</code> for the current year and month. Set <code>MICRO</code> to <code>0</code> for the first release of the month, or the next number up if that month already has a release (e.g., <code>2026.06.0</code>, then <code>2026.06.1</code>).</p></li>
+<li><p><strong>Update <code>CITATION.cff</code>:</strong> Set <code>version</code> to the new version and <code>date-released</code> to the publication date (<code>YYYY-MM-DD</code>). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.</p></li>
+<li><p><strong>Open and merge a PR</strong> with the <code>CITATION.cff</code> updates. The site will be published automatically on merge to <code>main</code>.</p></li>
+<li><p><strong>Create a GitHub Release.</strong> Go to <a href="https://github.com/NASA-IMPACT/virtual-stores-feasibility-report/releases/new">Releases → Draft a new release</a>:</p>
+<ul>
+<li>Set the tag to match the version (e.g., <code>2026.06.0</code>), targeting the <code>main</code> branch.</li>
+<li>Use the version as the title (e.g., <code>2026.06.0</code>).</li>
+<li>Use Github to auto-generate release notes.</li>
+<li>Publish the release.</li>
+</ul></li>
+</ol>
+<p>Publishing the GitHub Release automatically creates a new Zenodo version and mints a version-specific DOI.</p>
+</section>
+</section>
+<section id="citing-this-report" class="level2">
+<h2 class="anchored" data-anchor-id="citing-this-report">Citing this report</h2>
+<p>This repository includes a <a href="https://citation-file-format.github.io/"><code>CITATION.cff</code></a> file describing how to cite the report. GitHub renders a “Cite this repository” button from it, and tools like Zenodo read it when archiving.</p>
+<p>Zenodo issues two DOIs:</p>
+<ul>
+<li>A <strong>concept DOI</strong> that always points to the latest version — use this one in <code>CITATION.cff</code> and for general citation.</li>
+<li>A <strong>version DOI</strong> unique to each release.</li>
+</ul>
 </section>
 <section id="local-development" class="level2">
 <h2 class="anchored" data-anchor-id="local-development">Local Development</h2>

@@ -313,6 +313,26 @@
     ]
   },
   {
+    "objectID": "contributing.html#release-process",
+    "href": "contributing.html#release-process",
+    "title": "Contributing",
+    "section": "Release Process",
+    "text": "Release Process\nReleases mark citable snapshots of the report. The site will be released when there is a meaningful body of new or revised content.\nWe use calendar versioning (CalVer) in the form YYYY.MM.MICRO — the year and month the release is published, plus a micro segment that increments within a month, starting at 0 (e.g., 2026.04.0). The first release in a given month is .0; a second release that same month is .1, and so on. Keeping all three segments makes every version the same shape, which sorts and parses predictably.\n\nSteps to create a release\n\nDecide on a version number: Use YYYY.MM.MICRO for the current year and month. Set MICRO to 0 for the first release of the month, or the next number up if that month already has a release (e.g., 2026.06.0, then 2026.06.1).\nUpdate CITATION.cff: Set version to the new version and date-released to the publication date (YYYY-MM-DD). After the Zenodo DOI is minted (see below), keep the concept DOI in place — it always resolves to the latest version.\nOpen and merge a PR with the CITATION.cff updates. The site will be published automatically on merge to main.\nCreate a GitHub Release. Go to Releases → Draft a new release:\n\nSet the tag to match the version (e.g., 2026.06.0), targeting the main branch.\nUse the version as the title (e.g., 2026.06.0).\nUse Github to auto-generate release notes.\nPublish the release.\n\n\nPublishing the GitHub Release automatically creates a new Zenodo version and mints a version-specific DOI.",
+    "crumbs": [
+      "Contributing"
+    ]
+  },
+  {
+    "objectID": "contributing.html#citing-this-report",
+    "href": "contributing.html#citing-this-report",
+    "title": "Contributing",
+    "section": "Citing this report",
+    "text": "Citing this report\nThis repository includes a CITATION.cff file describing how to cite the report. GitHub renders a “Cite this repository” button from it, and tools like Zenodo read it when archiving.\nZenodo issues two DOIs:\n\nA concept DOI that always points to the latest version — use this one in CITATION.cff and for general citation.\nA version DOI unique to each release.",
+    "crumbs": [
+      "Contributing"
+    ]
+  },
+  {
     "objectID": "contributing.html#local-development",
     "href": "contributing.html#local-development",
     "title": "Contributing",
