@@ -6,6 +6,10 @@ This page collects worked examples of virtual store implementations, serving as 
 
 ## Virtual Stores Inventory
 
+Note that many of these virtual datasets were developed for one-time use or case studies and may have not been updated after reprocessing campaigns.
+
+Also note that VirtualiZarr and earthaccess make it simple for users to create virtual datasets independently. There are very likely multitudes more virtual datasets in existance than those catalogued publicly. Centralized virtualization would nevertheless reduce the effort and cost required for individuals to both create derived virtual datasets and use the raw data.
+
 | Project | Dataset          | Dataset location                                                                                                                                              | Notebooks and Repos                                                                                                                                     |
 |---------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
 | PO.DAAC | CCMP_WINDS_10M6HR_L4_V3.1 | `https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-public/virtual_collections/CCMP_WINDS_10M6HR_L4_V3.1/CCMP_WINDS_10M6HR_L4_V3.1_virtual_https.json` (and `_virtual_s3.json`) — Kerchunk, CMR C2916514952-POCLOUD | [Virtual Data Set Starter Notebook](https://podaac.github.io/tutorials/notebooks/Advanced_cloud/using_vds_starter.html) |
@@ -34,8 +38,6 @@ This page collects worked examples of virtual store implementations, serving as 
 | VEDA | CMIP6 GISS-E2-1-G tas | `s3://veda-data-store-staging/cmip6-GISS-E2-1-G-tas-kerchunk/combined_CMIP6_daily_GISS-E2-1-G_tas_kerchunk.json` (Kerchunk demo, protected bucket) | [STAC collection](https://openveda.cloud/api/stac/collections/combined_CMIP6_daily_GISS-E2-1-G_tas_kerchunk_DEMO) |
 | CarbonPlan | NEX-GDDP-CMIP6 | `s3://us-west-2.opendata.source.coop/carbonplan/virtual-datasets/nex-gddp-cmip6/store.icechunk` (Icechunk v2 DataTree, fully anonymous) | [virtual-zarr/nex-gddp-cmip6](https://github.com/virtual-zarr/nex-gddp-cmip6), [Announcement](https://discourse.pangeo.io/t/public-virtual-zarr-of-the-nasa-nex-gddp-cmip6-dataset/5802) |
 | Fish-PACE | PACE OCI L3M | `https://data.source.coop/fish-pace/pace-oci/inregion/PACE_OCI_L3M_CHL` (also `_RRS`, `_KD`; Icechunk v2, in-region with Earthdata Login) | [source.coop/fish-pace/pace-oci](https://source.coop/fish-pace/pace-oci) |
-
-Every row has a verification script in the [virtual-store-verification](https://github.com/maxj-machine/virtual-store-verification) repository that opens the store, checks that its references point outside the store, and reads one chunk back; `uv run verify_all.py` there re-probes all of them and writes a dated results table. Store locators were last probed on 2026-11-06.
 
 ## Mature implementations
 
