@@ -23,15 +23,15 @@ Verify the installation with `quarto check`.
 To preview the site locally:
 
 ```bash
-make preview
+quarto preview
 ```
 
-This runs `quarto preview`, which serves the site and reloads on changes.
+This serves the site and reloads on changes.
 
 To publish to GitHub Pages:
 
 ```bash
-make publish
+quarto publish gh-pages
 ```
 
-This runs `quarto publish gh-pages`, which renders the site and pushes the output to the `gh-pages` branch. On first use, Quarto will prompt you to confirm the target repository. Ensure GitHub Pages is enabled in the repository settings (Settings → Pages → Source: `gh-pages` branch).
+This renders the site and pushes the output to the `gh-pages` branch. On first use, Quarto will prompt you to confirm the target repository. Ensure GitHub Pages is enabled in the repository settings (Settings → Pages → Source: `gh-pages` branch).
